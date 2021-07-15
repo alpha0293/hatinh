@@ -36,7 +36,7 @@ class ParishForm extends FormAbstract
                     'data-counter' => 120,
                 ],
             ])
-            ->add('phonenumber', 'phonenumber', [
+            ->add('phonenumber', 'number', [
                 'label'      => 'SĐT',
                 'label_attr' => ['class' => 'control-label required'],
                 'attr'       => [

@@ -59,7 +59,7 @@ class PublicController extends Controller
     
     public function getBySlug($slug, \Botble\Slug\Repositories\Interfaces\SlugInterface $slugRepository)
     {
-        // return $slug;
+        return $slug;
         $slug = $slugRepository->getFirstBy(['key' => $slug, 'reference' => DEANERY_MODULE_SCREEN_NAME]);
         if (!$slug) {
             abort(404);

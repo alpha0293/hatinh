@@ -2,8 +2,8 @@
     "name": "Manage",
     "namespace": "Botble\\Manage\\",
     "provider": "Botble\\Manage\\Providers\\ManageServiceProvider",
-    "author": "Sang Nguyen",
+    "author": "Thach Nguyen",
     "url": "https://sangnguyen.info",
     "version": "1.0",
-    "description": "The description for module manage"
+    "description": "Plugin Quản lý Giáo phận thông qua các giáo hạt, giáo xứ, linh mục đoàn"
 }

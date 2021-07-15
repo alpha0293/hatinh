@@ -36,7 +36,7 @@ class PriestForm extends FormAbstract
                     'data-counter' => 120,
                 ],
             ])
-            ->add('phonenumber', 'phonenumber', [
+            ->add('phonenumber', 'text', [
                 'label' => 'Số điện thoại',
                 'label_attr' => ['class' => 'control-label required'],
                 'attr' => [

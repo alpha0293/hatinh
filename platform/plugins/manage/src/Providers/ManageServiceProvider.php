@@ -3,6 +3,10 @@
 namespace Botble\Manage\Providers;
 
 use Botble\Manage\Models\Manage;
+use Botble\Manage\Models\Deanery;
+use Botble\Manage\Models\Parish;
+use Botble\Manage\Models\Priest;
+use Botble\Manage\Models\History;
 use Illuminate\Support\ServiceProvider;
 use Botble\Manage\Repositories\Caches\ManageCacheDecorator;
 use Botble\Manage\Repositories\Eloquent\ManageRepository;
@@ -127,14 +131,27 @@ class ManageServiceProvider extends ServiceProvider
 
         //add slug
         $this->app->booted(function () {
-           \SlugHelper::registerModule(Deanery::class);
-           \SlugHelper::setPrefix(Deanery::class, 'deanery');
-           \SlugHelper::registerModule(Priest::class);
-           \SlugHelper::setPrefix(Priest::class, 'priest');
-           \SlugHelper::registerModule(Parish::class);
-           \SlugHelper::setPrefix(Parish::class, 'parish');
-           \SlugHelper::registerModule(History::class);
-           \SlugHelper::setPrefix(History::class, 'history');
+            $models = [Deanery::class, Parish::class, Priest::class, History::class];
+
+            if (defined('LANGUAGE_MODULE_SCREEN_NAME')) {
+                Language::registerModule($models);
+            }
+
+            SlugHelper::registerModule($models);
+            SlugHelper::setPrefix(Deanery::class, 'deanery');
+            SlugHelper::setPrefix(Parish::class, 'parish');
+            SlugHelper::setPrefix(Priest::class, 'priest');
+            SlugHelper::setPrefix(History::class, 'history');
+            SeoHelper::registerModule($models);
+            
+           // \SlugHelper::registerModule(Deanery::class);
+           // \SlugHelper::setPrefix(Deanery::class, 'deanery');
+           // \SlugHelper::registerModule(Priest::class);
+           // \SlugHelper::setPrefix(Priest::class, 'priest');
+           // \SlugHelper::registerModule(Parish::class);
+           // \SlugHelper::setPrefix(Parish::class, 'parish');
+           // \SlugHelper::registerModule(History::class);
+           // \SlugHelper::setPrefix(History::class, 'history');
         });
     }
 }
