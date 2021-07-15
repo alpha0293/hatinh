@@ -80,8 +80,8 @@ class ManageServiceProvider extends ServiceProvider
                 'parent_id'   => null,
                 'name'        => 'plugins/manage::manage.name',
                 'icon'        => 'fa fa-list',
-                'url'         => route('manage.index'),
-                'permissions' => ['manage.index'],
+                'url'         => route('deanery.index'),
+                'permissions' => ['deanery.index'],
             ]);
 
             dashboard_menu()->registerItem([
