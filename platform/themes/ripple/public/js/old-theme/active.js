@@ -137,13 +137,13 @@
     }
 
     // :: ScrollUp Active Code
-    if ($.fn.scrollUp) {
-        $.scrollUp({
-            scrollSpeed: 1000,
-            easingType: 'easeInOutQuart',
-            scrollText: '<i class="fa fa-angle-up" aria-hidden="true"></i>'
-        });
-    }
+    // if ($.fn.scrollUp) {
+    //     $.scrollUp({
+    //         scrollSpeed: 1000,
+    //         easingType: 'easeInOutQuart',
+    //         scrollText: '<i class="fa fa-angle-up" aria-hidden="true"></i>'
+    //     });
+    // }
 
     // :: PreventDefault a Click
     $("a[href='#']").on('click', function ($) {
