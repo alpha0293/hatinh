@@ -14,6 +14,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Botble\Blog\Models\Post;
+use Theme;
 
 class PostController extends Controller
 {
@@ -92,7 +93,11 @@ class PostController extends Controller
         $posts = $postRepository->getSearch($query);
 
         $data = [
-            'items' => $posts,
+            // 'items' => $posts,
+            'items' => [
+                    'Posts' => Theme::partial('search.post', compact('posts')),
+                    // 'Pages' => Theme::partial('search.page', compact('pages')),
+                ],
             'query' => $query,
             'count' => $posts->count(),
         ];
