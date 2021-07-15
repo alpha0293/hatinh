@@ -29,83 +29,85 @@
     <!--[if IE 8]><body class="ie8 lt-ie9 lt-ie10"><![endif]-->
     <!--[if IE 9]><body class="ie9 lt-ie10"><![endif]-->
     <body>
-    <header class="header" id="header">
-        <div class="header-wrap">
-            <nav class="nav-top">
-                <div class="container">
-                    <div class="pull-left">
-                        <div class="hi-icon-wrap hi-icon-effect-3 hi-icon-effect-3a">
-                            <a href="{{ theme_option('facebook') }}" title="Facebook" class="hi-icon fa fa-facebook"></a>
-                            <a href="{{ theme_option('twitter') }}" title="Twitter" class="hi-icon fa fa-twitter"></a>
-                            <a href="{{ theme_option('youtube') }}" title="Youtube" class="hi-icon fa fa-youtube"></a>
-                        </div>
-                    </div>
-                    <div class="pull-right">
-                        @if (is_plugin_active('member'))
-                            <ul class="pull-left">
-                                @if (Auth::guard('member')->check())
+        <div class="headers">
+            <header class="header" id="header">
+                <div class="header-wrap">
+                    <nav class="nav-top">
+                        <div class="container">
+                            <div class="pull-left">
+                                <div class="hi-icon-wrap hi-icon-effect-3 hi-icon-effect-3a">
+                                    <a href="{{ theme_option('facebook') }}" title="Facebook" class="hi-icon fa fa-facebook"></a>
+                                    <a href="{{ theme_option('twitter') }}" title="Twitter" class="hi-icon fa fa-twitter"></a>
+                                    <a href="{{ theme_option('youtube') }}" title="Youtube" class="hi-icon fa fa-youtube"></a>
+                                </div>
+                            </div>
+                            <div class="pull-right">
+                                @if (is_plugin_active('member'))
+                                <ul class="pull-left">
+                                    @if (Auth::guard('member')->check())
                                     <li><a href="{{ route('public.member.dashboard') }}" rel="nofollow"><i class="fa fa-user"></i> <span>{{ Auth::guard('member')->user()->getFullName() }}</span></a></li>
                                     <li><a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" rel="nofollow"><i class="fa fa-sign-out"></i> {{ __('Logout') }}</a></li>
-                                @else
+                                    @else
                                     <li><a href="{{ route('public.member.login') }}" rel="nofollow"><i class="fa fa-sign-in"></i> {{ __('Login') }}</a></li>
-                                @endif
-                            </ul>
-                            @auth('member')
+                                    @endif
+                                </ul>
+                                @auth('member')
                                 <form id="logout-form" action="{{ route('public.member.logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>
-                            @endauth
-                        @endif
-                        <div class="pull-left">
-                            <div class="pull-right">
-                                <div class="language-wrapper">
-                                    {!! apply_filters('language_switcher') !!}
+                                @endauth
+                                @endif
+                                <div class="pull-left">
+                                    <div class="pull-right">
+                                        <div class="language-wrapper">
+                                            {!! apply_filters('language_switcher') !!}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </header>
-    <header data-sticky="false" data-sticky-checkpoint="200" data-responsive="991" class="page-header page-header--light">
-        <div class="container">
-            <!-- LOGO-->
-            <div class="page-header__left"><a href="{{ route('public.single') }}" class="page-logo">
-                    @if (!theme_option('logo'))
-                        <span>Bot</span>ble
-                    @else
-                        <img src="{{ get_image_url(theme_option('logo')) }}" alt="{{ theme_option('site_title') }}" height="50">
-                    @endif
-                </a></div>
-            <div class="page-header__right">
-                <!-- MOBILE MENU-->
-                <div class="navigation-toggle navigation-toggle--dark"><span></span></div>
-                <div class="pull-left">
-                    <!-- SEARCH-->
-                    <div class="search-btn c-search-toggler"><i class="fa fa-search close-search"></i></div>
-                    <!-- NAVIGATION-->
-                    <nav class="navigation navigation--light navigation--fade navigation--fadeLeft">
-                        {!!
-                            Menu::renderMenuLocation('main-menu', [
-                                'options' => ['class' => 'menu sub-menu--slideLeft'],
-                                'view'    => 'main-menu',
-                            ])
-                        !!}
                     </nav>
                 </div>
-                <div class="clearfix"></div>
-            </div>
+            </header>
+            <header data-sticky="false" data-sticky-checkpoint="200" data-responsive="991" class="page-header page-header--light">
+                <div class="container">
+                    <!-- LOGO-->
+                    <div class="page-header__left"><a href="{{ route('public.single') }}" class="page-logo">
+                        @if (!theme_option('logo'))
+                        <span>Bot</span>ble
+                        @else
+                        <img style="max-width: 70px;" src="{{ get_image_url(theme_option('logo')) }}" alt="{{ theme_option('site_title') }}" height="50">
+                        @endif
+                    </a></div>
+                    <div class="page-header__right">
+                        <!-- MOBILE MENU-->
+                        <div class="navigation-toggle navigation-toggle--dark"><span></span></div>
+                        <div class="pull-left">
+                            <!-- SEARCH-->
+                            <div class="search-btn c-search-toggler"><i class="fa fa-search close-search"></i></div>
+                            <!-- NAVIGATION-->
+                            <nav class="navigation navigation--light navigation--fade navigation--fadeLeft">
+                                {!!
+                                Menu::renderMenuLocation('main-menu', [
+                                'options' => ['class' => 'menu sub-menu--slideLeft'],
+                                'view'    => 'main-menu',
+                                ])
+                                !!}
+                            </nav>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                @if (is_plugin_active('blog'))
+                <div class="super-search hide">
+                    <form class="quick-search" action="{{ route('public.search') }}">
+                        <input type="text" name="q" placeholder="{{ __('Type to search...') }}" class="form-control search-input" autocomplete="off">
+                        <span class="close-search">&times;</span>
+                    </form>
+                    <div class="search-result"></div>
+                </div>
+                @endif
+            </header>
         </div>
-        @if (is_plugin_active('blog'))
-            <div class="super-search hide">
-                <form class="quick-search" action="{{ route('public.search') }}">
-                    <input type="text" name="q" placeholder="{{ __('Type to search...') }}" class="form-control search-input" autocomplete="off">
-                    <span class="close-search">&times;</span>
-                </form>
-                <div class="search-result"></div>
-            </div>
-        @endif
-    </header>
     <div id="page-wrap">
 
