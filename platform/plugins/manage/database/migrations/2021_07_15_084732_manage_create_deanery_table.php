@@ -15,6 +15,10 @@ class ManageCreateDeaneryTable extends Migration
         Schema::create('deaneries', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 120);
+            $table->string('lmquanhat');
+            $table->integer('numberofparish');
+            $table->integer('numberofmember');
+            $table->string('address');
             $table->string('status', 60)->default('published');
             $table->timestamps();
         });

@@ -28,6 +28,38 @@ class DeaneryForm extends FormAbstract
                     'data-counter' => 120,
                 ],
             ])
+            ->add('lmquanhat', 'text', [
+                'label'      => 'LM quản hạt',
+                'label_attr' => ['class' => 'control-label required'],
+                'attr'       => [
+                    'placeholder'  => trans('core/base::forms.name_placeholder'),
+                    'data-counter' => 120,
+                ],
+            ])
+            ->add('numberofmember', 'number', [
+                'label'      => 'Số Giáo dân',
+                'label_attr' => ['class' => 'control-label required'],
+                'attr'       => [
+                    'placeholder'  => trans('core/base::forms.name_placeholder'),
+                    'data-counter' => 120,
+                ],
+            ])
+            ->add('numberofparish', 'number', [
+                'label'      => 'Số Giáo xứ',
+                'label_attr' => ['class' => 'control-label required'],
+                'attr'       => [
+                    'placeholder'  => trans('core/base::forms.name_placeholder'),
+                    'data-counter' => 120,
+                ],
+            ])
+            ->add('address', 'text', [
+                'label'      => 'Địa chỉ',
+                'label_attr' => ['class' => 'control-label required'],
+                'attr'       => [
+                    'placeholder'  => trans('core/base::forms.name_placeholder'),
+                    'data-counter' => 120,
+                ],
+            ])
             ->add('status', 'customSelect', [
                 'label'      => trans('core/base::tables.status'),
                 'label_attr' => ['class' => 'control-label required'],

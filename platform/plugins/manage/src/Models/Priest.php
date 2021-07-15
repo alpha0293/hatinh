@@ -24,6 +24,13 @@ class Priest extends BaseModel
      */
     protected $fillable = [
         'name',
+        'email',
+        'phonenumber',
+        'dob',
+        'dopriest',
+        'address',
+        'note',
+        'image',
         'status',
     ];
 

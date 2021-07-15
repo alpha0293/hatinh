@@ -87,6 +87,10 @@ class DeaneryTable extends TableAbstract
         $query = $model->select([
             'deaneries.id',
             'deaneries.name',
+            'deaneries.lmquanhat',
+            'deaneries.numberofparish',
+            'deaneries.numberofmember',
+            'deaneries.address',
             'deaneries.created_at',
             'deaneries.status',
         ]);
@@ -109,6 +113,23 @@ class DeaneryTable extends TableAbstract
             'name' => [
                 'name'  => 'deaneries.name',
                 'title' => trans('core/base::tables.name'),
+                'class' => 'text-left',
+            ],
+            'address' => [
+                'name' => 'deaneries.address',
+                'title' => 'Địa chỉ',
+                'class' => 'text-left',
+            ],'lmquanhat' => [
+                'name' => 'deaneries.lmquanhat',
+                'title' => 'Linh mục quản hạt',
+                'class' => 'text-left',
+            ],'numberofmember' => [
+                'name' => 'deaneries.numberofmember',
+                'title' => 'Số Giáo dân',
+                'class' => 'text-left',
+            ],'numberofparish' => [
+                'name' => 'deaneries.numberofparish',
+                'title' => 'Số Giáo xứ',
                 'class' => 'text-left',
             ],
             'created_at' => [

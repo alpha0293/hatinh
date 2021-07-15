@@ -9,6 +9,7 @@ use Botble\Table\Abstracts\TableAbstract;
 use Illuminate\Contracts\Routing\UrlGenerator;
 use Yajra\DataTables\DataTables;
 use Botble\Manage\Models\Priest;
+use Html;
 
 class PriestTable extends TableAbstract
 {
@@ -57,6 +58,12 @@ class PriestTable extends TableAbstract
                 }
                 return anchor_link(route('priest.edit', $item->id), $item->name);
             })
+            ->editColumn('image', function ($item) {
+                if ($this->request()->input('action') === 'excel') {
+                    return get_object_image($item->image, 'thumb');
+                }
+                return Html::image(get_object_image($item->image, 'thumb'), $item->name, ['width' => 50]);
+            })
             ->editColumn('checkbox', function ($item) {
                 return table_checkbox($item->id);
             })
@@ -87,6 +94,13 @@ class PriestTable extends TableAbstract
         $query = $model->select([
             'priests.id',
             'priests.name',
+            'priests.email',
+            'priests.phonenumber',
+            'priests.dob',
+            'priests.dopriest',
+            'priests.address',
+            'priests.note',
+            'priests.image',
             'priests.created_at',
             'priests.status',
         ]);
@@ -110,6 +124,41 @@ class PriestTable extends TableAbstract
                 'name'  => 'priests.name',
                 'title' => trans('core/base::tables.name'),
                 'class' => 'text-left',
+            ],
+            'email'       => [
+                'name'  => 'priests.email',
+                'title' => trans('core/base::tables.email'),
+                'class' => 'text-left',
+            ],
+            'phonenumber'       => [
+                'name'  => 'priests.phonenumber',
+                'title' => 'Số ĐT',
+                'class' => 'text-left',
+            ],
+            'dob'       => [
+                'name'  => 'priests.dob',
+                'title' => 'Ngày sinh',
+                'class' => 'text-left',
+            ],
+            'dopriest'       => [
+                'name'  => 'priests.dopriest',
+                'title' => 'Năm LM',
+                'class' => 'text-left',
+            ],
+            'address'       => [
+                'name'  => 'priests.address',
+                'title' => 'Địa Chỉ',
+                'class' => 'text-left',
+            ],
+            'note'       => [
+                'name'  => 'priests.note',
+                'title' => 'Ghi chú',
+                'class' => 'text-left',
+            ],
+            'image'       => [
+                'name'  => 'priests.image',
+                'title' => trans('core/base::tables.image'),
+                'width' => '70px',
             ],
             'created_at' => [
                 'name'  => 'priests.created_at',

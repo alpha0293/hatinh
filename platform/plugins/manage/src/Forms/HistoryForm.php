@@ -28,6 +28,30 @@ class HistoryForm extends FormAbstract
                     'data-counter' => 120,
                 ],
             ])
+            ->add('content', 'editor', [
+                'label'      => 'Nội dung',
+                'label_attr' => ['class' => 'control-label required'],
+                'attr'       => [
+                    'placeholder'  => trans('core/base::forms.name_placeholder'),
+                    'data-counter' => 120,
+                ],
+            ])
+            ->add('parish_id', 'select', [
+                'label'      => 'Giáo xứ',
+                'label_attr' => ['class' => 'control-label required'],
+                'attr' => [
+                    'class' => 'form-control select-full',
+                ],
+                'choices'    => array(1,2,3),
+            ])
+            ->add('image', 'mediaImage', [
+                'label'      => 'Chọn ảnh',
+                'label_attr' => ['class' => 'control-label required'],
+                'attr'       => [
+                    'placeholder'  => trans('core/base::forms.name_placeholder'),
+                    'data-counter' => 120,
+                ],
+            ])
             ->add('status', 'customSelect', [
                 'label'      => trans('core/base::tables.status'),
                 'label_attr' => ['class' => 'control-label required'],

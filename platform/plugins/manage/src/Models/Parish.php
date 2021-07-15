@@ -24,6 +24,11 @@ class Parish extends BaseModel
      */
     protected $fillable = [
         'name',
+        'address',
+        'phonenumber',
+        'totalmember',
+        'totalGiaoho',
+        'deanery_id',
         'status',
     ];
 

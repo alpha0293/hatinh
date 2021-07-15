@@ -24,6 +24,9 @@ class History extends BaseModel
      */
     protected $fillable = [
         'name',
+        'image',
+        'content',
+        'parish_id',
         'status',
     ];
 

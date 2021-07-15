@@ -87,6 +87,10 @@ class ParishTable extends TableAbstract
         $query = $model->select([
             'parishes.id',
             'parishes.name',
+            'parishes.address',
+            'parishes.phonenumber',
+            'parishes.totalmember',
+            'parishes.totalGiaoho',
             'parishes.created_at',
             'parishes.status',
         ]);
@@ -109,6 +113,26 @@ class ParishTable extends TableAbstract
             'name' => [
                 'name'  => 'parishes.name',
                 'title' => trans('core/base::tables.name'),
+                'class' => 'text-left',
+            ],
+            'address' => [
+                'name' => 'parishes.address',
+                'title' => 'Địa chỉ',
+                'class' => 'text-left',
+            ],
+            'phonenumber' => [
+                'name' => 'parishes.phonenumber',
+                'title' => 'SĐT',
+                'class' => 'text-left',
+            ],
+            'totalmember' => [
+                'name' => 'parishes.totalmember',
+                'title' => 'Số giáo dân',
+                'class' => 'text-left',
+            ],
+            'totalGiaoho' => [
+                'name' => 'parishes.totalGiaoho',
+                'title' => 'số giáo họ',
                 'class' => 'text-left',
             ],
             'created_at' => [
@@ -167,5 +191,10 @@ class ParishTable extends TableAbstract
                 'type'  => 'date',
             ],
         ];
+    }
+
+    public function getDefaultButtons(): array
+    {
+        return ['excel', 'reload'];
     }
 }

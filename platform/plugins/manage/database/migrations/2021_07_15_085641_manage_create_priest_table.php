@@ -15,6 +15,13 @@ class ManageCreatePriestTable extends Migration
         Schema::create('priests', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 120);
+            $table->string('email');
+            $table->string('phonenumber');
+            $table->date('dob');
+            $table->date('dopriest');
+            $table->string('address');
+            $table->string('note');
+            $table->string('image');
             $table->string('status', 60)->default('published');
             $table->timestamps();
         });

@@ -15,6 +15,11 @@ class ManageCreateParishTable extends Migration
         Schema::create('parishes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 120);
+            $table->string('address');
+            $table->string('phonenumber');
+            $table->integer('totalmember');
+            $table->integer('totalGiaoho');
+            $table->integer('deanery_id')->references('id')->on('deaneries')->onDelete('cascade');
             $table->string('status', 60)->default('published');
             $table->timestamps();
         });
