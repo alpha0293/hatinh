@@ -13,6 +13,7 @@ use Manage;
 use Illuminate\Routing\Controller;
 use SeoHelper;
 use Theme;
+use Botble\Manage\Models\Deanery;
 
 class PublicController extends Controller
 {
@@ -56,26 +57,22 @@ class PublicController extends Controller
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      * 
      */
-    
+
     public function getBySlug($slug, \Botble\Slug\Repositories\Interfaces\SlugInterface $slugRepository)
     {
-        return $slug;
-        $slug = $slugRepository->getFirstBy(['key' => $slug, 'reference' => DEANERY_MODULE_SCREEN_NAME]);
+        $slug = $slugRepository->getFirstBy(['key' => $slug, 'reference_type' => Deanery::class]);
         if (!$slug) {
             abort(404);
         }
-        return $slug;
-        $deanery = $this->deaneryRepository
-            ->getFirstBy([
-                'id'     => $slug->reference_id,
-                'status' => BaseStatusEnum::PUBLISHED,
-            ]);
-        if (!$deanery) {
+
+        $data = $this->deaneryRepository->getFirstBy(['id' => $slug->reference_id]);
+        if (!$data) {
             abort(404);
         }
-        // return $deanery->parishes;
-        do_action(BASE_ACTION_PUBLIC_RENDER_SINGLE, DEANERY_MODULE_SCREEN_NAME, $deanery);
-        return Theme::scope('deanery', compact('deanery'), 'plugins/deanery::themes.deanery')->render();
+
+        do_action(BASE_ACTION_PUBLIC_RENDER_SINGLE, DEANERY_MODULE_SCREEN_NAME, $data);
+
+        return Theme::scope('deanery_index', compact('data'))->render();
     }
 
     public function getAllDeanery()
