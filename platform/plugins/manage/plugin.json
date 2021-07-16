@@ -1,0 +1,9 @@
+{
+    "name": "Manage",
+    "namespace": "Botble\\Manage\\",
+    "provider": "Botble\\Manage\\Providers\\ManageServiceProvider",
+    "author": "Thach Nguyen",
+    "url": "https://sangnguyen.info",
+    "version": "1.0",
+    "description": "Plugin Quản lý Giáo phận thông qua các giáo hạt, giáo xứ, linh mục đoàn"
+}
