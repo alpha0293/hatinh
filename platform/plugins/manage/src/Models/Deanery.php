@@ -37,4 +37,9 @@ class Deanery extends BaseModel
     protected $casts = [
         'status' => BaseStatusEnum::class,
     ];
+
+    public function parishes()
+    {
+        return $this->hasMany(Parish::class);
+    }
 }

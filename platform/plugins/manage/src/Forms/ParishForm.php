@@ -61,12 +61,12 @@ class ParishForm extends FormAbstract
                 ],
             ])
             ->add('deanery_id', 'select', [
-                'label'      => trans('core/base::forms.name'),
+                'label'      => 'Chọn Giáo hạt',
                 'label_attr' => ['class' => 'control-label required'],
                 'attr' => [
                     'class' => 'form-control select-full',
                 ],
-                'choices'    => array(1,2,3,4),
+                'choices'    => get_all_deanery(),
             ])
             ->add('status', 'customSelect', [
                 'label'      => trans('core/base::tables.status'),

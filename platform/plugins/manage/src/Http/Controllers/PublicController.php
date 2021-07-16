@@ -14,6 +14,9 @@ use Illuminate\Routing\Controller;
 use SeoHelper;
 use Theme;
 use Botble\Manage\Models\Deanery;
+use Botble\Manage\Models\Parish;
+use Botble\Manage\Models\Priest;
+use Botble\Manage\Models\History;
 
 class PublicController extends Controller
 {
@@ -60,24 +63,51 @@ class PublicController extends Controller
 
     public function getBySlug($slug, \Botble\Slug\Repositories\Interfaces\SlugInterface $slugRepository)
     {
-        $slug = $slugRepository->getFirstBy(['key' => $slug, 'reference_type' => Deanery::class]);
+        $prefix = \Request::segment(1);
+        $slug = $slugRepository->getFirstBy(['key' => $slug, 'prefix' => $prefix]);
         if (!$slug) {
             abort(404);
         }
 
-        $data = $this->deaneryRepository->getFirstBy(['id' => $slug->reference_id]);
+        if ($prefix == 'deanery') {
+            $data = $this->deaneryRepository->getFirstBy(['id' => $slug->reference_id]);
+
+            do_action(BASE_ACTION_PUBLIC_RENDER_SINGLE, DEANERY_MODULE_SCREEN_NAME, $data);
+            return Theme::scope('deanery.deanery_index', compact('data'))->render();
+        }
+
+        if ($prefix == 'history') {
+            $data = $this->historyRepository->getFirstBy(['id' => $slug->reference_id]);
+
+            do_action(BASE_ACTION_PUBLIC_RENDER_SINGLE, DEANERY_MODULE_SCREEN_NAME, $data);
+            return Theme::scope('history.view', compact('data'))->render();
+        }
+
+        if ($prefix == 'priest') {
+            $data = $this->priestRepository->getFirstBy(['id' => $slug->reference_id]);
+
+            do_action(BASE_ACTION_PUBLIC_RENDER_SINGLE, DEANERY_MODULE_SCREEN_NAME, $data);
+            return Theme::scope('priest.view', compact('data'))->render();
+        }
+
+        if ($prefix == 'parish') {
+            $data = $this->parishRepository->getFirstBy(['id' => $slug->reference_id]);
+
+            do_action(BASE_ACTION_PUBLIC_RENDER_SINGLE, DEANERY_MODULE_SCREEN_NAME, $data);
+            return Theme::scope('parish.view', compact('data'))->render();
+        }
+        
         if (!$data) {
             abort(404);
         }
 
-        do_action(BASE_ACTION_PUBLIC_RENDER_SINGLE, DEANERY_MODULE_SCREEN_NAME, $data);
-
-        return Theme::scope('deanery_index', compact('data'))->render();
+        
     }
 
     public function getAllDeanery()
     {
-        $deanery = $this->deaneryRepository->all();
-        return Theme::scope('deanery', compact('deanery'), 'plugins/deanery::themes.deanery_all')->render();
+        return 'getAllDeanery';
     }
+
+    
 }

@@ -36,4 +36,9 @@ class History extends BaseModel
     protected $casts = [
         'status' => BaseStatusEnum::class,
     ];
+
+    public function parish()
+    {
+        return $this->belongsTo(Parish::class);
+    }
 }

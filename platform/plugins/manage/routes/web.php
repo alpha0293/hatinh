@@ -69,6 +69,10 @@ Route::group(['namespace' => 'Botble\Manage\Http\Controllers', 'middleware' => '
             'uses' => 'PublicController@getBySlug',
         ]);
 
+        Route::get('/getAllDeanery', [
+            'uses' => 'PublicController@getAllDeanery',
+        ]);
+
     });
 
 });

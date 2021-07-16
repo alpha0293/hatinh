@@ -42,7 +42,7 @@ class HistoryForm extends FormAbstract
                 'attr' => [
                     'class' => 'form-control select-full',
                 ],
-                'choices'    => array(1,2,3),
+                'choices'    => get_all_parish(),
             ])
             ->add('image', 'mediaImage', [
                 'label'      => 'Chọn ảnh',
