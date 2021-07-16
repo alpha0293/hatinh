@@ -106,8 +106,10 @@ class PublicController extends Controller
 
     public function getAllDeanery()
     {
+        $data = null;
+        return Theme::scope('deanery.list', compact('data'))->render();
         return 'getAllDeanery';
     }
 
-    
+
 }
