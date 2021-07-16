@@ -3,10 +3,11 @@
 
     <!-- Hero Slides Area -->
     <div class="hero-slides owl-carousel">
+
+        @foreach (get_latest_posts(5,[]) as $post)
         <!-- Single Slide -->
-        <div class="single-hero-slide bg-img background-overlay" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/botble/cms/news/1476890029-hero01-540x360.jpg);"></div>
-        <!-- Single Slide -->
-        <div class="single-hero-slide bg-img background-overlay" style="background-image: url(https://s3-ap-southeast-1.amazonaws.com/botble/cms/news/1476890036-hero05-560x380.jpg);"></div>
+        <div class="single-hero-slide bg-img background-overlay" style="background-image: url({{ get_object_image($post->image, 'medium') }});"></div>
+        @endforeach
     </div>
 
     <!-- Hero Post Slide -->
@@ -17,7 +18,7 @@
                 <div class="col-12">
                     <div class="hero-post-slide">
                         <?php $i=1 ?>
-                        @foreach (get_latest_posts(5) as $post)
+                        @foreach (get_latest_posts(5,[]) as $post)
 
                         <!-- Single Slide -->
                         <div class="single-slide d-flex align-items-center">

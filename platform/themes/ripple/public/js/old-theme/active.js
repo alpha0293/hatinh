@@ -45,8 +45,8 @@
             loop: true,
             dots: false,
             autoplay: true,
-            autoplayTimeout: 7000, // Autoplay Timeout 1s = 1000ms
-            smartSpeed: 2000,
+            autoplayTimeout: 4000, // Autoplay Timeout 1s = 1000ms
+            smartSpeed: 1000,
             animateIn: 'fadeIn',
             animateOut: 'fadeOut'
         });
@@ -57,7 +57,7 @@
             loop: true,
             dots: false,
             autoplay: true,
-            autoplayTimeout: 3500, // Autoplay Timeout 1s = 1000ms
+            autoplayTimeout: 4000, // Autoplay Timeout 1s = 1000ms
             smartSpeed: 1000,
             center: true,
             responsive: {
@@ -137,13 +137,7 @@
     }
 
     // :: ScrollUp Active Code
-    // if ($.fn.scrollUp) {
-    //     $.scrollUp({
-    //         scrollSpeed: 1000,
-    //         easingType: 'easeInOutQuart',
-    //         scrollText: '<i class="fa fa-angle-up" aria-hidden="true"></i>'
-    //     });
-    // }
+   
 
     // :: PreventDefault a Click
     $("a[href='#']").on('click', function ($) {
