@@ -1,1 +1,1 @@
-view.blade.php
+{!!$data->content!!}
