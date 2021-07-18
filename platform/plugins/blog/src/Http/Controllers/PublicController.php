@@ -107,4 +107,10 @@ class PublicController extends Controller
 
         return Theme::scope('tag', compact('tag', 'posts'), 'plugins/blog::themes.tag')->render();
     }
+
+    public function getAllPost()
+    {
+        $posts = app(PostInterface::class)->getModel()->where('status', BaseStatusEnum::PUBLISHED)->orderBy('posts.created_at', 'desc')->paginate(10);
+        return Theme::scope('all-post', compact('posts'))->render();
+    }
 }
