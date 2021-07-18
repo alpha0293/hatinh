@@ -60,4 +60,5 @@ Route::group(['namespace' => 'Botble\Blog\Http\Controllers', 'middleware' => 'we
             ]);
         });
     }
+    Route::get('/posts','PublicController@getAllPost');
 });
