@@ -18,6 +18,7 @@ use Illuminate\Routing\Events\RouteMatched;
 use Language;
 use SeoHelper;
 use SlugHelper;
+use Botble\Manage\Repositories\Interfaces\ParishInterface;
 
 class ManageServiceProvider extends ServiceProvider
 {
@@ -143,15 +144,19 @@ class ManageServiceProvider extends ServiceProvider
             SlugHelper::setPrefix(Priest::class, 'priest');
             SlugHelper::setPrefix(History::class, 'history');
             SeoHelper::registerModule($models);
-            
-           // \SlugHelper::registerModule(Deanery::class);
-           // \SlugHelper::setPrefix(Deanery::class, 'deanery');
-           // \SlugHelper::registerModule(Priest::class);
-           // \SlugHelper::setPrefix(Priest::class, 'priest');
-           // \SlugHelper::registerModule(Parish::class);
-           // \SlugHelper::setPrefix(Parish::class, 'parish');
-           // \SlugHelper::registerModule(History::class);
-           // \SlugHelper::setPrefix(History::class, 'history');
+
+            //custom field
+            if (defined('CUSTOM_FIELD_MODULE_SCREEN_NAME')) {
+                \CustomField::registerModule(Parish::class)
+                    ->registerRule('basic', __('Giáo xứ'), Parish::class, function () {
+                        return $this->app->make(ParishInterface::class)->pluck('name', 'id');
+                    })
+                    ->expandRule('other', 'Model', 'model_name', function () {
+                        return [
+                            Parish::class => __('Giáo xứ'),
+                        ];
+                    });
+            }
         });
     }
 }
