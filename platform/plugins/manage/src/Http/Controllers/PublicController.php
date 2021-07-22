@@ -38,7 +38,7 @@ class PublicController extends Controller
      * PublicController constructor.
      * @param DeaneryInterface $deaneryRepository
      * @param SlugInterface $slugRepository
-     * 
+     *
      */
     public function __construct(DeaneryInterface $deaneryRepository, SlugInterface $slugRepository, ParishInterface $parishRepository, PriestInterface $priestRepository, HistoryInterface $historyRepository)
     {
@@ -50,7 +50,7 @@ class PublicController extends Controller
     }
 
     /**
-     * 
+     *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
 
@@ -58,7 +58,7 @@ class PublicController extends Controller
      * @param $slug
      * @return \Illuminate\Http\Response|\Response
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
-     * 
+     *
      */
 
     public function getBySlug($slug, \Botble\Slug\Repositories\Interfaces\SlugInterface $slugRepository)
@@ -96,19 +96,20 @@ class PublicController extends Controller
             do_action(BASE_ACTION_PUBLIC_RENDER_SINGLE, DEANERY_MODULE_SCREEN_NAME, $data);
             return Theme::scope('parish.view', compact('data'))->render();
         }
-        
+
         if (!$data) {
             abort(404);
         }
 
-        
+
     }
 
     public function getAllDeanery()
     {
-        $data = null;
+        $data = Deanery::with(['parishes' => function($query){
+            $query->where('status', BaseStatusEnum::PUBLISHED)->with('history');
+        }])->where('status', BaseStatusEnum::PUBLISHED)->get();
         return Theme::scope('deanery.list', compact('data'))->render();
-        return 'getAllDeanery';
     }
 
 
