@@ -158,5 +158,8 @@ class ManageServiceProvider extends ServiceProvider
                     });
             }
         });
+
+        \Gallery::registerModule([History::class]);
+        \Gallery::registerModule([Parish::class]);
     }
 }
