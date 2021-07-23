@@ -64,3 +64,33 @@ $(function () {
     $('#main_navbar').bootnavbar();
 })
 // hết menu hover
+// social area 
+$(document).ready(function() {
+ 
+        // BEGIN SHOW/HIDE SHARE BUTTONS
+$('.ttw-share-activate-button').on('click', function(e) {
+e.preventDefault();
+    /* touchstart events */
+    if($('.mxh-content').hasClass('show-mxh'))
+    {
+        /* show share buttons */
+
+        $(".mxh-content").removeClass("show-mxh");
+        $(".ttw-share-activate-button").addClass("glyphicon-chevron-right");
+        $(".ttw-share-activate-button").removeClass("glyphicon-chevron-left");
+        $(".social-share-wrapper").removeClass("mxh-margin");
+    } else {
+        /* hide share buttons */
+        $(".mxh-content").addClass("show-mxh");
+        $(".ttw-share-activate-button").removeClass("glyphicon-chevron-right");
+        $(".ttw-share-activate-button").addClass("glyphicon-chevron-left");
+        setTimeout(function(){
+           $(".social-share-wrapper").addClass("mxh-margin");
+        },1000);
+    } 
+ 
+});
+ 
+// END SHOW/HIDE SHARE BUTTONS
+});
+// het social area

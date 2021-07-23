@@ -1,5 +1,5 @@
 <!-- ********** Hero Area Start ********** -->
-<section class="hero-area" style="top: 42px;">
+<section class="hero-area" style="top: 75px;">
 
     <!-- Hero Slides Area -->
     <div class="hero-slides owl-carousel">
