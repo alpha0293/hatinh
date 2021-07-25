@@ -1557,7 +1557,10 @@ li.menu-item {
 section.section.pt-50.pb-100 {
     background-color: whitesmoke;
 }
-
+/*fb like*/
+.fb-like > span {
+      width: 100% !important;
+}
 /*het one post*/
 
 

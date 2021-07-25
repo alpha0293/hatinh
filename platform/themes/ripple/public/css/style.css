@@ -663,8 +663,7 @@ float:left}
 width:calc(100% - 100px);
 padding-left:15px;
 border-bottom:none}
-.post--related .post__title{font-size:14px;
-text-transform:uppercase}
+.post--related .post__title{font-size:14px;}
 .post--related .post__title:hover{color:#ff2b4a}
 .post--related.post--inserve .post__header,.post--related.post--inserve .post__thumbnail{float:right}
 .post--related.post--inserve .post__header{padding-left:0;
