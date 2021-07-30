@@ -1398,12 +1398,9 @@ a, a:hover, a:active, a:focus {
 }
 /*menu*/
 .navigation .menu-item>a {
-    -webkit-text-fill-color: white;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: black;
-    text-transform: uppercase;
+    
     padding: 7px 6px;
-    font-size: 93%;
+    font-size: 100%;
     margin-top: 12px;
 }
 .page-header__right {
@@ -1562,6 +1559,8 @@ section.section.pt-50.pb-100 {
       width: 100% !important;
 }
 /*het one post*/
-
+.owl-controls{
+  display: none;
+}
 
   

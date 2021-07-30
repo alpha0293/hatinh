@@ -6,6 +6,7 @@ use Auth;
 use Botble\Base\Enums\BaseStatusEnum;
 use Botble\Blog\Models\Tag;
 use Botble\Blog\Repositories\Interfaces\PostInterface;
+use Botble\Blog\Repositories\Interfaces\CategoryInterface;
 use Botble\Blog\Repositories\Interfaces\TagInterface;
 use Botble\SeoHelper\SeoOpenGraph;
 use Botble\Slug\Repositories\Interfaces\SlugInterface;
@@ -110,7 +111,11 @@ class PublicController extends Controller
 
     public function getAllPost()
     {
+        $categories = app(CategoryInterface::class)->getModel()->where('status', BaseStatusEnum::PUBLISHED)->get();
+        $recent_post = app(PostInterface::class)->getFeatured();
+        $featured_post =  app(PostInterface::class)->getFeatured();
+        // return $recent_post->count();
         $posts = app(PostInterface::class)->getModel()->where('status', BaseStatusEnum::PUBLISHED)->orderBy('posts.created_at', 'desc')->paginate(10);
-        return Theme::scope('all-post', compact('posts'))->render();
+        return Theme::scope('all-post', compact('posts','categories','recent_post','featured_post'))->render();
     }
 }
