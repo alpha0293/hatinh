@@ -1,13 +1,13 @@
-<!-- ********** Hero Area Start ********** -->
-<section class="hero-area" style="top: 75px;">
+<section class="section pt-50" style="">
+
+
+                    <div class="hero-area">
 
     <!-- Hero Slides Area -->
-    <div class="hero-slides owl-carousel">
 
-        @foreach (get_latest_posts(5,[]) as $post)
-        <!-- Single Slide -->
-        <div class="single-hero-slide bg-img background-overlay" style="background-image: url({{ get_object_image($post->image, 'medium') }});"></div>
-        @endforeach
+    <div class="hero-slides owl-carousel">
+        <div class="single-hero-slide bg-img background-overlay" style="background-image: url({{ Theme::asset()->url('images/vanhanh.jpg') }});"></div>
+        <div class="single-hero-slide bg-img background-overlay" style="background-image: url({{ Theme::asset()->url('images/vanhanh2.jpg') }});"></div>
     </div>
 
     <!-- Hero Post Slide -->
@@ -35,5 +35,7 @@
             </div>
         </div>
     </div>
+</div>
+                    </div>
+
 </section>
-<!-- ********** Hero Area End ********** -->

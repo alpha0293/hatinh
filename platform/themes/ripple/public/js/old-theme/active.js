@@ -57,8 +57,8 @@
             loop: true,
             dots: false,
             autoplay: true,
-            autoplayTimeout: 4000, // Autoplay Timeout 1s = 1000ms
-            smartSpeed: 1000,
+            autoplayTimeout: 7000, // Autoplay Timeout 1s = 1000ms
+            smartSpeed: 2000,
             center: true,
             responsive: {
                 0: {
@@ -77,7 +77,7 @@
             dots: false,
             autoplay: true,
             autoplayTimeout: 3500, // Autoplay Timeout 1s = 1000ms
-            smartSpeed: 2000,
+            smartSpeed: 1000,
             nav: true,
             navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>']
         });
