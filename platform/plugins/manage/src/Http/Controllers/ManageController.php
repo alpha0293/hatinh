@@ -15,6 +15,12 @@ use Botble\Base\Events\UpdatedContentEvent;
 use Botble\Base\Http\Responses\BaseHttpResponse;
 use Botble\Manage\Forms\ManageForm;
 use Botble\Base\Forms\FormBuilder;
+use Illuminate\View\View;
+use Botble\Manage\Models\Deanery;
+use Botble\Manage\Models\Parish;
+use Botble\Manage\Models\Priest;
+use Botble\Manage\Models\History;
+use Botble\Base\Enums\BaseStatusEnum;
 
 class ManageController extends BaseController
 {
@@ -39,6 +45,10 @@ class ManageController extends BaseController
      */
     public function index(ManageTable $table)
     {
+        $priest = Priest::all()->where('status', BaseStatusEnum::PUBLISHED);
+        $parish = Parish::all()->where('status', BaseStatusEnum::PUBLISHED);
+        $deanery = Deanery::all()->where('status', BaseStatusEnum::PUBLISHED);
+        return view('plugins/manage::dashboard',compact('priest','parish','deanery'));
         page_title()->setTitle(trans('plugins/manage::manage.name'));
 
         return $table->renderTable();

@@ -66,6 +66,7 @@ class ManageServiceProvider extends ServiceProvider
     {
         $this->setNamespace('plugins/manage')
             ->loadAndPublishConfigurations(['permissions'])
+            ->loadAndPublishViews()
             ->loadMigrations()
             ->loadAndPublishTranslations()
             ->loadRoutes(['web']);
@@ -85,8 +86,8 @@ class ManageServiceProvider extends ServiceProvider
                 'parent_id'   => null,
                 'name'        => 'plugins/manage::manage.name',
                 'icon'        => 'fa fa-list',
-                'url'         => route('deanery.index'),
-                'permissions' => ['deanery.index'],
+                'url'         => route('manage.index'),
+                'permissions' => ['manage.index'],
             ]);
 
             dashboard_menu()->registerItem([
