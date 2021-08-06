@@ -32,7 +32,7 @@ class ParishForm extends FormAbstract
                 'label'      => 'Địa chỉ',
                 'label_attr' => ['class' => 'control-label required'],
                 'attr'       => [
-                    'placeholder'  => trans('core/base::forms.name_placeholder'),
+                    'placeholder'  => 'Nhập địa chỉ...',
                     'data-counter' => 120,
                 ],
             ])
@@ -40,7 +40,7 @@ class ParishForm extends FormAbstract
                 'label'      => 'SĐT',
                 'label_attr' => ['class' => 'control-label required'],
                 'attr'       => [
-                    'placeholder'  => trans('core/base::forms.name_placeholder'),
+                    'placeholder'  => 'Nhập SĐT...',
                     'data-counter' => 120,
                 ],
             ])
@@ -48,7 +48,7 @@ class ParishForm extends FormAbstract
                 'label'      => 'Số Giáo dân',
                 'label_attr' => ['class' => 'control-label required'],
                 'attr'       => [
-                    'placeholder'  => trans('core/base::forms.name_placeholder'),
+                    'placeholder'  => 'Nhập số Giáo dân...',
                     'data-counter' => 120,
                 ],
             ])
@@ -56,7 +56,7 @@ class ParishForm extends FormAbstract
                 'label'      => 'Số Giáo họ',
                 'label_attr' => ['class' => 'control-label required'],
                 'attr'       => [
-                    'placeholder'  => trans('core/base::forms.name_placeholder'),
+                    'placeholder'  => 'Nhập số giáo họ...',
                     'data-counter' => 120,
                 ],
             ])
