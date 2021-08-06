@@ -77,7 +77,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: #000000;
+  color: #3a3737;
   font-weight: 500;
   line-height: 1.3; }
 
@@ -99,9 +99,7 @@ a {
     -webkit-transition-duration: 500ms;
     transition-duration: 500ms;
     text-decoration: none;
-    outline: none;
-    font-size: 14px;
-    font-weight: 400; }
+    outline: none; }
 
 #preloader {
   display: -webkit-box;
@@ -537,7 +535,11 @@ img {
     position: relative;
     z-index: 1; }
     .single-blog-post .post-thumbnail img {
-      width: 100%; }
+      width: 100%;
+      height: 155px;
+      object-fit: cover;
+    }
+
     .single-blog-post .post-thumbnail .post-cta {
       position: absolute;
       top: 15px;
@@ -588,18 +590,29 @@ img {
       .single-blog-post .post-content .post-meta p a {
         font-size: 12px; }
   .single-blog-post.post-style-2 {
-    margin-bottom: 5px; }
+    margin-bottom: 5px;
+    height: 85px; }
     .single-blog-post.post-style-2 .post-thumbnail {
       -webkit-box-flex: 0;
       -ms-flex: 0 0 97px;
       flex: 0 0 97px;
-      min-width: 97px;
-      margin-right: 15px; }
+      margin-right: 15px;
+      height: 100%; }
+      .single-blog-post.post-style-2 .singpost{
+        padding: 0;
+    margin: 0;
+    height: 100%;
+      }
+      .single-blog-post.post-style-2 .post-thumbnail img{
+        height: inherit;
+    object-fit: cover;
+      }
       @media only screen and (min-width: 992px) and (max-width: 1199px) {
         .single-blog-post.post-style-2 .post-thumbnail {
           margin-right: 5px; } }
     .single-blog-post.post-style-2 .post-content {
-      padding: 5px 30px 5px 5px; }
+      padding: 5px 30px 5px 5px;
+      height: 100%; }
       .single-blog-post.post-style-2 .post-content .headline h5 {
         font-size: 14px;
         margin-bottom: 10px; }
@@ -623,7 +636,7 @@ img {
   .single-blog-post.post-style-3 .post-thumbnail {
     position: relative;
     z-index: 1;
-    height: 200px; }
+    height: auto; }
     .single-blog-post.post-style-3 .post-thumbnail::after {
       width: 100%;
       height: 100%;
@@ -1290,11 +1303,7 @@ section {
     -webkit-transition: transform 1s ease;
     transition: transform 1s ease;
 }
-h1, h2, h3, h4, h5, h6 {
-    color: #ffffff;
-    font-weight: 500;
-    line-height: 1.3;
-}
+
 h1 span, h2 span, h3 span, h4 span, h5 span, h6 span {
     color: #0e41f9;
 }
@@ -1393,7 +1402,7 @@ a, a:hover, a:active, a:focus {
   transform: rotate(-30deg) skewX(30deg);  
 }*/
 .bg-overlay {
-    background-color: #053bff;
+    background-color: #000;
 }
 /*menu*/
 .navigation .menu-item>a {
@@ -1466,7 +1475,7 @@ li.menu-item {
   /* share buttons shadow size and color */
   -moz-box-shadow: 0 0 20px 1px rgba(0,0,0,.1);
   -webkit-box-shadow: 0 0 20px 1px rgba(0,0,0,.1);
-  box-shadow: 0 0 20px 2px rgb(8 16 243 / 49%);
+  box-shadow: 0 0 20px 2px rgb(8 16 219 / 19%);
 }
 .social-share-wrapper li {
   list-style-type:none;
@@ -1565,5 +1574,58 @@ img.img-p {
     height: inherit;
     object-fit: cover;
 }
+.fb-page.fb_iframe_widget{
+  width: 100% !important;
+}
+.fb-page.fb_iframe_widget > span{
+    width: 100% !important;
+  }
+._2p3a{
+    min-width: 50px !important;
+    width: auto;
+  }
+.fb-page.fb_iframe_widget .uiScaledImageContainer._2zfr {
+    width: auto !important;
 
-  
+}
+.img-sidebar{
+  height: 70px;
+  width: 100%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+.vi-header {
+  border-bottom: solid 1px #0056a8;}
+  .vi-left-title {
+    width: auto;
+    background: #0056a8;
+    color: #fff;
+    padding: 3px 10px;
+    font-size: 18px;
+    position: relative;
+    margin: 0;
+    -webkit-transition: width 2s; /* For Safari 3.1 to 6.0 */
+    transition: width 2s;
+  }
+    .pull-left {
+      float: left;}
+      .pull-left {
+        margin-left: 0 !important;}
+          .vi-left-title:after {
+            border: 15px solid transparent;
+            border-left-color: #0056a8;
+            border-bottom-color: #0056a8;
+            position: absolute;
+            top: 0;
+            left: 100%;content: "";}
+.vi-left-title:hover {
+  color: white;
+  border-bottom: 2px solid green !important ;
+   -webkit-transition:  border 3s ease;
+ -moz-transition:  border 3s ease;
+ -o-transition:  border 3s ease;
+ -ms-transition: border 3s ease;
+ transition: border 3s ease; 
+ 
+}
+    

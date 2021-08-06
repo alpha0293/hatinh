@@ -30,5 +30,6 @@
                     </div>
                     @if ($sidebar == 'footer_sidebar')
             </div>
+        </div>
     @endif
 @endif

@@ -11,16 +11,16 @@
 <section class="section pt-50 pb-100">
     <div class="container">
         <div class="row">
-            <div class="col-lg-9">
+            <section class="col-xs-12 col-sm-9 col-lg-9">
                 <div class="page-content">
                     {!! Theme::content() !!}
                 </div>
-            </div>
-            <div class="col-lg-3">
+            </section>
+            <section class="col-xs-12 col-sm-3 col-lg-3 ">
                 <div class="page-sidebar">
                     {!! Theme::partial('sidebar') !!}
                 </div>
-            </div>
+            </section>
         </div>
     </div>
 </section>

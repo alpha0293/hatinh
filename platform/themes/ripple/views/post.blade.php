@@ -49,7 +49,5 @@
                 </div>
             @endforeach
         </div>
-    </footer>
-    <br />
-    {!! apply_filters(BASE_FILTER_PUBLIC_COMMENT_AREA, Theme::partial('comments')) !!}
+    </footer>   
 </article>

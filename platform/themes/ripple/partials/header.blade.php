@@ -6,7 +6,7 @@
             <head>
                 <meta charset="utf-8">
                 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <meta name="format-detection" content="telephone=no">
                 <meta name="apple-mobile-web-app-capable" content="yes">
 
@@ -19,7 +19,8 @@
             </style>
 
             {!! Theme::header() !!}
-
+            <div id="fb-root"></div>
+            <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v11.0&appId=281789615495762&autoLogAppEvents=1" nonce="z0T0LfkG"></script>
             <!--HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
             <!--WARNING: Respond.js doesn't work if you view the page via file://-->
         <!--[if lt IE 9]><script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -35,9 +36,9 @@
                                     <div class="mxh-content">
                                       <ul class="social-share-wrapper social-share-wrapper-active social-share-wrapper-shadow">
                                         <li>
-                                         <a href="{{ theme_option('facebook') }}" title="Facebook" class="hi-icon fa fa-facebook facebook"></a> 
-                                     </li>
-                                     <li>
+                                           <a href="{{ theme_option('facebook') }}" title="Facebook" class="hi-icon fa fa-facebook facebook"></a> 
+                                       </li>
+                                       <li>
                                         <a href="{{ theme_option('twitter') }}" title="Twitter" class="hi-icon fa fa-twitter twitter"></a>
                                     </li>
                                     <li>
@@ -45,14 +46,28 @@
                                     </li>
                                 </ul>  
                             </div>
+
+
+                        </div>
+                        <div class="banner" style="height: 100px; background-image: url({{ Theme::asset()->url('images/header.png') }});">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" >
+                                        <img style="max-width: 70px;" src="{{ get_image_url(theme_option('logo')) }}" alt="{{ theme_option('site_title') }}" height="50">
+                                        <h3>{{ theme_option('site_title') }}</h3>
+                                    </div>
+                                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" ></div>
+                                </div>
+                                
+                            </div>
                             
-                            
+
                         </div>
                         <header data-sticky="false" data-sticky-checkpoint="200" data-responsive="991" class="page-header page-header--light">
                             <div class="container">
                                 <!-- LOGO-->
                                 <div class="row">
-                                   <div class="page-header__left"><a href="{{ route('public.single') }}" class="page-logo">
+                                 <div class="page-header__left"><a href="{{ route('public.single') }}" class="page-logo">
                                     @if (!theme_option('logo'))
                                     <span>Bot</span>ble
                                     @else
@@ -86,7 +101,7 @@
                                 <div class="menu-bot navigation-toggle navigation-toggle--dark"><span></span></div>
                                 <!-- SEARCH-->
                                 <div class="menu-bot pull-right search-btn c-search-toggler"><i class="fa fa-search close-search"></i></div>
-                                
+
                                 <!-- menu -->
                                 <div class="pull-right">
                                     <div class="pull-left">
@@ -102,9 +117,9 @@
                                     </div>
                                 </div>
                                 <!-- het menu -->
-                                
+
                                 <div class="clearfix"></div>  
-                                
+
                             </div>
                         </div>
                     </div>
