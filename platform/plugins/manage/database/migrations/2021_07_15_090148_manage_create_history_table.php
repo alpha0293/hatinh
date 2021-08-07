@@ -15,8 +15,8 @@ class ManageCreateHistoryTable extends Migration
         Schema::create('histories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 120);
-            $table->string('image');
-            $table->longText('content');
+            $table->string('image')->nullable();
+            $table->longText('content')->nullable();
             $table->integer('parish_id')->references('id')->on('parishes')->onDelete('cascade');
             $table->string('status', 60)->default('published');
             $table->timestamps();

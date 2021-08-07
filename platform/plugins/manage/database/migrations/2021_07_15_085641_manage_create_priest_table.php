@@ -15,13 +15,13 @@ class ManageCreatePriestTable extends Migration
         Schema::create('priests', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 120);
-            $table->string('email');
-            $table->string('phonenumber');
-            $table->date('dob');
-            $table->date('dopriest');
-            $table->string('address');
-            $table->string('note');
-            $table->string('image');
+            $table->string('email')->nullable();
+            $table->string('phonenumber')->nullable();
+            $table->date('dob')->nullable();
+            $table->date('dopriest')->nullable();
+            $table->string('address')->nullable();
+            $table->string('note')->nullable();
+            $table->string('image')->nullable();
             $table->string('status', 60)->default('published');
             $table->timestamps();
         });

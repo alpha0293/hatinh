@@ -31,6 +31,15 @@ class Parish extends BaseModel
         'totalGiaoho',
         'deanery_id',
         'status',
+        'lmquanxu',
+        'lmpho',
+        'lmphutrach',
+        'note',
+        'lmtungquan',
+        'lmquehuong',
+        'sotusiquehuong',
+        'sochungsinh',
+        'hoidonghiendien',
     ];
 
     /**
