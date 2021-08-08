@@ -9,97 +9,44 @@
     @endphp
     
     @if (!empty($featured))
-         <section id="dich-vu" class="module icon-service-module clearfix"> 
-    <div class="container tu"> 
-        <div class="row"> 
+         <section id="dich-vu" class="jarallax module icon-service-module clearfix" style=" background-color:#ddf3e8;"> 
+    <div class="container-fluid"> 
             <div class="module-caption col-md-12 text-center"> 
                 <h1 style="color: #181a1c;">NỔI BẬT <span>GIÁO PHẬN HÀ TĨNH</span></h1> 
                 <div class="separator"> 
                     <span><i class="fa fa-circle"></i></span> 
                 </div>  
             </div>
-            @if($featured -> count()>3)
-            <div class="row justify-content-center">
-                @for($i=0;$i<3;$i++)
-                <!-- ========== Single Blog Post ========== -->
-                <div class="col-md-4">
-                    <div class="single-blog-post post-style-3 mt-50 wow fadeInUpBig" data-wow-delay="0.2s">
-                        <!-- Post Thumbnail -->
+            <div class="col-md-12 col-sm-12 col-lg-12">
+                <div class="row noibat-home">
+               @foreach($featured as $feat)
+               <div class="col-md-3 col-lg-3 col-sm-4">
+                <div class="feat-col">
+                    <a href="{{ $feat->url }}">
                         <div class="post-thumbnail">
-                            <img class="img-p" src="{{ get_object_image($featured[$i]->image, 'medium') }}" alt="">
-                            <!-- Post Content -->
-                            <div class="post-content d-flex align-items-center justify-content-between">
-                                <!-- Catagory -->
-                                <div class="post-tag"><a href="#">{{ $featured[$i]->categories->first()->name }}</a></div>
-                                <!-- Headline -->
-                                    <h5>{{ $featured[$i]->name }}</h5>
-                                </a>
-                                <!-- Post Meta -->
-                                <div class="post-meta">
-                                    <p> <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-                                </div>
-                            </div>
+                            <img src="{{ get_object_image($feat->image, 'medium') }}" alt="">
                         </div>
+                        
+                        <div class="content-nb">
+                            <h4 ">Thư cảm ơn của Đức cha Loius Nguyễn Anh Tuấn về việc đóng góp cứu trợ các nạn nhân Covid tại Sài Gòn.</h4>
+                        </div>
+                    </a>
+                    <div class="foot">
+                        <span class="glyphicon glyphicon-time"> {{date_format($feat->updated_at,"d/m/Y")}}</span>
+                        <span class="glyphicon glyphicon-eye-open"> {{$feat->views}}</span>
+                        <a href="{{ $feat->url }}">Xem thêm...</a>
                     </div>
                 </div>
-                @endfor
+                    
+               </div>
+               @endforeach
             </div>
-            <div class="hero-post-slide">
-                @for ($i=3;$i<$featured -> count();$i++)
-                <!-- Single Slide -->
-                <div class="single-slide d-flex align-items-center">
-                    <div class="single-blog-post post-style-3 mt-50 wow fadeInUpBig" data-wow-delay="0.2s">
-                        <!-- Post Thumbnail -->
-                        <div class="post-thumbnail">
-                            <img class="img-p" src="{{ get_object_image($featured[$i]->image, 'medium') }}" alt="">
-                            <!-- Post Content -->
-                            <div class="post-content d-flex align-items-center justify-content-between">
-                                <!-- Catagory -->
-                                <div class="post-tag"><a href="#">{{ $featured[$i]->categories->first()->name }}</a></div>
-                                <!-- Headline -->
-                                    <h5>{{ $featured[$i]->name }}</h5>
-                                </a>
-                                <!-- Post Meta -->
-                                <div class="post-meta">
-                                    <p> <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-                </div>
-                @endfor
             </div>
-            @else
-            @foreach($featured as $feat)
-                <!-- ========== Single Blog Post ========== -->
-                <div class="col-md-4">
-                    <div class="single-blog-post post-style-3 mt-50 wow fadeInUpBig" data-wow-delay="0.2s">
-                        <!-- Post Thumbnail -->
-                        <div class="post-thumbnail">
-                            <img class="img-p" src="{{ get_object_image($feat->image, 'medium') }}" alt="">
-                            <!-- Post Content -->
-                            <div class="post-content d-flex align-items-center justify-content-between">
-                                <!-- Catagory -->
-                                <div class="post-tag"><a href="#">{{ $feat->categories->first()->name }}</a></div>
-                                <!-- Headline -->
-                                    <h5>{{ $feat->name }}</h5>
-                                </a>
-                                <!-- Post Meta -->
-                                <div class="post-meta">
-                                    <p> <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            @endif
-            
             
            
-        </div> 
     </div>
- 
+  <div class="triangle" style="display: none;"></div>
+
 </section>
 
     @endif

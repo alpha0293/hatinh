@@ -8,10 +8,14 @@
 
     // :: Sticky Active Code
     $window.on('scroll', function () {
-        if ($window.scrollTop() > 20) {
+        if ($window.scrollTop() > 70) {
             $('.page-header').addClass('sticky');
+            $('.header-top').addClass('an');
+            $('.banner').addClass('an');
         } else {
             $('.page-header').removeClass('sticky');
+            $('.header-top').removeClass('an');
+            $('.banner').removeClass('an');
         }
     });
 })(jQuery);

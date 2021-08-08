@@ -1,4 +1,4 @@
-<section class="section pt-50" style="">
+<section class="section" style="padding-top: 150px;">
 
 
                     <div class="hero-area">
@@ -12,7 +12,7 @@
 
     <!-- Hero Post Slide -->
     <div class="hero-post-area">
-        <div class="container">
+        <div class="container-fluid">
             <!-- row -->
             <div class="">
                 <div class="col-12">

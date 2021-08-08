@@ -13,7 +13,9 @@
                 <!-- Fonts-->
                 <link href="https://fonts.googleapis.com/css?family={{ theme_option('primary_font', 'Roboto') }}" rel="stylesheet" type="text/css">
                 <!-- CSS Library-->
-
+                <link rel="preconnect" href="https://fonts.googleapis.com">
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
                 <style>
                 body {font-family: '{{ theme_option('primary_font', 'Roboto') }}', sans-serif !important;}
             </style>
@@ -36,46 +38,16 @@
                                     <div class="mxh-content">
                                       <ul class="social-share-wrapper social-share-wrapper-active social-share-wrapper-shadow">
                                         <li>
-                                           <a href="{{ theme_option('facebook') }}" title="Facebook" class="hi-icon fa fa-facebook facebook"></a> 
+                                           <a href="{{ theme_option('facebook') }}" title="Facebook" class=""> <img src="{{ Theme::asset()->url('images/fb.ico') }}" alt="Facebook"></a> 
                                        </li>
-                                       <li>
-                                        <a href="{{ theme_option('twitter') }}" title="Twitter" class="hi-icon fa fa-twitter twitter"></a>
-                                    </li>
                                     <li>
-                                        <a href="{{ theme_option('youtube') }}" title="Youtube" class="hi-icon fa fa-youtube youtube"></a>
+                                        <a href="{{ theme_option('youtube') }}" title="Youtube" class=""><img src="{{ Theme::asset()->url('images/yt.ico') }}" alt="Youtube"></a>
                                     </li>
                                 </ul>  
                             </div>
-
-
                         </div>
-                        <div class="banner" style="height: 100px; background-image: url({{ Theme::asset()->url('images/header.png') }});">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" >
-                                        <img style="max-width: 70px;" src="{{ get_image_url(theme_option('logo')) }}" alt="{{ theme_option('site_title') }}" height="50">
-                                        <h3>{{ theme_option('site_title') }}</h3>
-                                    </div>
-                                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" ></div>
-                                </div>
-                                
-                            </div>
-                            
-
-                        </div>
-                        <header data-sticky="false" data-sticky-checkpoint="200" data-responsive="991" class="page-header page-header--light">
-                            <div class="container">
-                                <!-- LOGO-->
-                                <div class="row">
-                                 <div class="page-header__left"><a href="{{ route('public.single') }}" class="page-logo">
-                                    @if (!theme_option('logo'))
-                                    <span>Bot</span>ble
-                                    @else
-                                    <img style="max-width: 70px;" src="{{ get_image_url(theme_option('logo')) }}" alt="{{ theme_option('site_title') }}" height="50">
-                                    @endif
-                                </a></div> 
-                                <div class="page-header__right">
-                                  <!-- ngon ngu -->
+                        <div class="header-top" style="height: 30px; background-color: #29412f ;">
+                            <!-- ngon ngu -->
                                   <div class="lang-login">
                                     @if (is_plugin_active('member'))
                                     <ul class="pull-left">
@@ -97,16 +69,27 @@
                                     </div>
                                 </div>  
                                 <!-- het ngon ngu -->
+                        </div>
+                        <div class="banner" style="height: 120px; background-image: url({{ Theme::asset()->url('images/header.png') }}); background-size: cover;">
+                            <div class="container-fluid">
+                                <img class="logo" style="max-width: 86px;" src="{{ get_image_url(theme_option('logo')) }}" alt="" height="80">
+                                <div class="giammuc">
+                                    <img src="{{ Theme::asset()->url('images/duccha.png') }}">
+                                </div>
+                            </div>
+                        </div>
+                        <header data-sticky="false" data-sticky-checkpoint="200" data-responsive="991" class="page-header page-header--light">
+                            <div class="container-fluid">
+                                <!-- LOGO-->
                                 <!-- mobile -->
-                                <div class="menu-bot navigation-toggle navigation-toggle--dark"><span></span></div>
+                                <div class="navigation-toggle navigation-toggle--dark"><span></span>
+                                    </div>
                                 <!-- SEARCH-->
-                                <div class="menu-bot pull-right search-btn c-search-toggler"><i class="fa fa-search close-search"></i></div>
+                                <div class="pull-right search-btn c-search-toggler"><i class="fa fa-search close-search"></i></div>
 
                                 <!-- menu -->
-                                <div class="pull-right">
-                                    <div class="pull-left">
                                         <!-- NAVIGATION-->
-                                        <nav class="navigation navigation--light navigation--fade navigation--fadeLeft menu-bot ">
+                                        <nav class="navigation navigation--light navigation--fade navigation--fadeLeft">
                                             {!!
                                             Menu::renderMenuLocation('main-menu', [
                                             'options' => ['class' => 'menu sub-menu--slideLeft'],
@@ -114,14 +97,9 @@
                                             ])
                                             !!}
                                         </nav>
-                                    </div>
-                                </div>
                                 <!-- het menu -->
 
                                 <div class="clearfix"></div>  
-
-                            </div>
-                        </div>
                     </div>
                     @if (is_plugin_active('blog'))
                     <div class="super-search hide">

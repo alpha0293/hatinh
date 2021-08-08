@@ -77,6 +77,14 @@
                         </div>
                         <div class="form-group">
                             <label class="text-title-field"
+                                   for="admin-logo">Chọn ảnh Banner (Kích thước: H(>=1140px); W(120px))
+                            </label>
+                            <div class="">
+                                {!! Form::mediaImage('banner', setting('banner'), ['allow_thumb' => false]) !!}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="text-title-field"
                                    for="admin-favicon">{{ trans('core/setting::setting.general.admin_favicon') }}
                             </label>
                             <div class="admin-favicon-image-setting">
