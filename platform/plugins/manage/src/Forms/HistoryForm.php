@@ -33,7 +33,7 @@ class HistoryForm extends FormAbstract
                 'label_attr' => ['class' => 'control-label required'],
                 'attr'       => [
                     'placeholder'  => trans('core/base::forms.name_placeholder'),
-                    'data-counter' => 120,
+                    'rows'         => 4,
                 ],
             ])
             ->add('parish_id', 'select', [

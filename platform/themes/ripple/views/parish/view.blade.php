@@ -1,3 +1,6 @@
+@if (defined('GALLERY_MODULE_SCREEN_NAME') && !empty($galleries = gallery_meta_data($data)))
+  {!! render_object_gallery($galleries) !!}
+@endif
 <h1>Tên giáo xứ: {{$data->name}}</h1>
 <h1>Địa chỉ: {{$data->address}}</h1>
 <h1>Số giáo dân: {{$data->totalmember}}</h1>

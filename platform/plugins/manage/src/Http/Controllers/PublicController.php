@@ -71,28 +71,32 @@ class PublicController extends Controller
 
         if ($prefix == 'deanery') {
             $data = $this->deaneryRepository->getFirstBy(['id' => $slug->reference_id]);
-
+            \SeoHelper::setTitle($data->name)
+                ->setDescription($data->name);
             do_action(BASE_ACTION_PUBLIC_RENDER_SINGLE, DEANERY_MODULE_SCREEN_NAME, $data);
             return Theme::scope('deanery.deanery_index', compact('data'))->render();
         }
 
         if ($prefix == 'history') {
             $data = $this->historyRepository->getFirstBy(['id' => $slug->reference_id]);
-
+            \SeoHelper::setTitle($data->name)
+                ->setDescription($data->name);
             do_action(BASE_ACTION_PUBLIC_RENDER_SINGLE, DEANERY_MODULE_SCREEN_NAME, $data);
             return Theme::scope('history.view', compact('data'))->render();
         }
 
         if ($prefix == 'priest') {
             $data = $this->priestRepository->getFirstBy(['id' => $slug->reference_id]);
-
+            \SeoHelper::setTitle($data->name)
+                ->setDescription($data->name);
             do_action(BASE_ACTION_PUBLIC_RENDER_SINGLE, DEANERY_MODULE_SCREEN_NAME, $data);
             return Theme::scope('priest.view', compact('data'))->render();
         }
 
         if ($prefix == 'parish') {
             $data = $this->parishRepository->getFirstBy(['id' => $slug->reference_id]);
-
+            \SeoHelper::setTitle($data->name)
+                ->setDescription($data->name);
             do_action(BASE_ACTION_PUBLIC_RENDER_SINGLE, DEANERY_MODULE_SCREEN_NAME, $data);
             return Theme::scope('parish.view', compact('data'))->render();
         }
@@ -109,6 +113,8 @@ class PublicController extends Controller
         $data = Deanery::with(['parishes' => function($query){
             $query->where('status', BaseStatusEnum::PUBLISHED)->with('history');
         }])->where('status', BaseStatusEnum::PUBLISHED)->get();
+        \SeoHelper::setTitle('Danh sách Giáo Hạt')
+            ->setDescription('Danh sách Giáo Hạt');
         return Theme::scope('deanery.list', compact('data'))->render();
     }
 
