@@ -105,15 +105,15 @@ class ParishForm extends FormAbstract
                     'placeholder'     => 'Nhập danh sách LM quê hương',
                 ],
             ])
-            ->add('sotusiquehuong', 'number', [
-                'label'      => 'Số tu sĩ',
+            ->add('tusiquehuong', 'editor', [
+                'label'      => 'Danh sách Tu sĩ',
                 'label_attr' => ['class' => 'control-label required'],
                 'attr'       => [
                     'placeholder'  => 'Nhập số tu sĩ...',
                 ],
             ])
-            ->add('sochungsinh', 'number', [
-                'label'      => 'Số Chủng sinh',
+            ->add('chungsinh', 'editor', [
+                'label'      => 'Danh sách Chủng sinh',
                 'label_attr' => ['class' => 'control-label required'],
                 'attr'       => [
                     'placeholder'  => 'Nhập số Chủng sinh',
@@ -125,6 +125,14 @@ class ParishForm extends FormAbstract
                 'attr'       => [
                     'rows'            => 4,
                     'placeholder'     => 'Nhập thông tin danh sách hội dòng',
+                ],
+            ])
+            ->add('image', 'mediaImage', [
+                'label' => 'Ảnh đại diện',
+                'label_attr' => ['class' => 'control-label required'],
+                'attr' => [
+                    'placeholder'  => trans('core/base::forms.image_placeholder'),
+                    'data-counter' => 120,
                 ],
             ])
             ->add('deanery_id', 'select', [
