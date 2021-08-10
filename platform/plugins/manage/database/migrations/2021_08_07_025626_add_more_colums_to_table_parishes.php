@@ -20,9 +20,10 @@ class AddMoreColumsToTableParishes extends Migration
             $table->text('note')->nullable();
             $table->longText('lmtungquan')->nullable();
             $table->longText('lmquehuong')->nullable();
-            $table->integer('sotusiquehuong')->nullable();
-            $table->integer('sochungsinh')->nullable();
+            $table->longText('tusiquehuong')->nullable();
+            $table->longText('chungsinh')->nullable();
             $table->longText('hoidonghiendien')->nullable();
+            $table->text('image')->nullable();
 
         });
     }
@@ -35,7 +36,7 @@ class AddMoreColumsToTableParishes extends Migration
     public function down()
     {
         Schema::table('parishes', function (Blueprint $table) {
-            $table->dropColumn(['lmquanxu','lmpho','lmphutrach','note','lmtungquan','lmquehuong','sotusiquehuong','sochungsinh','hoidonghiendien']);
+            $table->dropColumn(['lmquanxu','lmpho','lmphutrach','note','lmtungquan','lmquehuong','sotusiquehuong','sochungsinh','hoidonghiendien','image']);
         });
     }
 }

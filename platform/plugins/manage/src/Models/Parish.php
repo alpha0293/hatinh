@@ -40,6 +40,7 @@ class Parish extends BaseModel
         'sotusiquehuong',
         'sochungsinh',
         'hoidonghiendien',
+        'image',
     ];
 
     /**
