@@ -9,7 +9,6 @@
                     <a href="{{ $post->categories->first()->url }}">{{ $post->categories->first()->name }}</a>
                 </span>
             @endif
-            
             <span class="post__created-at"><i class="ion-clock"></i><a href="#">{{ date_from_database($post->created_at, 'M d, Y') }}</a></span>
             <span class="post__created-at"><i class="glyphicon glyphicon-eye-open"><a href="#" style="margin-left: 10px;">{{$post->views}}</a></i></span>
             @if ($post->user->username)

@@ -825,7 +825,9 @@ img {
 
 .page-content {
   padding: 60px 55px;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15); }
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15); 
+border-top: 3px solid #00a859;
+    border-radius: 10px;}
   @media only screen and (max-width: 767px) {
     .page-content {
       padding: 30px 25px; } }
@@ -1075,10 +1077,12 @@ search-btn c-search-toggler{
 /* Search bar */
 #search-wrapper {
   display: inline-block;
-  position: relative; }
+  position: relative;
+  margin: 14px;
+  cursor: pointer; }
   @media only screen and (min-width: 768px) and (max-width: 991px) {
     #search-wrapper {
-      margin-top: 15px;
+      margin-top: 10px;
       padding-left: 1em; } }
   @media only screen and (max-width: 767px) {
     #search-wrapper {
@@ -1094,6 +1098,7 @@ search-btn c-search-toggler{
     -webkit-animation: lens-out 0.5s linear 1 forwards;
     animation: lens-out 0.5s linear 1 forwards; }
   #search-wrapper:after {
+    cursor: pointer;
     position: absolute;
     bottom: 3px;
     right: -9px;
@@ -1101,17 +1106,18 @@ search-btn c-search-toggler{
     content: "";
     width: 14px;
     height: 2px;
-    background-color: #8d8d8d;
+    background-color:  #ffffff;
     -webkit-transform: rotate(45deg) scaleX(0);
     transform: rotate(45deg) scaleX(0);
     transform-origin: 0 50%;
     -webkit-animation: lens-in 0.6s linear 0.9s forwards;
     animation: lens-in 0.6s linear 0.9s forwards; }
   #search-wrapper #search {
+    cursor: pointer;
     color: #ffffff;
     background: none;
     border: 2px solid;
-    border-color: #8d8d8d;
+    border-color:  #ffffff;
     outline: none;
     padding: 0 9px;
     border-radius: 1000px;
@@ -1460,6 +1466,7 @@ li.menu-item {
   position: fixed;
   top: 32%;
   right: 1%;
+  z-index: 999;
  }
  .ttw-share-activate-button{
   padding: 4px;
@@ -1704,4 +1711,31 @@ li.menu-item.trangchu {
     margin: 0 auto;
     border-top: 3vw solid;
     background: #ff000000;
+}
+@media (max-width: 768px){
+  .banner{
+    display: none;
+  }
+  #page-wrap{
+  margin-top: 30px !important;
+  }
+  .page-header.page-header--light .logo{
+    display: unset !important;
+  }
+}
+#page-wrap{
+  margin-top: 150px;
+}
+.d-none{
+  display: none !important;
+}
+ul.menu.sub-menu--slideLeft{
+  position: relative;
+  height: 45px;
+}
+.close-search {
+    float: right;
+    color: red;
+    cursor: pointer;
+    margin-right: 75px;
 }

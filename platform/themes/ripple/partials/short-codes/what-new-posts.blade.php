@@ -1,14 +1,14 @@
-<section class="section" style="padding-top: 150px;">
+<section class="section bg-parallax bg-img background-overlay" style="background-image: url({{ Theme::asset()->url('images/vanhanh.jpg') }});">
 
 
-                    <div class="hero-area">
+                    <div class="hero-area" style="height: 530px;">
 
     <!-- Hero Slides Area -->
 
-    <div class="hero-slides owl-carousel">
+    <!-- <div class="hero-slides owl-carousel">
         <div class="single-hero-slide bg-img background-overlay" style="background-image: url({{ Theme::asset()->url('images/vanhanh.jpg') }});"></div>
         <div class="single-hero-slide bg-img background-overlay" style="background-image: url({{ Theme::asset()->url('images/vanhanh2.jpg') }});"></div>
-    </div>
+    </div> -->
 
     <!-- Hero Post Slide -->
     <div class="hero-post-area">
@@ -36,6 +36,5 @@
         </div>
     </div>
 </div>
-                    </div>
 
 </section>

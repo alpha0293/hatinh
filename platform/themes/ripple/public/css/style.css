@@ -50,15 +50,16 @@ button,select{text-transform:none}
 [type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;
 padding:0}
 [type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}
-fieldset{border:1px solid silver;
+fieldset{border:1px solid #1431d4;
 margin:0 2px;
 padding:.35em .625em .75em}
-legend{box-sizing:border-box;
-color:inherit;
-display:table;
-max-width:100%;
-padding:0;
-white-space:normal}
+legend{box-sizing: border-box;
+    color: inherit;
+    display: table;
+    max-width: 100%;
+    padding: 0;
+    white-space: normal;
+    width: auto;}
 textarea{overflow:auto}
 [type=checkbox],[type=radio]{box-sizing:border-box;
 padding:0}
@@ -218,7 +219,8 @@ color:#000}
 display:inline-block;
 width:30px;
 height:30px;
-margin-top:15px;
+margin-top:7px;
+float: right;
 overflow:hidden}
 .navigation-toggle:after,.navigation-toggle:before,.navigation-toggle span{position:absolute;
 right:5px;
@@ -902,7 +904,7 @@ color:#ff2b4a}
 .page-header__right{float:right}
 .search-btn{float:right;
 line-height:45px;
-padding:0 15px}
+padding:0 22px}
 .search-btn i{font-size:20px;
 color:#fff}
 .search-btn:hover{cursor:pointer}
@@ -1207,17 +1209,18 @@ body[dir=rtl] .post-group .post-group__title:after,body[dir=rtl] .widget--transp
 right:0}
 body[dir=rtl] .widget__about .person-detail i{margin-right:0;
 margin-left:10px}
-.super-search.active{z-index:88888888888;
-width:100%;
-height:100%;
-overflow:hidden;
-top:0;
-right:0;
-border:none;
-overflow-y:scroll;
-position:fixed;
-background:#fff;
-display:block!important}
+.super-search.active{
+z-index: 88888888888;
+width: 100%;
+height: 100%;
+overflow: hidden;
+/* top: 0; */
+/* right: -1px; */
+border-top: 2px solid #ffff;
+overflow-y: scroll;
+position: fixed;
+background: #dcfdd1;
+display: block!important;}
 .super-search.active .quick-search{width:90%;
 margin:40px auto}
 .super-search.active .search-input{color:#32c5d2!important;
@@ -1320,10 +1323,8 @@ font-size:18px;
 font-weight:700}
 .close-search.active{display:inline-block;
 position:absolute;
-top:50px;
 right:30px;
-color:#828b96;
-font-size:60px;
+color:#ef1313;
 cursor:pointer}
 .overflow{overflow:hidden}
 .quick-search>.form-control{display:block;

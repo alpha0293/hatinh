@@ -38,9 +38,9 @@
                                     <div class="mxh-content">
                                       <ul class="social-share-wrapper social-share-wrapper-active social-share-wrapper-shadow">
                                         <li>
-                                           <a href="{{ theme_option('facebook') }}" title="Facebook" class=""> <img src="{{ Theme::asset()->url('images/fb.ico') }}" alt="Facebook"></a> 
-                                       </li>
-                                    <li>
+                                         <a href="{{ theme_option('facebook') }}" title="Facebook" class=""> <img src="{{ Theme::asset()->url('images/fb.ico') }}" alt="Facebook"></a> 
+                                     </li>
+                                     <li>
                                         <a href="{{ theme_option('youtube') }}" title="Youtube" class=""><img src="{{ Theme::asset()->url('images/yt.ico') }}" alt="Youtube"></a>
                                     </li>
                                 </ul>  
@@ -48,31 +48,31 @@
                         </div>
                         <div class="header-top" style="height: 30px; background-color: #29412f ;">
                             <!-- ngon ngu -->
-                                  <div class="lang-login">
-                                    @if (is_plugin_active('member'))
-                                    <ul class="pull-left">
-                                        @if (Auth::guard('member')->check())
-                                        <li><a href="{{ route('public.member.dashboard') }}" rel="nofollow"><i class="fa fa-user"></i> <span>{{ Auth::guard('member')->user()->getFullName() }}</span></a></li>
-                                        <li><a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" rel="nofollow"><i class="fa fa-sign-out"></i> {{ __('Logout') }}</a></li>
-                                        @else
-                                        <li><a href="{{ route('public.member.login') }}" rel="nofollow"><i class="fa fa-sign-in"></i> {{ __('Login') }}</a></li>
-                                        @endif
-                                    </ul>
-                                    @auth('member')
-                                    <form id="logout-form" action="{{ route('public.member.logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                    @endauth
+                            <div class="lang-login">
+                                @if (is_plugin_active('member'))
+                                <ul class="pull-left">
+                                    @if (Auth::guard('member')->check())
+                                    <li><a href="{{ route('public.member.dashboard') }}" rel="nofollow"><i class="fa fa-user"></i> <span>{{ Auth::guard('member')->user()->getFullName() }}</span></a></li>
+                                    <li><a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" rel="nofollow"><i class="fa fa-sign-out"></i> {{ __('Logout') }}</a></li>
+                                    @else
+                                    <li><a href="{{ route('public.member.login') }}" rel="nofollow"><i class="fa fa-sign-in"></i> {{ __('Login') }}</a></li>
                                     @endif
-                                    <div class="language-wrapper">
-                                        {!! apply_filters('language_switcher') !!}
-                                    </div>
-                                </div>  
-                                <!-- het ngon ngu -->
+                                </ul>
+                                @auth('member')
+                                <form id="logout-form" action="{{ route('public.member.logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                                @endauth
+                                @endif
+                                <div class="language-wrapper">
+                                    {!! apply_filters('language_switcher') !!}
+                                </div>
+                            </div>  
+                            <!-- het ngon ngu -->
                         </div>
                         <div class="banner" style="height: 120px; background-image: url({{ Theme::asset()->url('images/header.png') }}); background-size: cover;">
                             <div class="container-fluid">
-                                <img class="logo" style="max-width: 86px;" src="{{ get_image_url(theme_option('logo')) }}" alt="" height="80">
+                                <img class="logo" style="max-width: 86px;" src="{{ get_image_url(theme_option('logo')) }}" alt="GP Hà Tĩnh" height="80">
                                 <div class="giammuc">
                                     <img src="{{ Theme::asset()->url('images/duccha.png') }}">
                                 </div>
@@ -81,36 +81,43 @@
                         <header data-sticky="false" data-sticky-checkpoint="200" data-responsive="991" class="page-header page-header--light">
                             <div class="container-fluid">
                                 <!-- LOGO-->
+                                <img class="logo" style="display: none; max-width: 45px;" src="{{ get_image_url(theme_option('logo')) }}" alt="GP Hà Tĩnh">
+                                <!-- SEARCH-->
+                               
+                                <div id="search-wrapper" class="pull-right active-search">
+                                <form class="quick-search" action="{{ route('public.search') }}">
+                                    <input type="text" id="search" name="q" placeholder="{{ __('Type to search...') }}" class=" search-input" autocomplete="off">
+                                    <div id="close-icon"></div>
+                                    <input class="d-none" type="submit" value="">
+                                </form>
+                            </div>
                                 <!-- mobile -->
                                 <div class="navigation-toggle navigation-toggle--dark"><span></span>
-                                    </div>
-                                <!-- SEARCH-->
-                                <div class="pull-right search-btn c-search-toggler"><i class="fa fa-search close-search"></i></div>
+                                </div>
+                                
 
                                 <!-- menu -->
-                                        <!-- NAVIGATION-->
-                                        <nav class="navigation navigation--light navigation--fade navigation--fadeLeft">
-                                            {!!
-                                            Menu::renderMenuLocation('main-menu', [
-                                            'options' => ['class' => 'menu sub-menu--slideLeft'],
-                                            'view'    => 'main-menu',
-                                            ])
-                                            !!}
-                                        </nav>
+                                <!-- NAVIGATION-->
+                                <nav class="navigation navigation--light navigation--fade navigation--fadeLeft">
+                                    {!!
+                                    Menu::renderMenuLocation('main-menu', [
+                                    'options' => ['class' => 'menu sub-menu--slideLeft'],
+                                    'view'    => 'main-menu',
+                                    ])
+                                    !!}
+                                </nav>
                                 <!-- het menu -->
 
                                 <div class="clearfix"></div>  
+                            </div>
+
+                            @if (is_plugin_active('blog'))
+                            <div class="super-search hide">
+                                <span class="close-search" style="font-size: 40px;">&times;</span>
+                                <div class="search-result"></div>
+                            </div>
+                            @endif
+                        </header>
                     </div>
-                    @if (is_plugin_active('blog'))
-                    <div class="super-search hide">
-                        <form class="quick-search" action="{{ route('public.search') }}">
-                            <input type="text" name="q" placeholder="{{ __('Type to search...') }}" class="form-control search-input" autocomplete="off">
-                            <span class="close-search">&times;</span>
-                        </form>
-                        <div class="search-result"></div>
-                    </div>
-                    @endif
-                </header>
-            </div>
-            <div id="page-wrap">
+                    <div id="page-wrap">
 
