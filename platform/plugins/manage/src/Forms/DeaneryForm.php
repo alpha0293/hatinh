@@ -28,6 +28,14 @@ class DeaneryForm extends FormAbstract
                     'data-counter' => 120,
                 ],
             ])
+            ->add('sohat', 'text', [
+                'label'      => 'Sở hạt',
+                'label_attr' => ['class' => 'control-label required'],
+                'attr'       => [
+                    'placeholder'  => 'Sở hạt',
+                    'data-counter' => 120,
+                ],
+            ])
             ->add('lmquanhat', 'text', [
                 'label'      => 'LM quản hạt',
                 'label_attr' => ['class' => 'control-label required'],
