@@ -29,6 +29,7 @@ class Deanery extends BaseModel
         'numberofmember',
         'address',
         'status',
+        'sohat',
     ];
 
     /**
