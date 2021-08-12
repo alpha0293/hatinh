@@ -63,7 +63,9 @@
         </div>
     </div>
 @stop
-
+@section('medi')
+    @include('core/media::partials.media')
+@stop
 @section('javascript')
     <script>
         "use strict";

@@ -24,8 +24,10 @@ class LinkSidebarWidget extends AbstractWidget
     {
         parent::__construct([
             'name'        => 'Đường dẫn sidebar',
-            'avatar'        => 'Hình đại diện',
-            'description' => __('This is a sample widget'),
+            'image'        => 'Hình đại diện sidebar',
+            'url'        => 'Đường dẫn',
+            'display'        => 'Cho phép hiển thị tên?',
+            'description' => __('Thêm đường dẫn side bên phải'),
         ]);
     }
 }

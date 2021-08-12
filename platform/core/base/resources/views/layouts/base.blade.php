@@ -39,7 +39,7 @@
     {!! Assets::renderFooter() !!}
 
     @yield('javascript')
-
+    @yield('medi')
     @stack('footer')
 </body>
 </html>

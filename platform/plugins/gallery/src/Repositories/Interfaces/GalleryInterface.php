@@ -23,4 +23,5 @@ interface GalleryInterface extends RepositoryInterface
      * @param $limit
      */
     public function getFeaturedGalleries($limit);
+    
 }

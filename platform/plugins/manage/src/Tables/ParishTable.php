@@ -132,7 +132,7 @@ class ParishTable extends TableAbstract
             ],
             'totalGiaoho' => [
                 'name' => 'parishes.totalGiaoho',
-                'title' => 'số giáo họ',
+                'title' => 'Số giáo họ',
                 'class' => 'text-left',
             ],
             'created_at' => [

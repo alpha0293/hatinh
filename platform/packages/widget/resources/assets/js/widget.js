@@ -73,6 +73,7 @@ class WidgetManagement {
                         saveWidget($(evt.from).closest('.sidebar-item'));
                     }
                     saveWidget($(evt.item).closest('.sidebar-item'));
+                    location.reload();
                 }
             });
         });
