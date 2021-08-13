@@ -85,11 +85,12 @@
                                 <!-- SEARCH-->
                                
                                 <div id="search-wrapper" class="pull-right active-search">
-                                <form class="quick-search" action="{{ route('public.search') }}">
+                                <form class="quick-search" action="{{route('public.search') }}">
                                     <input type="text" id="search" name="q" placeholder="{{ __('Type to search...') }}" class=" search-input" autocomplete="off">
                                     <div id="close-icon"></div>
-                                    <input class="d-none" type="submit" value="">
+                                    
                                 </form>
+
                             </div>
                                 <!-- mobile -->
                                 <div class="navigation-toggle navigation-toggle--dark"><span></span>

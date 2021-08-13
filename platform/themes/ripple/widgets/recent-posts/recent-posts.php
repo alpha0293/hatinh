@@ -23,7 +23,7 @@ class RecentPostsWidget extends AbstractWidget
     public function __construct()
     {
         parent::__construct([
-            'name'           => __('Recent posts'),
+            'name'           => __('Bài viết mới'),
             'description'    => __('Recent posts widget.'),
             'number_display' => 5,
         ]);

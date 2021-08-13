@@ -17,7 +17,16 @@ register_sidebar([
     'name'        => __('Footer sidebar'),
     'description' => __('This is footer sidebar section'),
 ]);
-
+register_sidebar([
+    'id'          => 'giaoxu_sidebar',
+    'name'        => __('Lề phải Giáo xứ'),
+    'description' => __('This is right side of giaohat page'),
+]);
+register_sidebar([
+    'id'          => 'giaohat_sidebar',
+    'name'        => __('Lề phải Giáo hạt'),
+    'description' => __('This is right side of giaoxu page'),
+]);
 add_shortcode('google-map', 'Google map', 'Custom map', function ($shortCode) {
     return Theme::partial('short-codes.google-map', ['address' => $shortCode->content]);
 });
