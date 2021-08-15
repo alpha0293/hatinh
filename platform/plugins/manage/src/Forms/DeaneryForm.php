@@ -24,7 +24,7 @@ class DeaneryForm extends FormAbstract
                 'label'      => trans('core/base::forms.name'),
                 'label_attr' => ['class' => 'control-label required'],
                 'attr'       => [
-                    'placeholder'  => trans('core/base::forms.name_placeholder'),
+                    'placeholder'  => 'Tên giáo hạt',
                     'data-counter' => 120,
                 ],
             ])
@@ -40,28 +40,28 @@ class DeaneryForm extends FormAbstract
                 'label'      => 'LM quản hạt',
                 'label_attr' => ['class' => 'control-label required'],
                 'attr'       => [
-                    'placeholder'  => trans('core/base::forms.name_placeholder'),
-                    'data-counter' => 120,
-                ],
-            ])
-            ->add('numberofmember', 'number', [
-                'label'      => 'Số Giáo dân',
-                'label_attr' => ['class' => 'control-label required'],
-                'attr'       => [
-                    'placeholder'  => trans('core/base::forms.name_placeholder'),
-                    'data-counter' => 120,
-                ],
-            ])
-            ->add('numberofparish', 'number', [
-                'label'      => 'Số Giáo xứ',
-                'label_attr' => ['class' => 'control-label required'],
-                'attr'       => [
-                    'placeholder'  => trans('core/base::forms.name_placeholder'),
+                    'placeholder'  => 'LM quản hạt',
                     'data-counter' => 120,
                 ],
             ])
             ->add('address', 'text', [
                 'label'      => 'Địa chỉ',
+                'label_attr' => ['class' => 'control-label required'],
+                'attr'       => [
+                    'placeholder'  => 'Nhập địa chỉ',
+                    'data-counter' => 120,
+                ],
+            ])
+            ->add('content', 'editor', [
+                'label'      => 'Lịch sử giáo hạt',
+                'label_attr' => ['class' => 'control-label required'],
+                'attr'       => [
+                    'placeholder'  => trans('core/base::forms.name_placeholder'),
+                    'rows'         => 4,
+                ],
+            ])
+            ->add('image', 'mediaImage', [
+                'label'      => 'Chọn ảnh',
                 'label_attr' => ['class' => 'control-label required'],
                 'attr'       => [
                     'placeholder'  => trans('core/base::forms.name_placeholder'),

@@ -25,11 +25,11 @@ class Deanery extends BaseModel
     protected $fillable = [
         'name',
         'lmquanhat',
-        'numberofparish',
-        'numberofmember',
         'address',
         'status',
         'sohat',
+        'content',
+        'image',
     ];
 
     /**
