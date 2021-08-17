@@ -17,9 +17,9 @@ class ManageCreateDeaneryTable extends Migration
             $table->string('name', 120);
             $table->string('lmquanhat')->nullable();
             $table->string('sohat')->nullable();
-            $table->integer('numberofparish')->nullable();
-            $table->integer('numberofmember')->nullable();
+            $table->longText('content')->nullable();
             $table->string('address')->nullable();
+            $table->string('image')->nullable();
             $table->string('status', 60)->default('published');
             $table->timestamps();
         });
