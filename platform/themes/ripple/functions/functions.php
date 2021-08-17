@@ -17,7 +17,16 @@ register_sidebar([
     'name'        => __('Footer sidebar'),
     'description' => __('This is footer sidebar section'),
 ]);
-
+register_sidebar([
+    'id'          => 'giaoxu_sidebar',
+    'name'        => __('Lề phải Giáo xứ'),
+    'description' => __('This is right side of giaohat page'),
+]);
+register_sidebar([
+    'id'          => 'giaohat_sidebar',
+    'name'        => __('Lề phải Giáo hạt'),
+    'description' => __('This is right side of giaoxu page'),
+]);
 add_shortcode('google-map', 'Google map', 'Custom map', function ($shortCode) {
     return Theme::partial('short-codes.google-map', ['address' => $shortCode->content]);
 });
@@ -43,6 +52,9 @@ add_shortcode('best-for-you-posts', 'Best for you posts', 'Best for you posts', 
 
 add_shortcode('all-galleries', 'All Galleries', 'All Galleries', function () {
     return Theme::partial('short-codes.all-galleries');
+});
+add_shortcode('same-category', 'Same Category', 'Same Category', function () {
+    return Theme::partial('short-codes.same-category');
 });
 
 theme_option()

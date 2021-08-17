@@ -170,6 +170,7 @@ module.exports = __webpack_require__(113);
         var search_input = $('.search-input');
         var super_search = $('.super-search');
         var close_search = $('.close-search');
+        var active_search = $('.active-search');
         var search_result = $('.search-result');
         var timeoutID = null;
 
@@ -211,20 +212,24 @@ module.exports = __webpack_require__(113);
             bindActionToElement: function bindActionToElement() {
                 close_search.on('click', function (event) {
                     event.preventDefault();
-                    if (close_search.hasClass('active')) {
                         super_search.removeClass('active');
                         search_result.hide();
-                        close_search.removeClass('active');
+                        active_search.removeClass('active');
                         $('body').removeClass('overflow');
                         $('.quick-search > .form-control').focus();
-                    } else {
+                     
+                });
+
+                active_search.on('click', function (event) {
+                    event.preventDefault();
+                        
                         super_search.addClass('active');
                         if (search_input.val() != '') {
                             Ripple.searchFunction(search_input.val());
                         }
                         $('body').addClass('overflow');
-                        close_search.addClass('active');
-                    }
+                        active_search.addClass('active');
+                   
                 });
 
                 search_input.keyup(function (e) {

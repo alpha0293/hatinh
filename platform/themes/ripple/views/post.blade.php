@@ -9,7 +9,9 @@
                     <a href="{{ $post->categories->first()->url }}">{{ $post->categories->first()->name }}</a>
                 </span>
             @endif
+            
             <span class="post__created-at"><i class="ion-clock"></i><a href="#">{{ date_from_database($post->created_at, 'M d, Y') }}</a></span>
+            <span class="post__created-at"><i class="glyphicon glyphicon-eye-open"><a href="#" style="margin-left: 10px;">{{$post->views}}</a></i></span>
             @if ($post->user->username)
                 <span class="post__author"><i class="ion-android-person"></i><span>{{ $post->user->getFullName() }}</span></span>
             @endif
@@ -29,7 +31,7 @@
             {!! render_object_gallery($galleries, ($post->categories()->first() ? $post->categories()->first()->name : __('Uncategorized'))) !!}
         @endif
         {!! $post->content !!}
-        <div class="fb-like" data-href="{{ Request::url() }}" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>
+        <div class="fb-like" style="display: flex;" data-href="{{ Request::url() }}" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>
     </div>
     <footer class="post__footer">
         <div class="row">
@@ -47,7 +49,5 @@
                 </div>
             @endforeach
         </div>
-    </footer>
-    <br />
-    {!! apply_filters(BASE_FILTER_PUBLIC_COMMENT_AREA, Theme::partial('comments')) !!}
+    </footer>   
 </article>

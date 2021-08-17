@@ -1,53 +1,53 @@
 @if (is_plugin_active('blog'))
     @php
-        $featured = get_featured_posts(5);
+        $featured = get_featured_posts(8);
         $featuredList = [];
         if (!empty($featured)) {
             $featuredList = $featured->pluck('id')->all();
         }
+        $index=0;
     @endphp
-
+    
     @if (!empty($featured))
-        <section class="section pt-50 pb-50 bg-lightgray">
-            <div class="container">
-                <div class="post-group post-group--hero">
-                    @foreach ($featured as $featureItem)
-                        @if ($loop->first)
-                            <div class="post-group__left">
-                                <article class="post post__inside post__inside--feature">
-                                    <div class="post__thumbnail">
-                                        <img src="{{ get_object_image($featureItem->image, 'featured') }}" alt="{{ $featureItem->name }}"><a href="{{ $featureItem->url }}" class="post__overlay"></a>
-                                    </div>
-                                    <header class="post__header">
-                                        <h3 class="post__title"><a href="{{ $featureItem->url }}">{{ $featureItem->name }}</a></h3>
-                                        <div class="post__meta"><span class="post-category"><i class="ion-cube"></i>
-                                                @if (!$featureItem->categories->isEmpty())<a href="{{ $featureItem->categories->first()->url }}">{{ $featureItem->categories->first()->name }}</a>@endif
-                                        </span>
-                                            <span class="created_at"><i class="ion-clock"></i><a href="#">{{ date_from_database($featureItem->created_at, 'M d Y') }}</a></span>
-                                            @if ($featureItem->user->username)
-                                                <span class="post-author"><i class="ion-android-person"></i><span>{{ $featureItem->user->getFullName() }}</span></span>
-                                            @endif
-                                        </div>
-                                    </header>
-                                </article>
-                            </div>
-                            <div class="post-group__right">
-                                @else
-                                    <div class="post-group__item">
-                                        <article class="post post__inside post__inside--feature post__inside--feature-small">
-                                            <div class="post__thumbnail"><img src="{{ get_object_image($featureItem->image, 'medium') }}" alt="{{ $featureItem->name }}"><a href="{{ $featureItem->url }}" class="post__overlay"></a></div>
-                                            <header class="post__header">
-                                                <h3 class="post__title"><a href="{{ $featureItem->url }}">{{ $featureItem->name }}</a></h3>
-                                            </header>
-                                        </article>
-                                    </div>
-                                    @if ($loop->last)
-                            </div>
-                        @endif
-                        @endif
-                    @endforeach
-                </div>
+         <section id="dich-vu" class="jarallax module icon-service-module clearfix" style=" background-color:#ddf3e8;"> 
+    <div class="container-fluid"> 
+            <div class="module-caption col-md-12 text-center"> 
+                <h1 style="color: #181a1c;">NỔI BẬT <span>GIÁO PHẬN HÀ TĨNH</span></h1> 
+                <div class="separator"> 
+                    <span><i class="fa fa-circle"></i></span> 
+                </div>  
             </div>
-        </section>
+            <div class="col-md-12 col-sm-12 col-lg-12">
+                <div class="row noibat-home">
+               @foreach($featured as $feat)
+               <div class="col-md-3 col-lg-3 col-sm-4">
+                <div class="feat-col">
+                    <a href="{{ $feat->url }}">
+                        <div class="post-thumbnail">
+                            <img src="{{ get_object_image($feat->image, 'medium') }}" alt="">
+                        </div>
+                        
+                        <div class="content-nb">
+                            <h4 ">Thư cảm ơn của Đức cha Loius Nguyễn Anh Tuấn về việc đóng góp cứu trợ các nạn nhân Covid tại Sài Gòn.</h4>
+                        </div>
+                    </a>
+                    <div class="foot">
+                        <span class="glyphicon glyphicon-time"> {{date_format($feat->updated_at,"d/m/Y")}}</span>
+                        <span class="glyphicon glyphicon-eye-open"> {{$feat->views}}</span>
+                        <a href="{{ $feat->url }}">Xem thêm...</a>
+                    </div>
+                </div>
+                    
+               </div>
+               @endforeach
+            </div>
+            </div>
+            
+           
+    </div>
+  <div class="triangle" style="display: none;"></div>
+
+</section>
+
     @endif
 @endif

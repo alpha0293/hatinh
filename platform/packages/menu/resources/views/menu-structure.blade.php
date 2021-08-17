@@ -4,7 +4,68 @@
     <div class="row widget-menu">
         <div class="col-md-4">
             <div class="panel-group" id="accordion">
+                 <!-- ------------------------ -->
+                <div class="widget meta-boxes">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseGP">
+                        <h4 class="widget-title">
+                            <span>Chọn tất cả các giáo hạt</span>
+                            <i class="fa fa-angle-down narrow-icon"></i>
+                        </h4>
+                    </a>
+                    <div id="collapseGP" class="panel-collapse collapse">
+                        <div class="widget-body">
+                            <div class="box-links-for-menu1">
+                                <div id="external_link1" class="the-box1">
+                                    <div class="node-content">
+                                        <div class="form-group">
+                                            <label for="node-title1">Menu tất cả Giáo Hạt</label>
+                                            <input readonly="true" type="text" class="form-control" id="node-title1" value="Giáo Hạt | Giáo xứ" autocomplete="false">
+                                        </div>
+                                        <div class="form-group" style="display: none;">
+                                            <label for="node-url1">{{ trans('packages/menu::menu.url') }}</label>
+                                            <input type="text" class="form-control" id="node-url1" placeholder="http://" autocomplete="false">
+                                        </div>
+                                        <div class="form-group" style="display: none;">
+                                            <label for="node-icon">{{ trans('packages/menu::menu.icon') }}</label>
+                                            <input type="text" class="form-control" id="node-icon1" placeholder="fa fa-home" autocomplete="false">
+                                        </div>
+                                        <div class="form-group" style="display: none;">
+                                            <label for="node-css1">{{ trans('packages/menu::menu.css_class') }}</label>
+                                            <input type="text" class="form-control" id="node-css1" autocomplete="false">
+                                        </div>
+                                        <div class="form-group" style="display: none;">
+                                            <label for="target1">{{ trans('packages/menu::menu.target') }}</label>
+                                            <div class="ui-select-wrapper">
+                                                <select name="target1" class="ui-select" id="target1">
+                                                    <option value="_self">{{ trans('packages/menu::menu.self_open_link') }}</option>
+                                                    <option value="_blank">{{ trans('packages/menu::menu.blank_open_link') }}</option>
+                                                </select>
+                                                <svg class="svg-next-icon svg-next-icon-size-16">
+                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#select-chevron"></use>
+                                                </svg>
+                                            </div>
+                                        </div>
 
+                                        <div class="text-right form-group node-actions hidden">
+                                            <a class="btn red btn-remove1" href="#">{{ trans('packages/menu::menu.remove') }}</a>
+                                            <a class="btn blue btn-cancel1" href="#">{{ trans('packages/menu::menu.cancel') }}</a>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="text-right add-button1">
+                                                <div class="btn-group">
+                                                    <a href="#" class="btn-add-to-menu1 btn btn-primary"><span class="text"><i class="fa fa-plus"></i> {{ trans('packages/menu::menu.add_to_menu') }}</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <!-- ------------------------ -->
                 @php do_action(MENU_ACTION_SIDEBAR_OPTIONS) @endphp
 
                 <div class="widget meta-boxes">
@@ -67,6 +128,7 @@
                         </div>
                     </div>
                 </div>
+               <!-- ----------------------------------------- -->
             </div>
         </div>
         <div class="col-md-8">

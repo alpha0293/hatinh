@@ -54,7 +54,21 @@ if (!function_exists('get_list_galleries')) {
         return app(GalleryInterface::class)->allBy($condition);
     }
 }
+if (!function_exists('render_gallery_giaoxu')) {
+    /**
+     * @param array $galleries
+     * @param string $category
+     * @return string
+     *
+     * @throws Throwable
+     */
+    function render_gallery_giaoxu(array $galleries, $category = null): string
+    {
 
+        Gallery::registerAssets();
+        return view('plugins/gallery::partials.list-image', compact('galleries', 'category'))->render();
+    }
+}
 if (!function_exists('render_object_gallery')) {
     /**
      * @param array $galleries

@@ -92,6 +92,7 @@ class HookServiceProvider extends ServiceProvider
             ]);
             echo view('plugins/blog::tags.partials.menu-options', compact('tags'));
         }
+       
     }
 
     /**
@@ -167,7 +168,7 @@ class HookServiceProvider extends ServiceProvider
                                 route('posts.edit', $post->id));
                         }
 
-                        Theme::breadcrumb()->add(__('Home'), url('/'))->add($post->name, $post->url);
+                        Theme::breadcrumb()->add(__('Home'), url('/'))->add($post->categories->first()->name, $post->url);
 
                         do_action(BASE_ACTION_PUBLIC_RENDER_SINGLE, POST_MODULE_SCREEN_NAME, $post);
 

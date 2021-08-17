@@ -1,6 +1,7 @@
-<footer data-background="{{ Theme::asset()->url('images/page-intro-01.png') }}" class="page-footer bg-dark pt-50 bg-parallax">
+<footer data-background=""  class="page-footer bg-dark pt-50 bg-parallax" style=" background-image: url({{ Theme::asset()->url('images/vanhanh.jpg') }})  ;border-top: 2px solid white;">
+
     <div class="bg-overlay"></div>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <aside class="widget widget--transparent widget__footer widget__about">
@@ -24,7 +25,7 @@
         </div>
     </div>
     <div class="page-footer__bottom">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-md-8 col-sm-6 col-xs-12">
                     <div class="page-copyright">
@@ -75,7 +76,6 @@
      attribution=setup_tool
      page_id="157007981299897"
      theme_color="#0084ff">
-</div>
-
+ </div>
 </body>
 </html>

@@ -52,17 +52,23 @@ return [
                 ->usePath()->add('jquery.parallax', 'plugins/jquery.parallax-1.1.3.js', ['jquery'])
                 ->usePath()->add('custom', 'js/custom.min.js', ['jquery'])
                 ->usePath()->add('ripple.js', 'js/ripple.js', ['jquery'])
-                ->usePath()->add('sweet-alert-js', 'js/sweetalert.min.js', ['jquery']);
+                ->usePath()->add('sweet-alert-js', 'js/sweetalert.min.js', ['jquery'])
+		->usePath()->add('sweet-alert-js', 'js/old-theme/plugins.js', ['jquery'])
+                ->usePath()->add('active', 'js/old-theme/active.js', ['jquery'])
+		->usePath()->add('myjs', 'js/myjs.js', ['jquery']);
 
             $theme
                 ->asset()
                 ->usePath()->add('bootstrap-css', 'plugins/bootstrap/css/bootstrap.min.css')
                 ->usePath()->add('font-awesome', 'plugins/font-awesome/css/font-awesome.min.css')
                 ->usePath()->add('ionicons', 'plugins/ionicons/css/ionicons.min.css')
-                ->usePath()->add('style', 'css/style.css');
-
+                ->usePath()->add('style', 'css/style.css')
+                ->usePath()->add('animate', 'css/old-theme/animate.css')
+                ->usePath()->add('owl-carousel', 'css/old-theme/owl.carousel.css')
+                ->usePath()->add('mystyle', 'css/mystyle.css');
+                //, 'index'
             if (function_exists('shortcode')) {
-                $theme->composer(['page', 'post', 'index'], function (\Botble\Shortcode\View\View $view) {
+                $theme->composer(['page', 'post'], function (\Botble\Shortcode\View\View $view) {
                     $view->withShortcodes();
                 });
             }
