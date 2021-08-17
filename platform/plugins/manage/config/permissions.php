@@ -96,4 +96,23 @@ return [
         'flag'        => 'history.destroy',
         'parent_flag' => 'history.index',
     ],
+    [
+        'name' => 'Lichpvs',
+        'flag' => 'lichpv.index',
+    ],
+    [
+        'name'        => 'Create',
+        'flag'        => 'lichpv.create',
+        'parent_flag' => 'lichpv.index',
+    ],
+    [
+        'name'        => 'Edit',
+        'flag'        => 'lichpv.edit',
+        'parent_flag' => 'lichpv.index',
+    ],
+    [
+        'name'        => 'Delete',
+        'flag'        => 'lichpv.destroy',
+        'parent_flag' => 'lichpv.index',
+    ],
 ];

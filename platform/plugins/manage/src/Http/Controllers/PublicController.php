@@ -7,6 +7,7 @@ use Botble\Manage\Repositories\Interfaces\DeaneryInterface;
 use Botble\Manage\Repositories\Interfaces\PriestInterface;
 use Botble\Manage\Repositories\Interfaces\ParishInterface;
 use Botble\Manage\Repositories\Interfaces\HistoryInterface;
+use Botble\Manage\Repositories\Interfaces\LichpvInterface;
 use Botble\SeoHelper\SeoOpenGraph;
 use Botble\Slug\Repositories\Interfaces\SlugInterface;
 use Manage;
@@ -17,6 +18,7 @@ use Botble\Manage\Models\Deanery;
 use Botble\Manage\Models\Parish;
 use Botble\Manage\Models\Priest;
 use Botble\Manage\Models\History;
+use Botble\Manage\Models\Lichpv;
 
 class PublicController extends Controller
 {
@@ -40,13 +42,14 @@ class PublicController extends Controller
      * @param SlugInterface $slugRepository
      *
      */
-    public function __construct(DeaneryInterface $deaneryRepository, SlugInterface $slugRepository, ParishInterface $parishRepository, PriestInterface $priestRepository, HistoryInterface $historyRepository)
+    public function __construct(DeaneryInterface $deaneryRepository, SlugInterface $slugRepository, ParishInterface $parishRepository, PriestInterface $priestRepository, HistoryInterface $historyRepository, LichpvInterface $lichpvRepository)
     {
         $this->deaneryRepository = $deaneryRepository;
         $this->slugRepository = $slugRepository;
         $this->priestRepository = $priestRepository;
         $this->parishRepository = $parishRepository;
-        $this->historyRepository = $historyRepository;
+        $this->parishRepository = $parishRepository;
+        $this->lichpvRepository = $lichpvRepository;
     }
 
     /**
@@ -100,6 +103,15 @@ class PublicController extends Controller
                 ->setDescription($data->name);
             do_action(BASE_ACTION_PUBLIC_RENDER_SINGLE, DEANERY_MODULE_SCREEN_NAME, $data);
             return Theme::scope('parish.view', compact('data'))->render();
+        }
+
+        if ($prefix == 'lichpv') {
+            $data = $this->lichpvRepository->getFirstBy(['id' => $slug->reference_id]);
+
+            \SeoHelper::setTitle($data->name)
+                ->setDescription($data->name);
+            do_action(BASE_ACTION_PUBLIC_RENDER_SINGLE, DEANERY_MODULE_SCREEN_NAME, $data);
+            return Theme::scope('lichpv.view', compact('data'))->render();
         }
 
         if (!$data) {

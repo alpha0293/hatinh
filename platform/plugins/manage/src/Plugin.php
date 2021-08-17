@@ -14,5 +14,6 @@ class Plugin extends PluginOperationAbstract
         Schema::dropIfExists('priests');
         Schema::dropIfExists('parishes');
         Schema::dropIfExists('histories');
+        Schema::dropIfExists('lichpvs');
     }
 }
