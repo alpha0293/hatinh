@@ -32,6 +32,7 @@
                 <!--[if IE 8]><body class="ie8 lt-ie9 lt-ie10"><![endif]-->
                     <!--[if IE 9]><body class="ie9 lt-ie10"><![endif]-->
                         <body>
+                            
                             <div class="headers">
                                 <div class="mxh">
                                     <i class="glyphicon glyphicon-chevron-right ttw-share-activate-button"></i>
@@ -46,6 +47,7 @@
                                 </ul>  
                             </div>
                         </div>
+                        
                         <div class="header-top" style="height: 30px; background-color: #29412f ;">
                             <!-- ngon ngu -->
                             <div class="lang-login">
@@ -70,8 +72,8 @@
                             </div>  
                             <!-- het ngon ngu -->
                         </div>
-                        <div class="banner" style="height: 120px; background-image: url({{ Theme::asset()->url('images/header.png') }}); background-size: cover;">
                             <div class="container-fluid">
+                                <div class="banner" style="height: 120px; background-image: url({{ Theme::asset()->url('images/header.png') }}); background-size: cover;">
                                 <img class="logo" style="max-width: 86px;" src="{{ get_image_url(theme_option('logo')) }}" alt="GP Hà Tĩnh" height="80">
                                 <div class="giammuc">
                                     <img src="{{ Theme::asset()->url('images/duccha.png') }}">

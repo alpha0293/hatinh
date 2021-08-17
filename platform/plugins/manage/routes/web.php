@@ -71,7 +71,7 @@ Route::group(['namespace' => 'Botble\Manage\Http\Controllers', 'middleware' => '
 
         Route::get('/deanery', [
             'uses' => 'PublicController@getAllDeanery',
-        ]);
+        ])->name('deanery');;
 
     });
 

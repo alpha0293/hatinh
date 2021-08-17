@@ -138,13 +138,14 @@ foreach ($data->parishes as $parish) {
                         </div>
                         <div class="widget__content">
                             <ul class="list ">
+                           
                                 @foreach($data->all() as $deanery)
                                             <li>
                                                 <article class="post post__widget clearfix">
                                                 <div class="post__thumbnail"><img src="{{ get_object_image($deanery->image, 'medium') }}" alt="{{ $deanery->name }}">
                                                     <a href="{{ $deanery->url }}" class="post__overlay"></a></div>
                                                 <header class="post__header">
-                                                    <h5 class="post__title"><a href="{{ $deanery->url }}" data-number-line="2">{{$deanery->name}}</a></h5>
+                                                    <h5 class="post__title"><a href="{{ $deanery->url }}" data-number-line="2">{{$deanery->url}}</a></h5>
                                                     <p>{{ $deanery->address }}</p>
                                                 </header>
                                             </article>

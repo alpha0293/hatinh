@@ -69,7 +69,7 @@ class MenuNestable {
             that.setDataItem(that.$nestable.find('> ol.dd-list li.dd-item'));
         });
 
-        // Add nodes
+        // Add nodes 1
         $(document).on('click', '.box-links-for-menu .btn-add-to-menu', (event) => {
             event.preventDefault();
             let current = $(event.currentTarget);
@@ -173,7 +173,68 @@ class MenuNestable {
             that.setDataItem(that.$nestable.find('> ol.dd-list li.dd-item'));
             parent.find('.list-item li.active').removeClass('active');
         });
+        // Add nodes2
+         $(document).on('click', '.box-links-for-menu1 .btn-add-to-menu1', (event) => {
+            event.preventDefault();
+            let current = $(event.currentTarget);
+            let parent = current.parents('.the-box1');
+            let html = '';
+                let data_type = 'custom-link';
+                let data_reference_id = 0;
+                let data_title = $('#node-title1').val();
+                let data_url = $('#node-url1').val();
+                let data_css_class = $('#node-css1').val();
+                let data_font_icon = $('#node-icon1').val();
+                let data_target = $('#target1').find('option:selected').val();
+                let url_html = '<label class="pad-bot-5"><span class="text pad-top-5 dis-inline-block" data-update="custom-url">Url</span><input type="text" data-old="' + data_url + '" value="' + data_url + '" name="custom-url"></label>';
+                html += '<li data-reference-type="' + data_type + '" data-reference-id="' + data_reference_id + '" data-title="' + data_title + '" data-class="' + data_css_class + '" data-id="0" data-custom-url="' + data_url + '" data-icon-font="' + data_font_icon + '" data-target="' + data_target + '" class="dd-item dd3-item">';
+                html += '<div class="dd-handle dd3-handle"></div>';
+                html += '<div class="dd3-content">';
+                html += '<span class="text float-left" data-update="title">' + data_title + '</span>';
+                html += '<span class="text float-right">' + data_type + '</span>';
+                html += '<a href="#" class="show-item-details"><i class="fa fa-angle-down"></i></a>';
+                html += '<div class="clearfix"></div>';
+                html += '</div>';
+                html += '<div class="item-details">';
+                html += '<label class="pad-bot-5">';
+                html += '<span class="text pad-top-5 dis-inline-block" data-update="title">Title</span>';
+                html += '<input type="text" data-old="' + data_title + '" value="' + data_title + '" name="title" class="form-control">';
+                html += '</label>';
+                html += url_html;
+                html += '<label class="pad-bot-5 dis-inline-block"><span class="text pad-top-5" data-update="icon-font">Icon - font</span><input type="text" name="icon-font" value="' + data_font_icon + '" data-old="' + data_font_icon + '" class="form-control"></label>';
+                html += '<label class="pad-bot-10">';
+                html += '<span class="text pad-top-5 dis-inline-block" data-update="class">CSS class</span>';
+                html += '<input type="text" data-old="' + data_css_class + '" value="' + data_css_class + '" name="class" class="form-control">';
+                html += '</label>';
+                html += '<label class="pad-bot-10">';
+                html += '<span class="text pad-top-5 dis-inline-block" data-update="target">Target</span>';
+                html += '<div style="width: 228px; display: inline-block"><select name="target" id="target" data-old="' + data_target + '" class="form-control select-full">';
+                html += '<option value="_self">Open link directly</option>';
+                html += '<option value="_blank" ' + (data_target === '_blank' ? 'selected="selected"' : '') + '>Open link in new tab</option>';
+                html += '</select></div>';
+                html += '</label>';
+                html += '<div class="text-right">';
+                html += '<a class="btn red btn-remove" href="#">Remove</a>';
+                html += '<a class="btn blue btn-cancel" href="#">Cancel</a>';
+                html += '</div>';
+                html += '</div>';
+                html += '<div class="clearfix"></div>';
+                html += '</li>';
+                
+        
+            // Create html
+            $('.nestable-menu > ol.dd-list').append(html);
 
+            $('.nestable-menu').find('.select-full').select2({
+                width: '100%',
+                minimumResultsForSearch: -1
+            });
+
+            // Change json
+            that.setDataItem(that.$nestable.find('> ol.dd-list li.dd-item'));
+            parent.find('.list-item li.active').removeClass('active');
+        });
+        // het add
         // Remove nodes
         $('.form-save-menu input[name="deleted_nodes"]').val('');
         $(document).on('click', '.nestable-menu .item-details .btn-remove', (event) => {

@@ -66,9 +66,9 @@ return [
                 ->usePath()->add('animate', 'css/old-theme/animate.css')
                 ->usePath()->add('owl-carousel', 'css/old-theme/owl.carousel.css')
                 ->usePath()->add('mystyle', 'css/mystyle.css');
-
+                //, 'index'
             if (function_exists('shortcode')) {
-                $theme->composer(['page', 'post', 'index'], function (\Botble\Shortcode\View\View $view) {
+                $theme->composer(['page', 'post'], function (\Botble\Shortcode\View\View $view) {
                     $view->withShortcodes();
                 });
             }

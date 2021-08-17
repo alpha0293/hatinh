@@ -92,6 +92,7 @@ class HookServiceProvider extends ServiceProvider
             ]);
             echo view('plugins/blog::tags.partials.menu-options', compact('tags'));
         }
+       
     }
 
     /**

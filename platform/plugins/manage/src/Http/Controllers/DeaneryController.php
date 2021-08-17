@@ -40,10 +40,20 @@ class DeaneryController extends BaseController
     public function index(DeaneryTable $table)
     {
         page_title()->setTitle(trans('plugins/manage::deanery.name'));
-
+       
         return $table->renderTable();
     }
+     /**
+     * @param DeaneryTable $dataTable
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Throwable
+     */
+    public function indexmenu(DeaneryTable $table)
+    {
+        page_title()->setTitle(trans('plugins/blog::tags.menu'));
 
+        return $dataTable->renderTable();
+    }
     /**
      * @param FormBuilder $formBuilder
      * @return string

@@ -53,6 +53,9 @@ add_shortcode('best-for-you-posts', 'Best for you posts', 'Best for you posts', 
 add_shortcode('all-galleries', 'All Galleries', 'All Galleries', function () {
     return Theme::partial('short-codes.all-galleries');
 });
+add_shortcode('same-category', 'Same Category', 'Same Category', function () {
+    return Theme::partial('short-codes.same-category');
+});
 
 theme_option()
     ->setField([

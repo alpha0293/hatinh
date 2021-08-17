@@ -15,9 +15,12 @@ use Botble\Base\Supports\Helper;
 use Event;
 use Botble\Base\Traits\LoadAndPublishDataTrait;
 use Illuminate\Routing\Events\RouteMatched;
+use Menu;
 use Language;
 use SeoHelper;
 use SlugHelper;
+
+use Botble\Manage\Repositories\Interfaces\DeaneryInterface;
 use Botble\Manage\Repositories\Interfaces\ParishInterface;
 
 class ManageServiceProvider extends ServiceProvider
@@ -31,6 +34,7 @@ class ManageServiceProvider extends ServiceProvider
 
     public function register()
     {
+        
         $this->app->bind(ManageInterface::class, function () {
             return new ManageCacheDecorator(new ManageRepository(new Manage));
         });
@@ -64,6 +68,12 @@ class ManageServiceProvider extends ServiceProvider
 
     public function boot()
     {
+        // ---------------------
+        if (defined('MENU_ACTION_SIDEBAR_OPTIONS')) {
+            add_action(MENU_ACTION_SIDEBAR_OPTIONS, [$this, 'registerMenuOptions'], 2);
+        }
+        
+        // -------------------
         $this->setNamespace('plugins/manage')
             ->loadAndPublishConfigurations(['permissions'])
             ->loadAndPublishViews()
@@ -163,4 +173,20 @@ class ManageServiceProvider extends ServiceProvider
         \Gallery::registerModule([History::class]);
         \Gallery::registerModule([Parish::class]);
     }
+    public function registerMenuOptions()
+    {
+      
+
+            $deaneries = Menu::generateSelect([
+                'model'   => $this->app->make(DeaneryInterface::class)->getModel(),
+                'type'    => Deanery::class,
+                'theme'   => false,
+                'options' => [
+                'class' => 'list-item',
+                ],
+            ]);
+            echo view('plugins/manage::deanery.partials.menu-options', compact('deaneries'));
+       
+    }
+
 }

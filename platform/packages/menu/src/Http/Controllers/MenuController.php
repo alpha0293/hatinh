@@ -76,6 +76,7 @@ class MenuController extends BaseController
      */
     public function index(MenuTable $dataTable)
     {
+        
         page_title()->setTitle(trans('core/base::layouts.menu'));
 
         return $dataTable->renderTable();

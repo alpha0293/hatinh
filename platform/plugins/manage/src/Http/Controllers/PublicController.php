@@ -71,6 +71,7 @@ class PublicController extends Controller
 
         if ($prefix == 'deanery') {
             $data = $this->deaneryRepository->getFirstBy(['id' => $slug->reference_id]);
+
             \SeoHelper::setTitle($data->name)
                 ->setDescription($data->name);
             do_action(BASE_ACTION_PUBLIC_RENDER_SINGLE, DEANERY_MODULE_SCREEN_NAME, $data);

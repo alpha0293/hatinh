@@ -16,6 +16,9 @@ use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
+use Botble\Manage\Models\Deanery;
+use Botble\Manage\Http\Requests\DeaneryRequest;
+use Botble\Manage\Repositories\Interfaces\DeaneryInterface;
 use Theme;
 use Throwable;
 
@@ -81,8 +84,10 @@ class Menu
      * @return mixed|null|string
      * @throws Throwable
      */
+   
     public function generateMenu($args = [])
     {
+        $data_deanery = app(DeaneryInterface::class)->getModel()->all();
         $slug = Arr::get($args, 'slug');
         if (!$slug) {
             return null;
@@ -92,12 +97,14 @@ class Menu
         $theme = Arr::get($args, 'theme', true);
 
         $cacheKey = md5('cache-menu-' . serialize($args));
+
         if (!$this->cache->has($cacheKey) || $this->config->get('packages.menu.general.cache.enabled') == false) {
             $parentId = Arr::get($args, 'parent_id', 0);
             $active = Arr::get($args, 'active', true);
 
             if ($slug instanceof Model) {
                 $menu = $slug;
+
                 if (empty($menu)) {
                     return null;
                 }
@@ -125,7 +132,8 @@ class Menu
                 ]);
             }
 
-            $data = compact('menu_nodes', 'menu');
+            $data = compact('menu_nodes', 'menu', 'data_deanery');
+
             $this->cache->put($cacheKey, $data);
             $this->nodes[$slug] = $data;
         } else {
@@ -134,6 +142,7 @@ class Menu
 
         $data['options'] = $this->html->attributes(Arr::get($args, 'options', []));
 
+               
         if ($theme && $view) {
             return Theme::partial($view, $data);
         }
