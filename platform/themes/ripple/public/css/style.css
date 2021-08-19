@@ -217,15 +217,14 @@ border-radius:0}
 color:#000}
 .navigation-toggle{position:relative;
 display:inline-block;
-width:30px;
-height:30px;
-margin-top:7px;
+width: 3em;
+height: 2em;
+margin: 0 2em;
 float: right;
 overflow:hidden}
 .navigation-toggle:after,.navigation-toggle:before,.navigation-toggle span{position:absolute;
 right:5px;
 height:2px;
-background-color:#fff;
 z-index:100;
 transition:all .4s ease}
 .navigation-toggle span{top:50%;
@@ -299,11 +298,11 @@ z-index:10}
 .social--white li:hover a{color:#fff;
 background-color:#ff2b4a;
 border-radius:3px}
-.social--simple a{display:inline-block;
-color:#fff;
-width:25px;
-height:25px;
-padding:10px}
+.social--simple a{display: inline-block;
+    color: #fff;
+    padding: 8px;
+    border-radius: 56px;
+    border: 1px solid;}
 .social--simple i{position:absolute;
 top:50%;
 left:50%;
@@ -874,12 +873,7 @@ display:none}
 opacity:1}
 .navigation--light .menu-item>a,.navigation--light .menu-item>a:after{color:#666}
 .navigation--light .menu-item:hover>a,.navigation--light .menu-item:hover>a:after{color:#ff2b4a}
-.page-header{position:relative;
-margin:0;
-border-bottom:0;
-background-color:rgba(0,0,0,.9);
-padding:2px 0;
-transition:all .4s ease-out}
+
 .page-header--search-active{padding-top:100px}
 .header--sticky{position:fixed;
 top:0;
@@ -910,7 +904,9 @@ padding:0 22px}
 color:#fff}
 .search-btn:hover{cursor:pointer}
 .navigation{float:left;
-margin-right:20px}
+margin: 0 auto;
+justify-content: center;
+align-content: stretch;}
 .page-header--light{background-color:#fff;
 border-bottom:1px solid #eee}
 .page-header--light .search-btn i{color:#f7fdff}
@@ -924,10 +920,10 @@ color:#e4e4e4}
 .page-footer__info .info__header p,.page-footer__info p{font-size:12px;
 font-style:italic;
 color:#999}
-.page-footer__bottom{position:relative;
-padding:20px 0 5px;
-text-align:left;
-background:#000}
+.page-footer__bottom{
+    text-align: center;
+    background: #000;
+    padding: 6px;}
 .page-footer__bottom .page-footer__social{text-align:right}
 @media screen and (max-width:767px){.page-footer__bottom{text-align:center}
 .page-footer__bottom .page-copyright{margin-bottom:10px}

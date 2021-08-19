@@ -1,52 +1,51 @@
-<footer data-background=""  class="page-footer bg-dark pt-50 bg-parallax" style=" background-image: url({{ Theme::asset()->url('images/vanhanh.jpg') }})  ;border-top: 2px solid white;">
+<footer class="page-footer pt-10 ">
 
-    <div class="bg-overlay"></div>
-    <div class="container-fluid">
+    <div class="container-fluid pb-10">
         <div class="row">
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <aside class="widget widget--transparent widget__footer widget__about">
-                    <div class="widget__content">
-                        <header class="person-info">
-                            <div class="person-info__thumbnail"><a href="{{ route('public.single') }}"><img src="{{ Theme::asset()->url('images/men.jpg') }}" alt="{{ theme_option('site_title') }}"></a></div>
-                            <div class="person-info__content">
-                                <h3 class="person-info__title">{{ theme_option('site_title') }}</h3>
-                                <p class="person-info__description">{{ theme_option('site_description') }}</p>
-                            </div>
-                        </header>
-                        <div class="person-detail">
-                            <p><i class="ion-home"></i>{{ theme_option('address') }}</p>
-                            <p><i class="ion-earth"></i><a href="{{ theme_option('website') }}">{{ theme_option('website') }}</a></p>
-                            <p><i class="ion-email"></i><a href="mailto:{{ theme_option('contact_email') }}">{{ theme_option('contact_email') }}</a></p>
-                        </div>
-                    </div>
-                </aside>
-            </div>
-            {!! dynamic_sidebar('footer_sidebar') !!}
-        </div>
-    </div>
-    <div class="page-footer__bottom">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-8 col-sm-6 col-xs-12">
-                    <div class="page-copyright">
-                        <p>{!! clean(theme_option('copyright')) !!}</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4 col-xs-12">
-                    <div class="page-footer__social">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-footer__social pull-right">
                         <ul class="social social--simple">
                             <li>
                                 <a href="{{ theme_option('facebook') }}" title="Facebook" class="hi-icon fa fa-facebook"></a>
-                            </li>
-                            <li>
-                                <a href="{{ theme_option('twitter') }}" title="Twitter" class="hi-icon fa fa-twitter"></a>
                             </li>
                             <li>
                                 <a href="{{ theme_option('youtube') }}" title="Youtube" class="hi-icon fa fa-youtube"></a>
                             </li>
                         </ul>
                     </div>
+            </div>
+            <div class="col-lg-12" >
+                <div class="col-md-6 col-sm-6 col-lg-6 col-xs-12 " >
+                    <div class="logo-foot" style="overflow: hidden;">
+                         <img src="{{ get_image_url(theme_option('logo')) }}">
+                    </div>
+                   
+                    
                 </div>
+                <div class="col-md-6 col-sm-6 col-lg-6 col-xs-12 info-foot" >
+                    <div class="info-foot">
+                        <h4 class="info-text">LIÊN HỆ</h4>
+                        <h5 class="info-text">Ban truyền thông Giáo Phận Hà Tĩnh</h5>
+                        <h5 class="info-text">{{ theme_option('address') }}</h5>
+                        <h5 class="info-text">0123456789 | 09819883784</h5>
+                        <h5 class="info-text">{{ theme_option('contact_email') }}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+
+            
+    </div>
+    <div class="page-footer__bottom">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-copyright">
+                        <p>{!! clean(theme_option('copyright')) !!}</p>
+                    </div>
+                </div>
+                
             </div>
         </div>
     </div>

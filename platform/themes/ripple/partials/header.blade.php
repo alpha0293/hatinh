@@ -7,7 +7,7 @@
                 <meta charset="utf-8">
                 <meta http-equiv="X-UA-Compatible" content="IE=edge">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <meta name="format-detection" content="telephone=no">
+                <meta name="format-detection" content="telephone=yes">
                 <meta name="apple-mobile-web-app-capable" content="yes">
 
                 <!-- Fonts-->
@@ -33,26 +33,28 @@
                     <!--[if IE 9]><body class="ie9 lt-ie10"><![endif]-->
                         <body>
                             
-                            <div class="headers">
-                                <div class="mxh">
-                                    <i class="glyphicon glyphicon-chevron-right ttw-share-activate-button"></i>
-                                    <div class="mxh-content">
-                                      <ul class="social-share-wrapper social-share-wrapper-active social-share-wrapper-shadow">
-                                        <li>
-                                         <a href="{{ theme_option('facebook') }}" title="Facebook" class=""> <img src="{{ Theme::asset()->url('images/fb.ico') }}" alt="Facebook"></a> 
-                                     </li>
-                                     <li>
-                                        <a href="{{ theme_option('youtube') }}" title="Youtube" class=""><img src="{{ Theme::asset()->url('images/yt.ico') }}" alt="Youtube"></a>
-                                    </li>
-                                </ul>  
+                        <div class="headers">
+                            <div class="divlogo">
+                                <img class="logo" src="{{ get_image_url(theme_option('logo')) }}" alt="GP Hà Tĩnh" >
                             </div>
-                        </div>
-                        
-                        <div class="header-top" style="height: 30px; background-color: #29412f ;">
+                        <div class="header-top">
+
                             <!-- ngon ngu -->
+
                             <div class="lang-login">
-                                @if (is_plugin_active('member'))
-                                <ul class="pull-left">
+                                <!-- SEARCH-->
+                                <div id="search-wrapper" class="pull-left active-search">
+                                    <form class="quick-search" action="{{route('public.search') }}">
+                                        <input type="text" id="search" name="q" placeholder="{{ __('Type to search...') }}" class=" search-input" autocomplete="off">
+                                        <div id="close-icon"></div>
+                                    </form>
+                                </div>
+                                <div class="language-wrapper">
+                                    {!! apply_filters('language_switcher') !!}
+                                </div>
+                            </div> 
+                           <!--  @if (is_plugin_active('member'))
+                                <ul class="pull-right login">
                                     @if (Auth::guard('member')->check())
                                     <li><a href="{{ route('public.member.dashboard') }}" rel="nofollow"><i class="fa fa-user"></i> <span>{{ Auth::guard('member')->user()->getFullName() }}</span></a></li>
                                     <li><a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" rel="nofollow"><i class="fa fa-sign-out"></i> {{ __('Logout') }}</a></li>
@@ -65,35 +67,18 @@
                                     @csrf
                                 </form>
                                 @endauth
-                                @endif
-                                <div class="language-wrapper">
-                                    {!! apply_filters('language_switcher') !!}
-                                </div>
-                            </div>  
-                            <!-- het ngon ngu -->
+                                @endif 
+                             het ngon ngu  -->
+                            
                         </div>
-                            <div class="container-fluid">
-                                <div class="banner" style="height: 120px; background-image: url({{ Theme::asset()->url('images/header.png') }}); background-size: cover;">
-                                <img class="logo" style="max-width: 86px;" src="{{ get_image_url(theme_option('logo')) }}" alt="GP Hà Tĩnh" height="80">
-                                <div class="giammuc">
-                                    <img src="{{ Theme::asset()->url('images/duccha.png') }}">
-                                </div>
-                            </div>
-                        </div>
-                        <header data-sticky="false" data-sticky-checkpoint="200" data-responsive="991" class="page-header page-header--light">
-                            <div class="container-fluid">
-                                <!-- LOGO-->
-                                <img class="logo" style="display: none; max-width: 45px;" src="{{ get_image_url(theme_option('logo')) }}" alt="GP Hà Tĩnh">
-                                <!-- SEARCH-->
+                            
+                        <header data-sticky="false" data-sticky-checkpoint="200" data-responsive="991" class="page-header">
+                            <div class="container-fluid menu-head">
                                
-                                <div id="search-wrapper" class="pull-right active-search">
-                                <form class="quick-search" action="{{route('public.search') }}">
-                                    <input type="text" id="search" name="q" placeholder="{{ __('Type to search...') }}" class=" search-input" autocomplete="off">
-                                    <div id="close-icon"></div>
-                                    
-                                </form>
-
-                            </div>
+                                 <div class="social-net pull-right">
+                                    <a class="facebook" href="{{ theme_option('facebook') }}"> FACEBOOK |</a>
+                                    <a class="youtube" href="{{ theme_option('youtube') }}">YOUTUBE</a>
+                                </div>
                                 <!-- mobile -->
                                 <div class="navigation-toggle navigation-toggle--dark"><span></span>
                                 </div>
@@ -110,7 +95,7 @@
                                     !!}
                                 </nav>
                                 <!-- het menu -->
-
+                               
                                 <div class="clearfix"></div>  
                             </div>
 
@@ -122,5 +107,6 @@
                             @endif
                         </header>
                     </div>
+                   
                     <div id="page-wrap">
 
