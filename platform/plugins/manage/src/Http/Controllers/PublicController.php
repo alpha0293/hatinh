@@ -131,5 +131,18 @@ class PublicController extends Controller
         return Theme::scope('deanery.list', compact('data'))->render();
     }
 
+    public function getLichPV()
+    {
+        $month = date("m");
+        $data = Lichpv::all()->where('name',$month);
+        // dd($data);
+        if (!empty($data)) {
+            return Theme::scope('lichpv.index', compact('data'))->render();
+            return $data;
+        }
+        return 'Chưa có lịch PV cho tháng này!!!';
+
+    }
+
 
 }

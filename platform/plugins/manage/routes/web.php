@@ -88,4 +88,9 @@ Route::group(['namespace' => 'Botble\Manage\Http\Controllers', 'middleware' => '
 
     });
 
+    Route::get('/lichpv', [
+            'as' => 'getLichPV',
+            'uses' => 'PublicController@getLichPV',
+        ]);
+
 });
