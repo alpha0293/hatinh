@@ -48,6 +48,15 @@ Route::group(['namespace' => 'Botble\Manage\Http\Controllers', 'middleware' => '
                 'permission' => 'manage.destroy',
             ]);
         });
+
+        Route::group(['prefix' => 'lichpvs', 'as' => 'lichpv.'], function () {
+            Route::resource('', 'LichpvController')->parameters(['' => 'lichpv']);
+            Route::delete('items/destroy', [
+                'as'         => 'deletes',
+                'uses'       => 'LichpvController@deletes',
+                'permission' => 'lichpv.destroy',
+            ]);
+        });
     });
 
     //route for slug
@@ -71,8 +80,17 @@ Route::group(['namespace' => 'Botble\Manage\Http\Controllers', 'middleware' => '
 
         Route::get('/deanery', [
             'uses' => 'PublicController@getAllDeanery',
-        ])->name('deanery');;
+        ])->name('deanery');
+
+        Route::get('/lichpv/{slug}', [
+            'uses' => 'PublicController@getBySlug',
+        ]);
 
     });
+
+    Route::get('/lichpv', [
+            'as' => 'getLichPV',
+            'uses' => 'PublicController@getLichPV',
+        ]);
 
 });

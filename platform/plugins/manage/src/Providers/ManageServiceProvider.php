@@ -7,6 +7,7 @@ use Botble\Manage\Models\Deanery;
 use Botble\Manage\Models\Parish;
 use Botble\Manage\Models\Priest;
 use Botble\Manage\Models\History;
+use Botble\Manage\Models\Lichpv;
 use Illuminate\Support\ServiceProvider;
 use Botble\Manage\Repositories\Caches\ManageCacheDecorator;
 use Botble\Manage\Repositories\Eloquent\ManageRepository;
@@ -63,6 +64,12 @@ class ManageServiceProvider extends ServiceProvider
             );
         });
 
+        $this->app->bind(\Botble\Manage\Repositories\Interfaces\LichpvInterface::class, function () {
+            return new \Botble\Manage\Repositories\Caches\LichpvCacheDecorator(
+                new \Botble\Manage\Repositories\Eloquent\LichpvRepository(new \Botble\Manage\Models\Lichpv)
+            );
+        });
+
         Helper::autoload(__DIR__ . '/../../helpers');
     }
 
@@ -88,6 +95,7 @@ class ManageServiceProvider extends ServiceProvider
                 \Language::registerModule([\Botble\Manage\Models\Priest::class]);
                 \Language::registerModule([\Botble\Manage\Models\Parish::class]);
                 \Language::registerModule([\Botble\Manage\Models\History::class]);
+                \Language::registerModule([\Botble\Manage\Models\Lichpv::class]);
             }
 
             dashboard_menu()->registerItem([
@@ -139,6 +147,15 @@ class ManageServiceProvider extends ServiceProvider
                 'url'         => route('history.index'),
                 'permissions' => ['history.index'],
             ]);
+            dashboard_menu()->registerItem([
+                'id'          => 'cms-plugins-lichpv',
+                'priority'    => 0,
+                'parent_id'   => 'cms-plugins-manage',
+                'name'        => 'plugins/manage::lichpv.name',
+                'icon'        => null,
+                'url'         => route('lichpv.index'),
+                'permissions' => ['lichpv.index'],
+            ]);
         });
 
         //add slug
@@ -168,6 +185,10 @@ class ManageServiceProvider extends ServiceProvider
                         ];
                     });
             }
+
+            //slug for LICH PV
+            SlugHelper::registerModule(Lichpv::class);
+            SlugHelper::setPrefix(Lichpv::class, 'lichpv');
         });
 
         \Gallery::registerModule([History::class]);

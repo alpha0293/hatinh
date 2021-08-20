@@ -19,3 +19,7 @@ if (!defined('PARISH_MODULE_SCREEN_NAME')) {
 if (!defined('HISTORY_MODULE_SCREEN_NAME')) {
     define('HISTORY_MODULE_SCREEN_NAME', 'history');
 }
+
+if (!defined('LICHPV_MODULE_SCREEN_NAME')) {
+    define('LICHPV_MODULE_SCREEN_NAME', 'lichpv');
+}

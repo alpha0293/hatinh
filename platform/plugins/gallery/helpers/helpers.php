@@ -86,3 +86,21 @@ if (!function_exists('render_object_gallery')) {
         return view('plugins/gallery::partials.object-gallery', compact('galleries', 'category'))->render();
     }
 }
+
+if (!function_exists('gallery_home_slide')) {
+    /**
+     * @param array $condition
+     * @return Collection
+     */
+    function gallery_home_slide()
+    {
+        $object = app(GalleryInterface::class)->all()->where('name','GX Trại Lê')->pluck('id');
+        $meta = app(GalleryMetaInterface::class)->all()->where('reference_id',$object->first());
+        $link = ($meta->first()->images);
+        return $link;
+        if (!empty($meta)) {
+            return $meta->first()->images ?? [];
+        }
+        return [];
+    }
+}
