@@ -135,10 +135,8 @@ class PublicController extends Controller
     {
         $month = date("m");
         $data = Lichpv::all()->where('name',$month);
-        // dd($data);
-        if (!empty($data)) {
+        if (!count($data) == 0) {
             return Theme::scope('lichpv.index', compact('data'))->render();
-            return $data;
         }
         return 'Chưa có lịch PV cho tháng này!!!';
 
