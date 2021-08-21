@@ -65,7 +65,7 @@ theme_option()
         'label'      => __('Site description'),
         'attributes' => [
             'name'    => 'site_description',
-            'value'   => __('A young team in Vietnam'),
+            'value'   => __('A young diocese in Vietnam'),
             'options' => [
                 'class'        => 'form-control',
                 'data-counter' => 255,
@@ -89,7 +89,7 @@ theme_option()
         'label'      => __('Address'),
         'attributes' => [
             'name'    => 'address',
-            'value'   => __('Go Vap District, HCM City, Vietnam'),
+            'value'   => theme_option('website')  ?? 'Văn Hạnh - Thạch Trung - tp. Hà Tĩnh - Hà Tĩnh ',
             'options' => [
                 'class'        => 'form-control',
                 'data-counter' => 255,
@@ -103,7 +103,7 @@ theme_option()
         'label'      => __('Website'),
         'attributes' => [
             'name'    => 'website',
-            'value'   => null,
+            'value'   =>  theme_option('website')  ?? null,
             'options' => [
                 'class'        => 'form-control',
                 'data-counter' => 255,
@@ -117,7 +117,35 @@ theme_option()
         'label'      => __('Email'),
         'attributes' => [
             'name'    => 'contact_email',
-            'value'   => null,
+            'value'   =>  theme_option('contact_email')  ?? null,
+            'options' => [
+                'class'        => 'form-control',
+                'data-counter' => 120,
+            ],
+        ],
+    ])
+    ->setField([
+        'id'         => 'numberphone',
+        'section_id' => 'opt-text-subsection-general',
+        'type'       => 'text',
+        'label'      => __('Số điện thoại'),
+        'attributes' => [
+            'name'    => 'numberphone',
+            'value'   =>  theme_option('numberphone')  ?? null,
+            'options' => [
+                'class'        => 'form-control',
+                'data-counter' => 120,
+            ],
+        ],
+    ])
+    ->setField([
+        'id'         => 'telephone',
+        'section_id' => 'opt-text-subsection-general',
+        'type'       => 'text',
+        'label'      => __('Số điện thoại khác'),
+        'attributes' => [
+            'name'    => 'telephone',
+            'value'   =>  theme_option('telephone')  ?? null,
             'options' => [
                 'class'        => 'form-control',
                 'data-counter' => 120,

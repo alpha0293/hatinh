@@ -47,8 +47,8 @@
             autoplay: true,
             autoplayTimeout: 4000, // Autoplay Timeout 1s = 1000ms
             smartSpeed: 1000,
-            animateIn: 'fadeIn',
-            animateOut: 'fadeOut'
+            animateIn: 'fade-right',
+            animateOut: 'fade-left'
         });
 
         $('.hero-post-slide').owlCarousel({

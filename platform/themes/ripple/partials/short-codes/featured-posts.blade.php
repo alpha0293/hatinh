@@ -17,10 +17,10 @@
                     <span><i class="fa fa-circle"></i></span> 
                 </div>  
             </div>
-            <div class="col-md-12 col-sm-12 col-lg-12">
                 <div class="row noibat-home">
                @foreach($featured as $feat)
-               <div class="col-md-4 col-lg-4 col-sm-4">
+               <div class="col-md-4 col-lg-4 col-sm-4 col-nb">
+
                 <div class="feat-col">
                     <a href="{{ $feat->url }}">
                         <img class="feat-thumb" src="{{ get_object_image($feat->image, 'medium') }}" alt="">
@@ -34,7 +34,6 @@
                     
                </div>
                @endforeach
-            </div>
             </div>
             
            

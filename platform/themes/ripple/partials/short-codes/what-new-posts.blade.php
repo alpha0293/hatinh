@@ -1,4 +1,6 @@
-
+<?php 
+$tg = gallery_home_slide();
+ ?>
 
 <section class="section slider-home "  >
        <div class="hero-area">
@@ -12,18 +14,22 @@
   
     </div>  -->
     <!-- Hero Post Slide -->
-   
+  
     
     <div class="hero-post-area">
         <div class="container-fluid">
             <!-- row -->
             <div class="">
-                <div class="hero-slides">
+                <div class="slider">
+                   <ul class="slider__list">
+                    @foreach($tg as $lg)
 
-                    <img class="single-hero-slide img-home-slider" src="{{ Theme::asset()->url('images/men.jpg') }}">
-                    <img class="single-hero-slide img-home-slider" src="{{ Theme::asset()->url('images/vanhanh.jpg') }}">
 
-                </div> 
+                      <li class="slider__slide"><img  class="img-home-slider" src="{{ get_object_image($lg['img']) }}" alt="Slide image number 1 with plane" /></li>
+                      @endforeach
+                  </ul>
+
+              </div>
                 <div class="col-12">
                     <div class="hero-post-slide">
                         @foreach (get_latest_posts(5,[]) as $post)

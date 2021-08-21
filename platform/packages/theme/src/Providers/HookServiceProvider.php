@@ -55,6 +55,22 @@ class HookServiceProvider extends ServiceProvider
                             ],
                         ],
                     ],
+                    // them anh slide
+                     [
+                        'id'         => 'home_slide_image',
+                        'section_id' => 'opt-text-subsection-general',
+                        'type'       => 'select',
+                        'label'      => 'Chọn danh sách ảnh slider trang chủ',
+                        'attributes' => [
+                            'name'    => 'home_slide_image',
+                            'list'    => get_list_all_galleries(),
+                            'value'   => theme_option('home_slide_image')??'0',
+                            'options' => [
+                                'class' => 'form-control',
+                            ],
+                        ],
+                    ], 
+                    // them anh slide
                     [
                         'id'         => 'seo_title',
                         'type'       => 'text',
@@ -106,6 +122,15 @@ class HookServiceProvider extends ServiceProvider
                         'label'      => __('Logo'),
                         'attributes' => [
                             'name'  => 'logo',
+                            'value' => null,
+                        ],
+                    ],
+                    [
+                        'id'         => 'small_logo',
+                        'type'       => 'mediaImage',
+                        'label'      => __('Logo Nhỏ'),
+                        'attributes' => [
+                            'name'  => 'small_logo',
                             'value' => null,
                         ],
                     ],

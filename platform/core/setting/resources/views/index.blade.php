@@ -77,10 +77,10 @@
                         </div>
                         <div class="form-group">
                             <label class="text-title-field"
-                                   for="admin-logo">Chọn ảnh Banner (Kích thước: H(>=1140px); W(120px))
+                                   for="admin-logo">Chọn ảnh logo nhỏ
                             </label>
                             <div class="">
-                                {!! Form::mediaImage('banner', setting('banner'), ['allow_thumb' => false]) !!}
+                                {!! Form::mediaImage('small_logo', setting('small_logo'), ['allow_thumb' => false]) !!}
                             </div>
                         </div>
                         <div class="form-group">

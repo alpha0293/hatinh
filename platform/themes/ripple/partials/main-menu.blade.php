@@ -19,7 +19,7 @@
     
     @endif
     @else
-    <li class="menu-item @if ($row->has_child) menu-item-has-children @endif {{ $row->css_class }} @if ($row->url == Request::url()) active @endif">
+    <li class="menu-item @if ($row->has_child) menu-item-has-children @endif {{ $row->css_class }} @if ($row->url == Request::url())  @endif">
         <a href="{{ $row->url }}" target="{{ $row->target }}">
             @if ($row->icon_font)<i class='{{ trim($row->icon_font) }}'></i> @endif{{ $row->title }}
         </a>

@@ -27,7 +27,7 @@
                         <h4 class="info-text">LIÊN HỆ</h4>
                         <h5 class="info-text">Ban truyền thông Giáo Phận Hà Tĩnh</h5>
                         <h5 class="info-text">{{ theme_option('address') }}</h5>
-                        <h5 class="info-text">0123456789 | 09819883784</h5>
+                        <h5 class="info-text">{{ theme_option('numberphone') }} | {{ theme_option('telephone') }}</h5>
                         <h5 class="info-text">{{ theme_option('contact_email') }}</h5>
                     </div>
                 </div>
