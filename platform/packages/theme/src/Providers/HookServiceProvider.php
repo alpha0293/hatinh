@@ -136,6 +136,7 @@ class HookServiceProvider extends ServiceProvider
                     ],
                 ],
             ]);
+            
     }
 
     /**

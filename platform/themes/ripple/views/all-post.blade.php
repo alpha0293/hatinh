@@ -1,348 +1,287 @@
-
+@php
+        $featured = get_featured_posts(6);
+        $featuredList = [];
+        if (!empty($featured)) {
+            $featuredList = $featured->pluck('id')->all();
+        }
+        $index=0;
+    @endphp
+@if (!empty($featured))
 <div class="col-12">
-    <div class="world-catagory-slider owl-carousel wow fadeInUpBig" data-wow-delay="0.1s">
-       @foreach($recent_post as $recent)
-       <!-- Single Blog Post -->
-       <div class="single-blog-post">
-        <!-- Post Thumbnail -->
-        <div class="post-thumbnail" style="background-image: url({{ get_object_image($recent->image, 'medium') }}); background-size: cover; height: 250px;">
-           
-            <!-- Catagory -->
-            <div class="post-cta"><a href="#">{{ $recent->categories->first()->name }}</a></div>
+    <div id="example5" class="slider-pro">
+        <div class="sp-slides">
+            @foreach ($featured as $post)
+            
+                <div class="sp-slide">
+                    <img class="sp-image"
+                    data-src="{{ get_object_image($post->image) }}"
+                    data-retina="{{ get_object_image($post->image) }}"/>
+
+                    <a href="{{ route('public.single', $post->slug) }}">
+                        <div class="sp-caption">{{ $post->name }}</div>
+                    </a>
+                </div>
+            
+            @endforeach
         </div>
-        <!-- Post Content -->
-        <div class="post-content">
-            <a href="#" class="headline">
-                <h5>{{$recent->name}}</h5>
+        <div class="sp-thumbnails">
+            @foreach ($featured as $post)
+            <a href="{{ route('public.single', $post->slug) }}">
+                <div class="sp-thumbnail">
+                    <div class="sp-thumbnail-image-container">
+                        <img class="sp-thumbnail-image" src="{{ get_object_image($post->image) }}"/>
+                    </div>
+                    <div class="sp-thumbnail-text">
+                        <div class="sp-thumbnail-description">{{ $post->name }}</div>
+                    </div>
+                </div>   
             </a>
+            
+            @endforeach
         </div>
     </div>
-    @endforeach
-
 </div>
-</div>
-<div class="col-12 mt-50">
+@endif
+@if ($posts->count() > 0)
+<?php 
+ $category1 = get_posts_by_category(theme_option('category1'));
+ $category2 = get_posts_by_category(theme_option('category2'));
+ $category3 = get_posts_by_category(theme_option('category3'));
+ if (!empty($category1->first())) {
+     $not1 = $category1->first()->categories->first()->id;
+ }else $not1='';
+ if (!empty($category2->first())) {
+     $not2 = $category2->first()->categories->first()->id;
+ }else $not2='';
+ if (!empty($category3->first())) {
+     $not3 = $category3->first()->categories->first()->id;
+ }else $not3='';
+ $category4 = get_posts_not_category([$not1,$not2,$not3]);
+ ?>
     <!-- ============= Post Content Area Start ============= -->
     <!-- Catagory Area -->
-
-    <div class="tab-content" id="myTabContent">
+    @if(!empty($category1->first()))
+    <div class="col-12 mt-50">
         <div class="row">
-           <h4 class="clearfix vi-header wow fadeInUpBig" data-wow-delay="0.2s"><a class="vi-left-title pull-left" href="#"> Tin Giáo Phận</a></h4>
+           <h4 class="clearfix vi-header wow fadeInUpBig ml-15 mr-15" data-wow-delay="0.2s"><a class="vi-left-title pull-left" href="#"> {{ $category1->first()->categories->first()->name }}</a></h4>
+           @foreach($category1 as $post)
+           @if ($loop->first)
             <div class="col-12 col-md-6">
-                <div class="world-catagory-slider owl-carousel wow fadeInUpBig" data-wow-delay="0.1s">
+                <div class="wow fadeInUpBig" data-wow-delay="0.1s">
                     <!-- Single Blog Post -->
                     <div class="single-blog-post">
                         <!-- Post Thumbnail -->
                         <div class="post-thumbnail">
-                            <img src="{{ Theme::asset()->url('images/vanhanh.jpg') }}" alt="">
+                            <img src="{{get_object_image($post->image, 'medium')}}" alt="">
                             <!-- Catagory -->
-                            <div class="post-cta"><a href="#">travel</a></div>
                         </div>
                         <!-- Post Content -->
                         <div class="post-content">
-                            <a href="#" class="headline">
-                                <h5>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</h5>
+                            <a href="{{ $post->url }}" class="headline">
+                                <h5>{{$post->name}}</h5>
                             </a>
-                            <p>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in...</p>
+                            <p>{{$post->description}}</p>
                             <!-- Post Meta -->
                             <div class="post-meta">
-                                <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Blog Post -->
-                    <div class="single-blog-post">
-                        <!-- Post Thumbnail -->
-                        <div class="post-thumbnail">
-                            <img src="img/blog-img/b2.jpg" alt="">
-                            <!-- Catagory -->
-                            <div class="post-cta"><a href="#">travel</a></div>
-                        </div>
-                        <!-- Post Content -->
-                        <div class="post-content">
-                            <a href="#" class="headline">
-                                <h5>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</h5>
-                            </a>
-                            <p>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in...</p>
-                            <!-- Post Meta -->
-                            <div class="post-meta">
-                                <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Blog Post -->
-                    <div class="single-blog-post">
-                        <!-- Post Thumbnail -->
-                        <div class="post-thumbnail">
-                            <img src="img/blog-img/b3.jpg" alt="">
-                            <!-- Catagory -->
-                            <div class="post-cta"><a href="#">travel</a></div>
-                        </div>
-                        <!-- Post Content -->
-                        <div class="post-content">
-                            <a href="#" class="headline">
-                                <h5>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</h5>
-                            </a>
-                            <p>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in...</p>
-                            <!-- Post Meta -->
-                            <div class="post-meta">
-                                <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
+                                <p> <a href="#" class="post-date">{{ date_from_database($post->created_at, 'M d, Y') }}</a></p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-12 col-md-6">
+                @else
                 <!-- Single Blog Post -->
                 <div class="single-blog-post post-style-2 d-flex align-items-center wow fadeInUpBig" data-wow-delay="0.2s">
                     <div class="col-xs-3 col-sm-3 col-lg-3 col-md-3 singpost">
                      <!-- Post Thumbnail -->
                      <div class="post-thumbnail">
-                        <img src="{{ Theme::asset()->url('images/vanhanh.jpg') }}" alt="">
+                        <img src="{{get_object_image($post->image, 'medium')}}" alt="">
                     </div> 
                 </div>
                 <div class="col-xs-9 col-sm-9 col-lg-9 col-md-9 ">
                     <!-- Post Content -->
                     <div class="post-content">
                         <a href="#" class="headline">
-                            <h5>How Did van Gogh’s Turbulent Mind Depict One of the Most</h5>
+                            <h5>{{$post->name}}</h5>
                         </a>
                     </div>
                 </div> 
             </div>
+            @endif
+            @if ($loop->last)
         </div>
+        @endif
+        @endforeach
     </div>
 </div>
-</div>
+    @endif
+@if(!empty($category2->first())||!empty($category3->first()))
 <div class="col-12">
     <!-- Catagory Area -->
     <div class="world-catagory-area mt-50">
         <div class="tab-content">
             <div class="row">
+                @if(!empty($category2->first()))
+                @foreach($category2 as $post)
+                 @if ($loop->first)
                 <div class="col-12 col-md-6">
-                    <h4 class="clearfix vi-header wow fadeInUpBig" data-wow-delay="0.2s"><a class="vi-left-title pull-left" href="#">Giáo hội hoàn vũ</a></h4>
+                    <h4 class="clearfix vi-header wow fadeInUpBig" data-wow-delay="0.2s"><a class="vi-left-title pull-left" href="#"> {{ $post->categories->first()->name }}</a></h4>
                     <!-- Single Blog Post -->
                     <div class="single-blog-post wow fadeInUpBig" data-wow-delay="0.2s">
                         <!-- Post Thumbnail -->
                         <div class="post-thumbnail">
-                            <img src="{{ Theme::asset()->url('images/vanhanh.jpg') }}" alt="">
+                            <a href="{{ $post->url }}">
+                                <img src="{{get_object_image($post->image, 'medium')}}" alt="">
+                            </a>
+                            
                             <!-- Catagory -->
-                            <div class="post-cta"><a href="#">travel</a></div>
                         </div>
                         <!-- Post Content -->
                         <div class="post-content">
-                            <a href="#" class="headline">
-                                <h5>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</h5>
+                            <a href="{{ $post->url }}" class="headline">
+                                <h5>{{$post->name}}</h5>
                             </a>
-                            <p>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in...</p>
+                            <p>{{$post->description}}</p>
                             <!-- Post Meta -->
                             <div class="post-meta">
-                                <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
+                                <p> <a href="" class="post-date">{{ date_from_database($post->created_at, 'M d, Y') }}</a></p>
                             </div>
                         </div>
                     </div>
-                    <div class="slide">
-                        @for($i=1;$i<=4;$i++)
-                        @if($i%2!=0)
-                        <div class="world-catagory-slider2 owl-carousel wow fadeInUpBig" data-wow-delay="0.4s">
-                            <!-- ========= Single Catagory Slide ========= -->
-                            <div class="single-cata-slide">
-                                <div class="row">
-                                    <div class="">
-                                        <!-- Single Blog Post -->
-                                        <div class="single-blog-post post-style-2 d-flex align-items-center mb-1">
-                                            <!-- Post Thumbnail -->
-                                            <div class="col-xs-3 col-sm-3 col-lg-3 col-md-3">
-                                             <div class="post-thumbnail">
-                                                <img src="{{ Theme::asset()->url('images/vanhanh.jpg') }}" alt="">
-                                            </div> 
-                                        </div>
-                                        <!-- Post Content -->
-                                        <div class="col-xs-9 col-sm-9 col-lg-9 col-md-9">
-                                            <div class="post-content">
-                                                {{$i}}
-                                                <a href="#" class="headline">
-                                                    <h5>How Did van Gogh’s Turbulent Mind Depict One of the Most</h5>
-                                                </a>
-                                                <!-- Post Meta -->
-                                                <div class="post-meta">
-                                                    <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="clearfix wow fadeInUpBig" data-wow-delay="0.4s">
+                        @else
+                <!-- Single Blog Post -->
+                        <div class="single-blog-post post-style-2 d-flex align-items-center">
+                            <div class="col-xs-3 col-sm-3 col-lg-3 col-md-3 singpost">
+                             <!-- Post Thumbnail -->
+                             <div class="post-thumbnail">
+                                
+                                    <img src="{{get_object_image($post->image, 'medium')}}" alt="">
+                             
+                                
+                            </div> 
                         </div>
-                        <!-- ========= Single Catagory Slide ========= -->
-                        <div class="single-cata-slide">
-                            <div class="row">
-                                <div class="">
-                                    <!-- Single Blog Post -->
-                                    <div class="single-blog-post post-style-2 d-flex align-items-center mb-1">
-                                        <!-- Post Thumbnail -->
-                                        <div class="col-xs-3 col-sm-3 col-lg-3 col-md-3 singpost">
-                                         <div class="post-thumbnail">
-                                            <img src="{{ Theme::asset()->url('images/vanhanh.jpg') }}" alt="">
-                                        </div> 
-                                    </div>
-                                    <!-- Post Content -->
-                                    <div class="col-xs-9 col-sm-9 col-lg-9 col-md-9">
-                                        <div class="post-content">
-                                            {{$i+1}}
-                                            uuu
-                                            <a href="#" class="headline">
-                                                <h5>How Did van Gogh’s Turbulent Mind Depict One of the Most</h5>
-                                            </a>
-                                            <!-- Post Meta -->
-                                            <div class="post-meta">
-                                                <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="col-xs-9 col-sm-9 col-lg-9 col-md-9 ">
+                            <!-- Post Content -->
+                            <div class="post-content">
+                                <a href="{{ $post->url }}" class="headline">
+                                    <h5>{{$post->name}}</h5>
+                                </a>
+                            </div>
+                        </div> 
+                    </div>
+                     @endif
+                     @if ($loop->last)
+                    </div>
+
+
+</div>
+@endif
+@endforeach
+@endif
+ @if(!empty($category3->first()))
+                @foreach($category3 as $post)
+                 @if ($loop->first)
+                <div class="col-12 col-md-6">
+                    <h4 class="clearfix vi-header wow fadeInUpBig" data-wow-delay="0.2s"><a class="vi-left-title pull-left" href="#"> {{ $post->categories->first()->name }}</a></h4>
+                    <!-- Single Blog Post -->
+                    <div class="single-blog-post wow fadeInUpBig" data-wow-delay="0.2s">
+                        <!-- Post Thumbnail -->
+                        <div class="post-thumbnail">
+                            <a href="{{ $post->url }}">
+                                <img src="{{get_object_image($post->image, 'medium')}}" alt="">
+                            </a>
+                            
+                            <!-- Catagory -->
+                        </div>
+                        <!-- Post Content -->
+                        <div class="post-content">
+                            <a href="{{ $post->url }}" class="headline">
+                                <h5>{{$post->name}}</h5>
+                            </a>
+                            <p>{{$post->description}}</p>
+                            <!-- Post Meta -->
+                            <div class="post-meta">
+                                <p> <a href="" class="post-date">{{ date_from_database($post->created_at, 'M d, Y') }}</a></p>
                             </div>
                         </div>
                     </div>
-                </div>
-                @endif
-                @endfor
-
-    </div>
-
-
-</div>
-
-<div class="col-12 col-md-6">
-    <h4 class="clearfix vi-header wow fadeInUpBig" data-wow-delay="0.2s"><a class="vi-left-title pull-left" href="#">Giáo hội Việt Nam</a></h4>
-    <!-- Single Blog Post -->
-    <div class="single-blog-post wow fadeInUpBig" data-wow-delay="0.3s">
-        
-        <!-- Post Thumbnail -->
-        <div class="post-thumbnail">
-            <img src="img/blog-img/b3.jpg" alt="">
-            <!-- Catagory -->
-            <div class="post-cta"><a href="#">travel</a></div>
-        </div>
-        <!-- Post Content -->
-        <div class="post-content">
-            <a href="#" class="headline">
-                <h5>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</h5>
-            </a>
-            <p>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in...</p>
-            <!-- Post Meta -->
-            <div class="post-meta">
-                <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-            </div>
-        </div>
-    </div>
-    <div class="slide">
-                        @for($i=1;$i<=4;$i++)
-                        @if($i%2!=0)
-                        <div class="world-catagory-slider2 owl-carousel wow fadeInUpBig" data-wow-delay="0.4s">
-                            <!-- ========= Single Catagory Slide ========= -->
-                            <div class="single-cata-slide">
-                                <div class="row">
-                                    <div class="">
-                                        <!-- Single Blog Post -->
-                                        <div class="single-blog-post post-style-2 d-flex align-items-center mb-1">
-                                            <!-- Post Thumbnail -->
-                                            <div class="col-xs-3 col-sm-3 col-lg-3 col-md-3">
-                                             <div class="post-thumbnail">
-                                                <img src="{{ Theme::asset()->url('images/vanhanh.jpg') }}" alt="">
-                                            </div> 
-                                        </div>
-                                        <!-- Post Content -->
-                                        <div class="col-xs-9 col-sm-9 col-lg-9 col-md-9">
-                                            <div class="post-content">
-                                                {{$i}}
-                                                <a href="#" class="headline">
-                                                    <h5>How Did van Gogh’s Turbulent Mind Depict One of the Most</h5>
-                                                </a>
-                                                <!-- Post Meta -->
-                                                <div class="post-meta">
-                                                    <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="clearfix wow fadeInUpBig" data-wow-delay="0.4s">
+                        @else
+                <!-- Single Blog Post -->
+                        <div class="single-blog-post post-style-2 d-flex align-items-center">
+                            <div class="col-xs-3 col-sm-3 col-lg-3 col-md-3 singpost">
+                             <!-- Post Thumbnail -->
+                             <div class="post-thumbnail">
+                                
+                                    <img src="{{get_object_image($post->image, 'medium')}}" alt="">
+                             
+                                
+                            </div> 
                         </div>
-                        <!-- ========= Single Catagory Slide ========= -->
-                        <div class="single-cata-slide">
-                            <div class="row">
-                                <div class="">
-                                    <!-- Single Blog Post -->
-                                    <div class="single-blog-post post-style-2 d-flex align-items-center mb-1">
-                                        <!-- Post Thumbnail -->
-                                        <div class="col-xs-3 col-sm-3 col-lg-3 col-md-3 singpost">
-                                         <div class="post-thumbnail">
-                                            <img src="{{ Theme::asset()->url('images/vanhanh.jpg') }}" alt="">
-                                        </div> 
-                                    </div>
-                                    <!-- Post Content -->
-                                    <div class="col-xs-9 col-sm-9 col-lg-9 col-md-9">
-                                        <div class="post-content">
-                                            {{$i+1}}
-                                            uuu
-                                            <a href="#" class="headline">
-                                                <h5>How Did van Gogh’s Turbulent Mind Depict One of the Most</h5>
-                                            </a>
-                                            <!-- Post Meta -->
-                                            <div class="post-meta">
-                                                <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="col-xs-9 col-sm-9 col-lg-9 col-md-9 ">
+                            <!-- Post Content -->
+                            <div class="post-content">
+                                <a href="{{ $post->url }}" class="headline">
+                                    <h5>{{$post->name}}</h5>
+                                </a>
                             </div>
-                        </div>
+                        </div> 
                     </div>
-                </div>
-                @endif
-                @endfor
-
-    </div>
-</div>
-
-</div>
+                     @endif
+                     @if ($loop->last)
+                    </div>
 
 
 </div>
+@endif
+@endforeach
+@endif
+
+</div>
+
+
 </div>
 </div>
+</div>
+@endif
+@if(!empty($category4->first()))
 <div class="col-12 mt-50">
     <div class="row justify-content-center">
-        <div class="row">
-            <h4 class="clearfix vi-header wow fadeInUpBig" data-wow-delay="0.2s"><a class="vi-left-title pull-left" href="#">Tin tổng hợp</a></h4>
+            <h4 class="clearfix vi-header wow fadeInUpBig ml-15 mr-15" data-wow-delay="0.2s"><a class="vi-left-title pull-left" href="#">Các bài tin khác</a></h4>
                 <!-- ========== Single Blog Post ========== -->
-                @for($i=0;$i<6;$i++)
+                @foreach($category4 as $post)
                 <div class="col-12 col-md-6">
                     <div class="single-blog-post post-style-3 mt-10 wow fadeInUpBig" data-wow-delay="0.2s">
                         <!-- Post Thumbnail -->
                         <div class="post-thumbnail">
-                            <img src="{{ Theme::asset()->url('images/vanhanh.jpg') }}" alt="">
+                            <img src="{{get_object_image($post->image, 'featured')}}" alt="">
                             <!-- Post Content -->
                             <div class="post-content d-flex align-items-center justify-content-between">
                                 <!-- Catagory -->
-                                <div class="post-tag"><a href="#">travel</a></div>
+                                <div class="post-tag"><a href="#">{{ $post->categories->first()->name }}</a></div>
                                 <!-- Headline -->
-                                <a href="#" class="headline">
-                                    <h5>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</h5>
+                                <a href="{{ $post->url }}" class="headline">
+                                    <h5>{{ $post->name }}</h5>
                                 </a>
                                 <!-- Post Meta -->
                                 <div class="post-meta">
-                                    <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
+                                    <p><a href="#" class="post-date">{{ date_from_database($post->created_at, 'M d, Y') }}</a></p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                @endfor
+                @endforeach
+                <div class="page-pagination text-right">
+        {!! $category4->links() !!}
     </div>
 </div>
+</div>
+@endif
+@else
+    <div class="alert alert-warning">
+        <p>{{ __('There is no data to display!') }}</p>
+    </div>
+@endif

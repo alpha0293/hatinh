@@ -467,7 +467,7 @@ section.section.slider-home{
 hidden {
   display: none;
 }
-.slider {
+.home_slider {
  position: relative;
     margin-top: 0rem;
     margin-right: auto;
@@ -475,20 +475,20 @@ hidden {
     overflow: hidden;
     height: 60vh;
 }
-.slider__list {
+.home_slider__list {
   position: absolute;
   left: 0;
   right: 0;
   width: 400vw;
 }
-.slider__slide {
+.home_slider__slide {
   float: left;
     width: 98vw;
     height: 60vh;
     display: -webkit-box;
     display: flex;
 }
-.slider__slide img {
+.home_slider__slide img {
   width: 80vw;
     max-height: 100vh;
     margin: 0 auto;
@@ -497,7 +497,7 @@ hidden {
     padding-bottom: 4vh;
     height: auto;
 }
-.slider > .slider__list {
+.home_slider > .home_slider__list {
   -webkit-animation-name: autoplay;
   animation-name: autoplay;
   /* This will change the time it takes to move to next slide */
@@ -1939,3 +1939,4 @@ h4.info-text{
     }
   }
 }
+/*------------------------------------------- slide 2*/

@@ -92,5 +92,9 @@ Route::group(['namespace' => 'Botble\Manage\Http\Controllers', 'middleware' => '
             'as' => 'getLichPV',
             'uses' => 'PublicController@getLichPV',
         ]);
+     Route::get('/linhmuc', [
+            'as' => 'allpriest',
+            'uses' => 'PublicController@getAllPriest',
+        ]);
 
 });

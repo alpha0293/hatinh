@@ -141,6 +141,14 @@ class PublicController extends Controller
         return 'Chưa có lịch PV cho tháng này!!!';
 
     }
+     public function getAllPriest()
+    {
+        $data = Priest::all()->where('status', BaseStatusEnum::PUBLISHED);
+        \SeoHelper::setTitle('Danh sách Linh Muc')
+            ->setDescription('Danh sách Linh Mục');
+        return Theme::scope('priest.viewAll', compact('data'))->render();
+
+    }
 
 
 }

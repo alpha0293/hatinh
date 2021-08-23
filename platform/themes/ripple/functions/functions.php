@@ -197,6 +197,55 @@ theme_option()
                 'class' => 'form-control',
             ],
         ],
+    ])
+    ->setSection([
+        'title'      => __('Danh mục cho trang tin tức'),
+        'desc'       => __('News Categories'),
+        'id'         => 'category_news',
+        'subsection' => true,
+        'icon'       => 'fa fa-book',
+    ])
+    ->setField([
+    'id' => 'category1',
+    'section_id' => 'category_news',
+    'type' => 'select', // select or customSelect
+    'label' => __('Danh mục số 1'),
+    'attributes' => [
+        'name' => 'category1',
+        'data' => get_all_categories()->pluck('name','id'),
+        'value' => null, // default value
+        'options' => [
+            'class' => 'form-control',
+        ],
+    ],
+    ])
+    ->setField([
+    'id' => 'category2',
+    'section_id' => 'category_news',
+    'type' => 'select', // select or customSelect
+    'label' => __('Danh mục số 2'),
+    'attributes' => [
+        'name' => 'category2',
+        'data' => get_all_categories()->pluck('name','id'),
+        'value' => null, // default value
+        'options' => [
+            'class' => 'form-control',
+        ],
+    ],
+    ])
+    ->setField([
+    'id' => 'category3',
+    'section_id' => 'category_news',
+    'type' => 'select', // select or customSelect
+    'label' => __('Danh mục số 3'),
+    'attributes' => [
+        'name' => 'category3',
+        'data' => get_all_categories()->pluck('name','id'),
+        'value' => null, // default value
+        'options' => [
+            'class' => 'form-control',
+        ],
+    ],
     ]);
 
 add_action('init', 'change_media_config', 124);

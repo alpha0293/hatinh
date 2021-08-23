@@ -20,12 +20,10 @@ $tg = gallery_home_slide();
         <div class="container-fluid">
             <!-- row -->
             <div class="">
-                <div class="slider">
-                   <ul class="slider__list">
+                <div class="home_slider">
+                   <ul class="home_slider__list">
                     @foreach($tg as $lg)
-
-
-                      <li class="slider__slide"><img  class="img-home-slider" src="{{ get_object_image($lg['img']) }}" alt="Slide image number 1 with plane" /></li>
+                      <li class="home_slider__slide"><img  class="img-home-slider" src="{{ get_object_image($lg['img']) }}" alt="Slide image number 1 with plane" /></li>
                       @endforeach
                   </ul>
 

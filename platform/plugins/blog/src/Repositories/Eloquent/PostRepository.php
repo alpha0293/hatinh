@@ -47,6 +47,26 @@ class PostRepository extends RepositoriesAbstract implements PostInterface
     /**
      * {@inheritdoc}
      */
+    public function get_posts_NOT_category(array $categoryid = [], $paginate = 6, $limit)
+    {
+        $data = $this->model
+            ->where('posts.status', BaseStatusEnum::PUBLISHED)
+            ->join('post_categories', 'post_categories.post_id', '=', 'posts.id')
+            ->join('categories', 'post_categories.category_id', '=', 'categories.id')
+            ->whereNotIn('post_categories.category_id', $categoryid)
+            ->select('posts.*')
+            ->limit($limit)
+            ->with('slugable')
+            ->orderBy('posts.created_at', 'desc');
+            if ($paginate != 0) {
+            return $this->applyBeforeExecuteQuery($data)->paginate($paginate);
+        }
+       return $this->applyBeforeExecuteQuery($data)->limit($limit)->get();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getRelated($id, $limit = 3)
     {
         $data = $this->model
@@ -78,6 +98,30 @@ class PostRepository extends RepositoriesAbstract implements PostInterface
             ->with('slugable')
             ->orderBy('posts.created_at', 'desc');
 
+        if ($paginate != 0) {
+            return $this->applyBeforeExecuteQuery($data)->paginate($paginate);
+        }
+
+        return $this->applyBeforeExecuteQuery($data)->limit($limit)->get();
+    }
+
+     /**
+     * {@inheritdoc}
+     */
+    public function get_posts_by_category_name($category_name, $paginate = 5, $limit = 0)
+    {
+        if (!is_array($category_name)) {
+            $category_name = [$category_name];
+        }
+
+        $data = $this->model
+            ->where('posts.status', BaseStatusEnum::PUBLISHED)
+            ->join('post_categories', 'post_categories.post_id', '=', 'posts.id')
+            ->join('categories', 'post_categories.category_id', '=', 'categories.id')
+            ->whereIn('categories.name', $category_name)
+            ->select('posts.*')
+            ->with('slugable')
+            ->orderBy('posts.created_at', 'desc');
         if ($paginate != 0) {
             return $this->applyBeforeExecuteQuery($data)->paginate($paginate);
         }

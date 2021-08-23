@@ -65,6 +65,8 @@ return [
                 ->usePath()->add('style', 'css/style.css')
                 ->usePath()->add('animate', 'css/old-theme/animate.css')
                 ->usePath()->add('owl-carousel', 'css/old-theme/owl.carousel.css')
+                ->usePath()->add('slider-pro', 'css/old-theme/slider-pro.min.css')
+                ->usePath()->add('examples', 'css/old-theme/examples.css')
                 ->usePath()->add('mystyle', 'css/mystyle.css');
                 //, 'index'
             if (function_exists('shortcode')) {
