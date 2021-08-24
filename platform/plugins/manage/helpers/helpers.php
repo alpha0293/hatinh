@@ -14,8 +14,8 @@ if (!function_exists('get_all_deanery')) {
      */
     function get_all_deanery()
     {
-    	$data = app(DeaneryInterface::class)->getModel()->all()->pluck('name','id');
-        return array($data);
+    	$data = app(DeaneryInterface::class)->getModel()->all()->where('status',BaseStatusEnum::PUBLISHED)->pluck('name','id')->toArray();
+        return $data;
     }
 }
 
@@ -26,8 +26,8 @@ if (!function_exists('get_all_priest')) {
      */
     function get_all_priest()
     {
-    	$data = app(PriestInterface::class)->getModel()->all()->pluck('name','id');
-        return array($data);
+    	$data = app(PriestInterface::class)->getModel()->all()->where('status',BaseStatusEnum::PUBLISHED)->pluck('name','id')->toArray();
+        return $data;
     }
 }
 
@@ -38,7 +38,7 @@ if (!function_exists('get_all_parish')) {
      */
     function get_all_parish()
     {
-        $data = app(ParishInterface::class)->getModel()->all()->pluck('name','id');
-        return array($data);
+        $data = app(ParishInterface::class)->getModel()->all()->where('status',BaseStatusEnum::PUBLISHED)->pluck('name','id')->toArray();
+        return $data;
     }
 }
