@@ -77,11 +77,15 @@ if (!function_exists('render_gallery_giaoxu')) {
      *
      * @throws Throwable
      */
-    function render_gallery_giaoxu(array $galleries, $category = null): string
+    function render_gallery_giaoxu($object, array $select = ['images','id']): array
     {
-
         Gallery::registerAssets();
-        return view('plugins/gallery::partials.list-image', compact('galleries', 'category'))->render();
+        $meta = app(GalleryMetaInterface::class)->getFirstBy(['reference_id' => $object->id, 'reference_type' => get_class($object)], $select);
+         // dd($meta);
+        if (!empty($meta)) {
+            return $meta->images ?? [];
+        }
+        return [];
     }
 }
 if (!function_exists('render_object_gallery')) {

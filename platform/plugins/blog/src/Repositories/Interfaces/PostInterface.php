@@ -61,11 +61,25 @@ interface PostInterface extends RepositoryInterface
     public function getByTag($tag, $paginate = 12);
 
     /**
+     * @param int $tag
+     * @param int $paginate
+     * @return mixed
+     */
+    public function getByRelativeTag($tag, $paginate = 6);
+
+    /**
      * @param int $id
      * @param int $limit
      * @return mixed
      */
     public function getRelated($id, $limit = 3);
+
+    /**
+     * @param int $id
+     * @param int $limit
+     * @return mixed
+     */
+    public function getSamePosts(array $idCategory = [], $idPost, $paginate = 6, $limit = 6);
 
     /**
      * @param int $limit

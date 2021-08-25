@@ -43,6 +43,18 @@ if (!function_exists('get_related_posts')) {
     }
 }
 
+if (!function_exists('getSamePosts')) {
+    /**
+     * @param string $currentSlug
+     * @param int $limit
+     * @return array
+     */
+    function getSamePosts(array $idCategory = [], $idPost, $paginate = 6, $limit = 6)
+    {
+        return app(PostInterface::class)->getSamePosts($idCategory, $idPost, $paginate, $limit);
+    }
+}
+
 if (!function_exists('get_posts_by_category')) {
     /**
      * @param int $categoryId
@@ -78,6 +90,18 @@ if (!function_exists('get_posts_by_tag')) {
     function get_posts_by_tag($slug, $paginate = 12)
     {
         return app(PostInterface::class)->getByTag($slug, $paginate);
+    }
+}
+
+if (!function_exists('get_posts_by_relative_tag')) {
+    /**
+     * @param string $slug
+     * @param int $paginate
+     * @return array
+     */
+    function get_posts_by_relative_tag($slug, $paginate = 6)
+    {
+        return app(PostInterface::class)->getByRelativeTag($slug, $paginate);
     }
 }
 

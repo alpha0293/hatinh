@@ -11,7 +11,7 @@
 		  {!! render_object_gallery($galleries) !!}
 		@endif
         {!! $data->content !!}
-        <div class="fb-like" data-href="{{ Request::url() }}" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>
+        <div class="fb-like" style="display: flex;" data-href="{{ Request::url() }}" data-layout="button_count" data-send="true" data-action="like" data-show-faces="true" data-share="true"></div>
     </div>
     <footer class="data__footer">
     	

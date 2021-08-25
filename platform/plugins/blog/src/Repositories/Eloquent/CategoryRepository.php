@@ -58,7 +58,6 @@ class CategoryRepository extends RepositoriesAbstract implements CategoryInterfa
         }
 
         $data = $data->orderBy('categories.order', 'DESC');
-
         return $this->applyBeforeExecuteQuery($data)->get();
     }
 

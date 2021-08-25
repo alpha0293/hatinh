@@ -21,10 +21,11 @@ class LichpvForm extends FormAbstract
             ->setValidatorClass(LichpvRequest::class)
             ->withCustomFields()
             ->add('name', 'select', [
-                'label'      => 'Chọn Tháng',
+                'label'      => 'Chọn Tháng - Nếu đã có vui lòng Chỉnh Sửa',
                 'label_attr' => ['class' => 'control-label required'],
                 'choices' => [
-                    0 => __('Những điều cần biết trước'),
+                    '' => __('Chọn tháng'),
+                    'can-biet-truoc' => __('Những điều cần biết trước'),
                     1 => __('Tháng 1'),
                     2 => __('Tháng 2'),
                     3 => __('Tháng 3'),
@@ -40,10 +41,10 @@ class LichpvForm extends FormAbstract
                 ],
             ])
             ->add('content', 'editor', [
-                'label'      => 'Lịch PV',
+                'label'      => 'Lịch Phụng Vụ',
                 'label_attr' => ['class' => 'control-label required'],
                 'attr'       => [
-                    'placeholder'  => 'Lịch PV',
+                    'placeholder'  => 'Lịch Phụng Vụ',
                 ],
             ])
             ->add('status', 'customSelect', [

@@ -81,20 +81,27 @@ Route::group(['namespace' => 'Botble\Manage\Http\Controllers', 'middleware' => '
         Route::get('/deanery', [
             'uses' => 'PublicController@getAllDeanery',
         ])->name('deanery');
-
-        Route::get('/lichpv/{slug}', [
-            'uses' => 'PublicController@getBySlug',
-        ]);
-
     });
 
     Route::get('/lichpv', [
             'as' => 'getLichPV',
+            'uses' => 'PublicController@getLichPVnonSlug',
+        ]);
+    Route::get('/lichpv/{slug}', [
+            'as' => 'getLichPV_slug',
             'uses' => 'PublicController@getLichPV',
         ]);
-     Route::get('/linhmuc', [
+     Route::get('/linhmucdoan', [
             'as' => 'allpriest',
             'uses' => 'PublicController@getAllPriest',
+        ]);
+     Route::get('/parishes', [
+            'as' => 'allparishes',
+            'uses' => 'PublicController@getAllParish',
+        ]);
+     Route::get('/parish/{slug}/hinhanh', [
+            'as' => 'imgparish',
+            'uses' => 'PublicController@getAllImgParish',
         ]);
 
 });

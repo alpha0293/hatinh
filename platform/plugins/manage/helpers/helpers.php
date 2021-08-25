@@ -42,3 +42,25 @@ if (!function_exists('get_all_parish')) {
         return array($data);
     }
 }
+
+if (!function_exists('getListDeaneryNotThis')) {
+    /**
+     * @return array
+     * @throws Exception
+     */
+    function getListDeaneryNotThis($selected)
+    {
+        return app(DeaneryInterface::class)->getListDeaneryNotThis($selected);
+    }
+}
+
+if (!function_exists('getListParishNotThis')) {
+    /**
+     * @return array
+     * @throws Exception
+     */
+    function getListParishNotThis($parishId, $deaneryId)
+    {
+        return app(ParishInterface::class)->getListParishNotThis($parishId, $deaneryId);
+    }
+}

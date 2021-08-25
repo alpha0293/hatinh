@@ -77,6 +77,9 @@ class PublicController extends Controller
 
             \SeoHelper::setTitle($data->name)
                 ->setDescription($data->name);
+            if (!$data) {
+            abort(404);
+        }
             do_action(BASE_ACTION_PUBLIC_RENDER_SINGLE, DEANERY_MODULE_SCREEN_NAME, $data);
             return Theme::layout('no-sidebar')->scope('deanery.deanery_index', compact('data'))->render();
         }
@@ -85,6 +88,9 @@ class PublicController extends Controller
             $data = $this->historyRepository->getFirstBy(['id' => $slug->reference_id]);
             \SeoHelper::setTitle($data->name)
                 ->setDescription($data->name);
+            if (!$data) {
+            abort(404);
+        }
             do_action(BASE_ACTION_PUBLIC_RENDER_SINGLE, DEANERY_MODULE_SCREEN_NAME, $data);
             return Theme::scope('history.view', compact('data'))->render();
         }
@@ -93,6 +99,9 @@ class PublicController extends Controller
             $data = $this->priestRepository->getFirstBy(['id' => $slug->reference_id]);
             \SeoHelper::setTitle($data->name)
                 ->setDescription($data->name);
+            if (!$data) {
+            abort(404);
+        }
             do_action(BASE_ACTION_PUBLIC_RENDER_SINGLE, DEANERY_MODULE_SCREEN_NAME, $data);
             return Theme::scope('priest.view', compact('data'))->render();
         }
@@ -101,24 +110,12 @@ class PublicController extends Controller
             $data = $this->parishRepository->getFirstBy(['id' => $slug->reference_id]);
             \SeoHelper::setTitle($data->name)
                 ->setDescription($data->name);
-            do_action(BASE_ACTION_PUBLIC_RENDER_SINGLE, DEANERY_MODULE_SCREEN_NAME, $data);
-            return Theme::scope('parish.view', compact('data'))->render();
-        }
-
-        if ($prefix == 'lichpv') {
-            $data = $this->lichpvRepository->getFirstBy(['id' => $slug->reference_id]);
-
-            \SeoHelper::setTitle($data->name)
-                ->setDescription($data->name);
-            do_action(BASE_ACTION_PUBLIC_RENDER_SINGLE, DEANERY_MODULE_SCREEN_NAME, $data);
-            return Theme::scope('lichpv.view', compact('data'))->render();
-        }
-
-        if (!$data) {
+            if (!$data) {
             abort(404);
         }
-
-
+            do_action(BASE_ACTION_PUBLIC_RENDER_SINGLE, DEANERY_MODULE_SCREEN_NAME, $data);
+            return Theme::layout('no-sidebar')->scope('parish.view', compact('data','slug'))->render();
+        }
     }
 
     public function getAllDeanery()
@@ -131,24 +128,56 @@ class PublicController extends Controller
         return Theme::scope('deanery.list', compact('data'))->render();
     }
 
-    public function getLichPV()
+    public function getLichPV($slug)
     {
-        $month = date("m");
+        $month = $slug;
         $data = Lichpv::all()->where('name',$month);
-        if (!count($data) == 0) {
+      
             return Theme::scope('lichpv.index', compact('data'))->render();
-        }
-        return 'Chưa có lịch PV cho tháng này!!!';
+      
 
+    }
+    public function getLichPVnonSlug()
+    {
+        $data = Lichpv::all()->where('name','can-biet-truoc');
+      
+            return Theme::scope('lichpv.index', compact('data'))->render();
+        
     }
      public function getAllPriest()
     {
         $data = Priest::all()->where('status', BaseStatusEnum::PUBLISHED);
-        \SeoHelper::setTitle('Danh sách Linh Muc')
+        $data = $data->sortByDesc('priests.updated_at');
+        \SeoHelper::setTitle('Danh sách Linh Mục')
             ->setDescription('Danh sách Linh Mục');
         return Theme::scope('priest.viewAll', compact('data'))->render();
 
     }
+     public function getAllParish()
+    {
+        $deanery = Deanery::all()->where('status', BaseStatusEnum::PUBLISHED);
+        $deanery = $deanery->sortByDesc('deaneries.name');
+        $data = Parish::all()->where('status', BaseStatusEnum::PUBLISHED);
+        $data = $data->sortByDesc('parishes.updated_at');
+        \SeoHelper::setTitle('Danh sách Giáo xứ')
+            ->setDescription('Danh sách Giáo xứ');
+        return Theme::scope('parish.list', compact('data','deanery'))->render();
 
-
+    }
+    public function getAllImgParish($slug, \Botble\Slug\Repositories\Interfaces\SlugInterface $slugRepository)
+    {
+        $prefix = \Request::segment(1);
+        $slug = $slugRepository->getFirstBy(['key' => $slug, 'prefix' => $prefix]);
+        if (!$slug) {
+            abort(404);
+        }
+         $data = $this->parishRepository->getFirstBy(['id' => $slug->reference_id]);;
+         $img = render_gallery_giaoxu($data);
+          \SeoHelper::setTitle('Hình ảnh'.' '.$data->name)
+                ->setDescription($data->name);
+            do_action(BASE_ACTION_PUBLIC_RENDER_SINGLE, DEANERY_MODULE_SCREEN_NAME, $data);
+        return Theme::scope('parish.viewimg', compact('img','data'))->render();
+    }
 }
+
+

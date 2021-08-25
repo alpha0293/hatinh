@@ -53,9 +53,10 @@ return [
                 ->usePath()->add('custom', 'js/custom.min.js', ['jquery'])
                 ->usePath()->add('ripple.js', 'js/ripple.js', ['jquery'])
                 ->usePath()->add('sweet-alert-js', 'js/sweetalert.min.js', ['jquery'])
-		->usePath()->add('sweet-alert-js', 'js/old-theme/plugins.js', ['jquery'])
+                ->usePath()->add('sweet-alert-js', 'js/old-theme/plugins.js', ['jquery'])
                 ->usePath()->add('active', 'js/old-theme/active.js', ['jquery'])
-		->usePath()->add('myjs', 'js/myjs.js', ['jquery']);
+                ->usePath()->add('datatable-js', 'js/old-theme/datatables.min.js', ['jquery'])
+                ->usePath()->add('myjs', 'js/myjs.js', ['jquery']);
 
             $theme
                 ->asset()
@@ -67,6 +68,7 @@ return [
                 ->usePath()->add('owl-carousel', 'css/old-theme/owl.carousel.css')
                 ->usePath()->add('slider-pro', 'css/old-theme/slider-pro.min.css')
                 ->usePath()->add('examples', 'css/old-theme/examples.css')
+                ->usePath()->add('datatable-css', 'css/old-theme/datatables.min.css')
                 ->usePath()->add('mystyle', 'css/mystyle.css');
                 //, 'index'
             if (function_exists('shortcode')) {

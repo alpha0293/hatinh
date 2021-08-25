@@ -4,39 +4,63 @@
 }
 </style>
 <article class="post post--single">
-    <header class="post__header">
+    <header class="post__header text-center">
         <h3 class="post__title">Danh sách Giáo hạt trong Giáo Phận</h3>
         <div class="post__meta">
+            <h5 class="">Có {{$data->count()}} Giáo hạt</h5>
         </div>
         <div class="post__social"></div>
     </header>
-
-    
     <div class="post__content">
-       <!-- Single Blog Post -->
-                        <div class="single-blog-post post-style-4 d-flex align-items-center wow fadeInUpBig" data-wow-delay="0.2s">
-                            <!-- Post Thumbnail -->
-                            <div class="post-thumbnail">
-                                <img src="{{ get_image_url(theme_option('logo')) }}" alt="">
-                            </div>
-                            <!-- Post Content -->
-                            <div class="post-content">
-                                <a href="#" class="headline">
-                                    <h5>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</h5>
-                                </a>
-                                <p>Pick the yellow peach that looks like a sunset with its red, orange, and pink coat skin, peel it off with your teeth. Sink them into unripened...</p>
-                                <!-- Post Meta -->
-                                <div class="post-meta">
-                                    <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-                                </div>
-                            </div>
+       <div id="cards_landscape_wrap-2">
+    <div class="row">
+        @if(!empty($data->all()))
+        @foreach($data->all() as $deanery)
+        <?php 
+        $totalmem = 0;
+        foreach ($deanery->parishes as $par){
+            $totalmem += $par->totalmember;
+        }
+        ?>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+            <a href="{{$deanery->url}}">
+                <div class="card-flyer">
+                    <div class="text-box">
+                        <div class="image-box">
+                            <img src="{{ get_object_image($deanery->image) }}" alt="" />
                         </div>
+                        <div class="text-container">
+                            <h6>{{$deanery->name}}</h6>
+                            <p>Quản hạt: {{$deanery->lmquanhat}}</p>
+                            <p>Sở hạt: {{$deanery->sohat}}</p>
+                            <p>Số giáo xứ: {{$deanery->parishes->count()}}</p>
+                            <p>Địa chỉ: {{$deanery->address}}</p>
+                            <p>Số giáo dân: {{$totalmem}}</p>
+                        </div>
+                        <div class="post-meta">
+                                    <p><a href="#" class="post-author">Cập nhật ngày: </a> <a href="#" class="post-date">{{ date_from_database($deanery->created_at, 'd - m - Y') }}</a></p>
+                                </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        @endforeach
+        @endif
+    </div>
+</div>
  
     </div>
-
 <footer class="post__footer">
     <div class="row">
 
     </div>
 </footer>   
 </article>
+
+
+
+
+
+
+
+

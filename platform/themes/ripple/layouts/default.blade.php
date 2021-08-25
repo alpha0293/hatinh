@@ -1,7 +1,6 @@
 {!! Theme::partial('header') !!}
 @if (Theme::get('section-name'))
-    <section data-background="{{ Theme::asset()->url('images/vanhanh.jpg') }}" class="section page-intro pt-100 pb-100 bg-cover">
-        <div style="opacity: 0.7" class="bg-overlay"></div>
+    <section class="section-breadcrumb section page-intro pt-20">
         <div class="container-fluid">
             <h3 class="page-intro__title">{{ Theme::get('section-name') }}</h3>
             {!! Theme::breadcrumb()->render() !!}

@@ -2,7 +2,7 @@
 
 use Botble\Widget\AbstractWidget;
 
-class ThongbaoWidget extends AbstractWidget
+class SelectCategoryWidget extends AbstractWidget
 {
     /**
      * The configuration array.
@@ -14,7 +14,17 @@ class ThongbaoWidget extends AbstractWidget
     /**
      * @var string
      */
-    protected $widgetDirectory = 'thongbao';
+    protected $frontendTemplate = 'frontend';
+
+    /**
+     * @var string
+     */
+    protected $backendTemplate = 'backend';
+
+    /**
+     * @var string
+     */
+    protected $widgetDirectory = 'select-category';
 
     /**
      * Widget constructor.
@@ -23,10 +33,10 @@ class ThongbaoWidget extends AbstractWidget
     public function __construct()
     {
         parent::__construct([
-            'name'        => 'Thông báo',
-            'description' => __('những bài viết có category là thông báo'),
+            'name'        => 'Chọn danh mục hiển thị',
             'category' => 'Danh mục',
             'limit' => 'Giới hạn',
+            'description' => __('This is a sample widget'),
         ]);
     }
 }

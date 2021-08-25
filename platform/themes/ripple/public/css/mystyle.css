@@ -863,9 +863,15 @@ hidden {
     .single-blog-post.post-style-4 .post-thumbnail {
       -webkit-box-flex: 0;
       -ms-flex: 0 0 200px;
-      flex: 0 0 200px;
-      min-width: 200px;
-      margin-right: 20px; }
+      flex: 0 0 168px;
+      min-width: 160px;
+      margin-right: 20px;
+      flex-shrink: 0; }
+       .single-blog-post.post-style-4 .post-thumbnail img{
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+       }
       @media only screen and (max-width: 767px) {
         .single-blog-post.post-style-4 .post-thumbnail {
           -webkit-box-flex: 0;
@@ -1837,6 +1843,10 @@ li.menu-item.trangchu {
     /* border: 1px solid; */
     box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
 }
+.par_thumb img{
+ object-fit: contain;
+ max-width: 60%;
+}
 .widget_giaoly h4{
   color: red;
     font-weight: bold;
@@ -1940,3 +1950,113 @@ h4.info-text{
   }
 }
 /*------------------------------------------- slide 2*/
+.d-flex{
+  display: flex;
+}
+/*-------------------------------------- card */
+/*----  Main Style  ----*/
+#cards_landscape_wrap-2{
+  text-align: center;
+}
+#cards_landscape_wrap-2 .container{
+  padding-top: 80px; 
+  padding-bottom: 100px;
+}
+#cards_landscape_wrap-2 a{
+  text-decoration: none;
+  outline: none;
+}
+#cards_landscape_wrap-2 .card-flyer {
+  border-radius: 5px;
+}
+#cards_landscape_wrap-2 .card-flyer .image-box{
+  background: #ffffff;
+  overflow: hidden;
+  box-shadow: 0px 1px 8px rgb(0 0 0 / 30%);
+  border-radius: 5px;
+}
+#cards_landscape_wrap-2 .card-flyer .image-box img{
+  -webkit-transition:all .9s ease; 
+  -moz-transition:all .9s ease; 
+  -o-transition:all .9s ease;
+  -ms-transition:all .9s ease; 
+  width: 100%;
+  height: 200px;
+}
+#cards_landscape_wrap-2 .card-flyer:hover .image-box img{
+  opacity: 0.7;
+  -webkit-transform:scale(1.15);
+  -moz-transform:scale(1.15);
+  -ms-transform:scale(1.15);
+  -o-transform:scale(1.15);
+  transform:scale(1.15);
+}
+#cards_landscape_wrap-2 .card-flyer .text-box{
+  text-align: center;
+  padding-bottom: 12px;
+}
+#cards_landscape_wrap-2 .card-flyer .text-box .text-container{
+  padding: 4px 16px;
+}
+#cards_landscape_wrap-2 .card-flyer .text-box .post-meta{
+  padding: 4px 16px;
+}
+#cards_landscape_wrap-2 .card-flyer{
+  background: #FFFFFF;
+  margin-top: 50px;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  -ms-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.40);
+}
+#cards_landscape_wrap-2 .card-flyer:hover{
+  background: #fff;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  -ms-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  margin-top: 50px;
+}
+#cards_landscape_wrap-2 .card-flyer .text-box p{
+  margin-top: -5px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  font-size: 14px;
+  color: #000000;
+  text-align: initial;
+}
+#cards_landscape_wrap-2 .card-flyer .text-box h6{
+  margin-top: 0px;
+  margin-bottom: 4px; 
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: 'Roboto Black', sans-serif;
+  letter-spacing: 1px;
+  color: #00acc1;
+}
+#cards_landscape_wrap-2 .card-flyer .text-box h5{
+margin-top: 11px;
+    margin-bottom: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Roboto Black', sans-serif;
+    letter-spacing: 1px;
+    color: #00acc1;
+  }
+.text-center{
+  text-align: center;
+}
+.head-table{
+  background-color: #00afef;
+  color: #ffff;
+}
+.section-breadcrumb{
+  background-color: #00afef;
+    box-shadow: rgb(50 50 93 / 25%) 0px 6px 12px -2px, rgb(0 0 0 / 30%) 0px 3px 7px -3px;
+}

@@ -27,11 +27,9 @@
         <div class="post__social"></div>
     </header>
     <div class="post__content">
-        @if (defined('GALLERY_MODULE_SCREEN_NAME') && !empty($galleries = gallery_meta_data($post)))
-            {!! render_object_gallery($galleries, ($post->categories()->first() ? $post->categories()->first()->name : __('Uncategorized'))) !!}
-        @endif
+        
         {!! $post->content !!}
-        <div class="fb-like" style="display: flex;" data-href="{{ Request::url() }}" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>
+        <div class="fb-like" style="display: flex;" data-href="{{ Request::url() }}" data-layout="button_count" data-send="true" data-action="like" data-show-faces="true" data-share="true"></div>
     </div>
     <footer class="post__footer">
         <div class="row">
@@ -49,5 +47,38 @@
                 </div>
             @endforeach
         </div>
-    </footer>   
+    </footer> 
+    <?php 
+    $cate = [];
+    foreach ($post->categories as $category) {
+        array_push($cate, $category->id);
+    }
+    $samePost = getSamePosts($cate, $post->id, $paginate = 6, $limit = 6)
+ ?>
+<div class="mt-50 mb-10">
+    <h4 class="clearfix vi-header "><a class="vi-left-title pull-left" href="#"> Bài viết liên quan</a></h4>
+<div id="cards_landscape_wrap-2">
+    <div class="row">
+    @if(!empty($samePost))
+        @foreach($samePost as $post)
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+            <a href="{{$post->url}}">
+                <div class="card-flyer">
+                    <div class="text-box">
+                        <div class="image-box">
+                            <img src="{{ get_object_image($post->image) }}" alt="" />
+                        </div>
+                        <div class="text-container">
+                            <h5>{{$post->name}}</h5>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        @endforeach
+        @endif
+    </div>
+</div>
+</div>  
 </article>
+

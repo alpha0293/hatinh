@@ -82,6 +82,29 @@ class PostRepository extends RepositoriesAbstract implements PostInterface
     /**
      * {@inheritdoc}
      */
+    public function getSamePosts(array $categoryId = [], $idPost, $paginate = 6, $limit = 6)
+    {
+        if (!is_array($categoryId)) {
+            $categoryId = [$categoryId];
+        }
+        $data = $this->model
+            ->where('posts.status', BaseStatusEnum::PUBLISHED)
+            ->join('post_categories', 'post_categories.post_id', '=', 'posts.id')
+            ->whereIn('post_categories.category_id',$categoryId)
+            ->where('posts.id', '!=', $idPost)
+            ->select('posts.*')
+            ->distinct()
+            ->with('slugable')
+            ->orderBy('posts.created_at', 'desc');
+            if($paginate!=0){
+                return $this->applyBeforeExecuteQuery($data)->paginate($paginate);
+            }
+        return $this->applyBeforeExecuteQuery($data)->limit($limit)->get();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getByCategory($categoryId, $paginate = 12, $limit = 0)
     {
         if (!is_array($categoryId)) {
@@ -100,6 +123,9 @@ class PostRepository extends RepositoriesAbstract implements PostInterface
 
         if ($paginate != 0) {
             return $this->applyBeforeExecuteQuery($data)->paginate($paginate);
+        }
+        else{
+            return $this->applyBeforeExecuteQuery($data)->get();
         }
 
         return $this->applyBeforeExecuteQuery($data)->limit($limit)->get();
@@ -177,6 +203,24 @@ class PostRepository extends RepositoriesAbstract implements PostInterface
             ->select('posts.*')
             ->orderBy('posts.created_at', 'desc');
 
+        return $this->applyBeforeExecuteQuery($data)->paginate($paginate);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getByRelativeTag($tag, $paginate = 6)
+    {
+        $data = $this->model
+            ->where('posts.status', BaseStatusEnum::PUBLISHED)
+            ->join('post_tags', 'post_tags.post_id', '=','posts.id')
+            ->join('tags', 'post_tags.tag_id', '=', 'tags.id')
+            ->where('tags.name', 'like', "%".$tag."%" )
+            ->select('posts.*')
+            ->distinct()
+            ->with('slugable')
+            ->orderBy('posts.created_at', 'desc');
+             
         return $this->applyBeforeExecuteQuery($data)->paginate($paginate);
     }
 

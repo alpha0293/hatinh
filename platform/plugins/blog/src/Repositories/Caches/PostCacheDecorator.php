@@ -26,6 +26,14 @@ class PostCacheDecorator extends CacheAbstractDecorator implements PostInterface
     /**
      * {@inheritdoc}
      */
+    public function getSamePosts(array $idCategory = [], $idPost, $paginate = 6, $limit = 6)
+    {
+        return $this->getDataIfExistCache(__FUNCTION__, func_get_args());
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getByUserId($authorId, $limit = 6)
     {
         return $this->getDataIfExistCache(__FUNCTION__, func_get_args());
@@ -43,6 +51,14 @@ class PostCacheDecorator extends CacheAbstractDecorator implements PostInterface
      * {@inheritdoc}
      */
     public function getByTag($tag, $paginate = 12)
+    {
+        return $this->getDataIfExistCache(__FUNCTION__, func_get_args());
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getByRelativeTag($tag, $paginate = 6)
     {
         return $this->getDataIfExistCache(__FUNCTION__, func_get_args());
     }

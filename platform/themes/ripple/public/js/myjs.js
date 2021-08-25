@@ -121,3 +121,15 @@ e.preventDefault();
                 }
             }
         });
+/// data table
+$(document).ready(function() {
+    $('#contact-detail').dataTable({
+        "responsive": true,
+        "columnDefs": [
+                    { responsivePriority: 1, targets: 0 },
+                    { responsivePriority: 2, targets: 4 }
+                ],
+        "pageLength": 50,
+        "lengthMenu": [ [10, 25, 50, 100, -1], [10, 25, 50, 100, "All"] ]
+    } );
+} );
