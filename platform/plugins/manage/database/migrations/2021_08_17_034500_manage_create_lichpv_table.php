@@ -15,6 +15,7 @@ class ManageCreateLichpvTable extends Migration
         Schema::create('lichpvs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 120);
+            $table->string('year', 120)->nullable();            
             $table->longText('content')->nullable();
             $table->string('status', 60)->default('published');
             $table->timestamps();

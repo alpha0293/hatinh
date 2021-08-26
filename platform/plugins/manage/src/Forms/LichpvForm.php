@@ -39,6 +39,14 @@ class LichpvForm extends FormAbstract
                     12 => __('Tháng 12'),
                 ],
             ])
+            ->add('year', 'text', [
+                'label' => 'Năm Phụng vụ',
+                'label_attr' => ['class' => 'control-label required'],
+                'attr' => [
+                    'placeholder'  => 'Nhập năm phụng vụ',
+                    'data-counter' => 120,
+                ],
+            ])
             ->add('content', 'editor', [
                 'label'      => 'Lịch PV',
                 'label_attr' => ['class' => 'control-label required'],

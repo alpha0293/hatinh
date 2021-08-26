@@ -32,6 +32,7 @@ class Priest extends BaseModel
         'note',
         'image',
         'status',
+        'quequan',
     ];
 
     /**
