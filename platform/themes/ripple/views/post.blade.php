@@ -57,28 +57,49 @@
  ?>
 <div class="mt-50 mb-10">
     <h4 class="clearfix vi-header "><a class="vi-left-title pull-left" href="#"> Bài viết liên quan</a></h4>
-<div id="cards_landscape_wrap-2">
-    <div class="row">
-    @if(!empty($samePost))
-        @foreach($samePost as $post)
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-            <a href="{{$post->url}}">
-                <div class="card-flyer">
-                    <div class="text-box">
-                        <div class="image-box">
-                            <img src="{{ get_object_image($post->image) }}" alt="" />
-                        </div>
-                        <div class="text-container">
-                            <h5>{{$post->name}}</h5>
-                        </div>
-                    </div>
-                </div>
-            </a>
+<div class="cards">
+      <div class="card">
+        <img
+          src="https://images.unsplash.com/reserve/HgZuGu3gSD6db21T3lxm_San%20Zenone.jpg?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+          alt=""
+          class="card-image"
+        />
+        <div class="card-content">
+          <div class="card-top">
+            <h3 class="card-title">2020 World Champs Gaming Warzone</h3>
+            
+          </div>
+          <div class="card-bottom">
+            <div class="card-live">
+              <ion-icon name="wifi"></ion-icon>
+              <span>Live</span>
+            </div>
+            <div class="card-watching">4.2k watching</div>
+          </div>
         </div>
-        @endforeach
-        @endif
+      </div>
+      <div class="card">
+        <img
+          src="https://images.unsplash.com/reserve/HgZuGu3gSD6db21T3lxm_San%20Zenone.jpg?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+          alt=""
+          class="card-image"
+        />
+        <div class="card-content">
+          <div class="card-top">
+            <h3 class="card-title">2020 World Champs Gaming Warzone</h3>
+            
+          </div>
+          <div class="card-bottom">
+            <div class="card-live">
+              <ion-icon name="wifi"></ion-icon>
+              <span>Live</span>
+            </div>
+            <div class="card-watching">4.2k watching</div>
+          </div>
+        </div>
+      </div>
+     
     </div>
-</div>
 </div>  
 </article>
 
