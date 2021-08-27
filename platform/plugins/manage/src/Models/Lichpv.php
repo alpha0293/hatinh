@@ -26,6 +26,7 @@ class Lichpv extends BaseModel
         'name',
         'status',
         'content',
+        'year',
     ];
 
     /**

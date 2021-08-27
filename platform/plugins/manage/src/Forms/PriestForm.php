@@ -60,6 +60,14 @@ class PriestForm extends FormAbstract
                     'data-counter' => 120,
                 ],
             ])
+            ->add('quequan', 'text', [
+                'label' => 'Quê quán',
+                'label_attr' => ['class' => 'control-label required'],
+                'attr' => [
+                    'placeholder'  => 'Nhập quê quán',
+                    'data-counter' => 120,
+                ],
+            ])
             ->add('address', 'text', [
                 'label' => 'Địa chỉ',
                 'label_attr' => ['class' => 'control-label required'],

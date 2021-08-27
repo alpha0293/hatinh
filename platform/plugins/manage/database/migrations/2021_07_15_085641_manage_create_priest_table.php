@@ -19,6 +19,7 @@ class ManageCreatePriestTable extends Migration
             $table->string('phonenumber')->nullable();
             $table->date('dob')->nullable();
             $table->date('dopriest')->nullable();
+            $table->string('quequan')->nullable();
             $table->string('address')->nullable();
             $table->string('note')->nullable();
             $table->string('image')->nullable();
