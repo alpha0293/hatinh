@@ -55,51 +55,30 @@
     }
     $samePost = getSamePosts($cate, $post->id, $paginate = 6, $limit = 6)
  ?>
-<div class="mt-50 mb-10">
+<div class="mt-50 mb-10 list-post">
     <h4 class="clearfix vi-header "><a class="vi-left-title pull-left" href="#"> Bài viết liên quan</a></h4>
 <div class="cards">
-      <div class="card">
-        <img
-          src="https://images.unsplash.com/reserve/HgZuGu3gSD6db21T3lxm_San%20Zenone.jpg?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-          alt=""
-          class="card-image"
-        />
-        <div class="card-content">
-          <div class="card-top">
-            <h3 class="card-title">2020 World Champs Gaming Warzone</h3>
-            
-          </div>
-          <div class="card-bottom">
-            <div class="card-live">
-              <ion-icon name="wifi"></ion-icon>
-              <span>Live</span>
+    @if(!empty($samePost))
+        @foreach($samePost as $post)
+          <a href="{{$post->url}}" class="card">
+            <div class="card-image">
+               <img src="{{ get_object_image($post->image) }}" alt="" /> 
             </div>
-            <div class="card-watching">4.2k watching</div>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <img
-          src="https://images.unsplash.com/reserve/HgZuGu3gSD6db21T3lxm_San%20Zenone.jpg?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-          alt=""
-          class="card-image"
-        />
-        <div class="card-content">
-          <div class="card-top">
-            <h3 class="card-title">2020 World Champs Gaming Warzone</h3>
-            
-          </div>
-          <div class="card-bottom">
-            <div class="card-live">
-              <ion-icon name="wifi"></ion-icon>
-              <span>Live</span>
+                
+            <div class="card-content">
+              <div class="card-top">
+                <h3 class="card-title">{{$post->id}}{{$post->name}}</h3>
             </div>
-            <div class="card-watching">4.2k watching</div>
-          </div>
+            <div class="card-bottom">
+                <div class="card-watching">{{$post->views}} lượt xem</div>
+            </div>
         </div>
-      </div>
-     
-    </div>
+    </a>
+        @endforeach
+        @endif
+</div>
 </div>  
 </article>
 
+
+    

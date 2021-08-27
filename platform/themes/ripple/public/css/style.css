@@ -874,13 +874,7 @@ opacity:1}
 .navigation--light .menu-item:hover>a,.navigation--light .menu-item:hover>a:after{color:#ff2b4a}
 
 .page-header--search-active{padding-top:100px}
-.header--sticky{position:fixed;
-top:0;
-left:0;
-z-index:100;
-width:100%;
-padding:5px 0;
-background-color:#000}
+
 .header--sticky-pin{transform:translate(0)}
 .header--sticky-unpin{transform:translateY(-100%)}
 .page-header__left{float:left}

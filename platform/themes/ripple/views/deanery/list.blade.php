@@ -12,8 +12,8 @@
         <div class="post__social"></div>
     </header>
     <div class="post__content">
-       <div id="cards_landscape_wrap-2">
-    <div class="row">
+      
+<div class="cards">
         @if(!empty($data->all()))
         @foreach($data->all() as $deanery)
         <?php 
@@ -22,32 +22,28 @@
             $totalmem += $par->totalmember;
         }
         ?>
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-            <a href="{{$deanery->url}}">
-                <div class="card-flyer">
-                    <div class="text-box">
-                        <div class="image-box">
-                            <img src="{{ get_object_image($deanery->image) }}" alt="" />
-                        </div>
-                        <div class="text-container">
-                            <h6>{{$deanery->name}}</h6>
-                            <p>Quản hạt: {{$deanery->lmquanhat}}</p>
-                            <p>Sở hạt: {{$deanery->sohat}}</p>
-                            <p>Số giáo xứ: {{$deanery->parishes->count()}}</p>
-                            <p>Địa chỉ: {{$deanery->address}}</p>
-                            <p>Số giáo dân: {{$totalmem}}</p>
-                        </div>
-                        <div class="post-meta">
-                                    <p><a href="#" class="post-author">Cập nhật ngày: </a> <a href="#" class="post-date">{{ date_from_database($deanery->created_at, 'd - m - Y') }}</a></p>
-                                </div>
-                    </div>
-                </div>
-            </a>
+        <a href="{{$deanery->url}}" class="card">
+            <div class="card-image">
+             <img src="{{ get_object_image($deanery->image) }}" alt="" /> 
+         </div>
+
+         <div class="card-content">
+          <div class="card-top">
+            <h6 class="card-title">{{$deanery->name}}</h6>
+            <p>Quản hạt: {{$deanery->lmquanhat}}</p>
+            <p>Sở hạt: {{$deanery->sohat}}</p>
+            <p>Số giáo xứ: {{$deanery->parishes->count()}}</p>
+            <p>Địa chỉ: {{$deanery->address}}</p>
+            <p>Số giáo dân: {{$totalmem}}</p>
         </div>
+        <div class="card-bottom">
+            <div class="card-watching">Cập nhật ngày: {{ date_from_database($deanery->created_at, 'd - m - Y') }}</div>
+        </div>
+    </div>
+</a>
         @endforeach
         @endif
     </div>
-</div>
  
     </div>
 <footer class="post__footer">
@@ -56,11 +52,5 @@
     </div>
 </footer>   
 </article>
-
-
-
-
-
-
 
 
