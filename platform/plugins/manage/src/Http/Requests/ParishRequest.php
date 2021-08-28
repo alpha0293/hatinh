@@ -18,7 +18,14 @@ class ParishRequest extends Request
     {
         return [
             'name'   => 'required',
+            'deanery_id' => 'required',
             'status' => Rule::in(BaseStatusEnum::values()),
+        ];
+    }
+    public function attributes()
+    {
+        return [
+            'deanery_id' => 'Giáo hạt',
         ];
     }
 }
