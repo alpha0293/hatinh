@@ -18,7 +18,14 @@ class HistoryRequest extends Request
     {
         return [
             'name'   => 'required',
+            'parish_id' => 'required',
             'status' => Rule::in(BaseStatusEnum::values()),
+        ];
+    }
+    public function attributes()
+    {
+        return [
+            'parish_id' => 'Giáo xứ',
         ];
     }
 }
