@@ -13,6 +13,12 @@ interface PostInterface extends RepositoryInterface
      */
     public function getFeatured($limit = 5);
 
+/**
+     * @param int $limit
+     * @return mixed
+     */
+    public function getFeaturedOfCategory($idCate, $limit = 3);
+    
     /**
      * @param array $filters
      * @return mixed

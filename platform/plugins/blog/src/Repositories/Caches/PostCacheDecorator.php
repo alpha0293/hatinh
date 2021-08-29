@@ -15,6 +15,13 @@ class PostCacheDecorator extends CacheAbstractDecorator implements PostInterface
         return $this->getDataIfExistCache(__FUNCTION__, func_get_args());
     }
 
+/**
+     * {@inheritdoc}
+     */
+    public function getFeaturedOfCategory($idCate, $limit = 3)
+    {
+        return $this->getDataIfExistCache(__FUNCTION__, func_get_args());
+    }
     /**
      * {@inheritdoc}
      */

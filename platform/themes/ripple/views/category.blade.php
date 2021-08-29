@@ -1,31 +1,60 @@
+<?php 
+$post_cate = getFeaturedOfCategory($category->id);
+ ?>
 @php Theme::set('section-name', $category->name) @endphp
+<article class="post post--single">
+    <header class="post__header text-center mb-10">
+       <h3 class="post__title">Danh mục {{$category->name}}</h3>
+   </header>
+   <div class="post__content">
+    @if ($posts->count() > 0)
+    <div class="mt-50 mb-10 list-post">
+        <div class="cards">
+            @if(!empty($post_cate))
+            @foreach($post_cate as $post)
+            <a href="{{$post->url}}" class="card">
+                <div class="card-image">
+                 <img src="{{ get_object_image($post->image) }}" alt="" /> 
+             </div>
 
-@if ($posts->count() > 0)
-    @foreach ($posts as $post)
-        <article class="post post__horizontal mb-40 clearfix">
-            <div class="post__thumbnail">
-                <img src="{{ get_object_image($post->image, 'medium') }}" alt="{{ $post->name }}"><a href="{{ $post->url }}" class="post__overlay"></a>
+             <div class="card-content">
+              <div class="card-top">
+                <h3 class="card-title">{{$post->id}}{{$post->name}}</h3>
             </div>
-            <div class="post__content-wrap">
-                <header class="post__header">
-                    <h3 class="post__title"><a href="{{ $post->url }}">{{ $post->name }}</a></h3>
-                    <div class="post__meta"><span class="post__created-at"><i class="ion-clock"></i><a href="#">{{ date_from_database($post->created_at, 'M d, Y') }}</a></span>
-                        @if ($post->user->username)
-                            <span class="post__author"><i class="ion-android-person"></i><span>{{ $post->user->getFullName() }}</span></span>
-                        @endif
-                        <span class="post-category"><i class="ion-cube"></i><a href="{{ $category->url }}">{{ $category->name }}</a></span></div>
-                </header>
-                <div class="post__content">
-                    <p data-number-line="4">{{ $post->description }}</p>
-                </div>
+            <div class="card-bottom">
+                <div class="card-watching">{{$post->views}} lượt xem</div>
             </div>
-        </article>
+        </div>
+    </a>
     @endforeach
-    <div class="page-pagination text-right">
-        {!! $posts->links() !!}
+    @endif
+</div>
+</div> 
+    @foreach ($posts as $post)
+    <article class="post post__horizontal mb-40 clearfix">
+       <div class="single-blog-post post-style-4 d-flex align-items-center wow fadeInUpBig" data-wow-delay="0.2s">
+        <!-- Post Thumbnail -->
+        <div class="post-thumbnail">
+            <img src="{{ get_object_image($post->image) }}" alt="">
+        </div>
+        <!-- Post Content -->
+        <div class="post-content">
+            <a href="#" class="headline">
+                <h5>{{$post->name}}</h5>
+            </a>
+            <p>{{$post->description}}</p>
+            <!-- Post Meta -->
+            <div class="post-meta">
+                <p><a href="#" class="post-author">Cập nhật ngày: </a> <a href="#" class="post-date">{{ date_from_database($post->created_at, 'd - m - Y') }}</a></p>
+            </div>
+        </div>
     </div>
-@else
-    <div class="alert alert-warning">
-        <p>{{ __('There is no data to display!') }}</p>
-    </div>
+</article>
+@endforeach
+<div class="page-pagination text-right">
+    {!! $posts->links() !!}
+</div>
+
 @endif
+</div>
+</article>

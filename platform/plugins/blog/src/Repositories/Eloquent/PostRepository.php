@@ -32,6 +32,27 @@ class PostRepository extends RepositoriesAbstract implements PostInterface
     /**
      * {@inheritdoc}
      */
+    public function getFeaturedOfCategory($idCate, $limit = 3)
+    {
+        if (!is_array($idCate)) {
+            $idCate = [$idCate];
+        }
+                $data = $this->model
+            ->where([
+                'posts.status'      => BaseStatusEnum::PUBLISHED,
+                'posts.is_featured' => 1,
+            ])
+            ->join('post_categories', 'post_categories.post_id', '=', 'posts.id')
+            ->whereIn('post_categories.category_id',$idCate)
+            ->limit($limit)
+            ->with('slugable')
+            ->orderBy('posts.created_at', 'desc');
+        return $this->applyBeforeExecuteQuery($data)->get();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getListPostNonInList(array $selected = [], $limit = 7)
     {
         $data = $this->model

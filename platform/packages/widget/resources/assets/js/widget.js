@@ -24,6 +24,7 @@ class WidgetManagement {
                         items: items,
                         sidebar_id: parentElement.data('id')
                     },
+                    console.log(data);
                     beforeSend: () => {
                         Botble.showNotice('info', BotbleVariables.languages.notices_msg.processing_request);
                     },

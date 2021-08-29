@@ -19,6 +19,18 @@ if (!function_exists('get_featured_posts')) {
     }
 }
 
+
+if (!function_exists('getFeaturedOfCategory')) {
+    /**
+     * @param int $limit
+     * @return array
+     */
+    function getFeaturedOfCategory($idCate, $limit = 3)
+    {
+        return app(PostInterface::class)->getFeaturedOfCategory($idCate, $limit);
+    }
+}
+
 if (!function_exists('get_latest_posts')) {
     /**
      * @param int $limit

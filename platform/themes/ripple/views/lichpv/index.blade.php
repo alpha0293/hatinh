@@ -3,6 +3,7 @@
     <header class="post__header text-center">
         <h3 class="post__title">LỊCH PHỤNG VỤ GIÁO PHẬN</h3>
          @if($data->first()!=null)
+         <h4 class="post__title" style="color:#00a859;">{{$data->first()->year}}</h4>
         <div class="post__meta">
             
             <h4 class="mb-10"><i class="glyphicon glyphicon-screenshot"></i> 
