@@ -813,8 +813,6 @@ visibility:hidden;
 opacity:0}
 .navigation .menu-item.menu-item-has-children>a:after{margin-left:5px;
 font-size:12px;
-content:"\F107";
-font-family:FontAwesome;
 color:#ccc}
 .navigation .menu-item:hover>a{color:#fff}
 .navigation .menu-item:hover>.sub-menu{visibility:visible;

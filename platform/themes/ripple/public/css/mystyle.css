@@ -58,6 +58,7 @@ top:0;
 left:0;
 z-index:100;
 width:100%;}
+
 .headers .divlogo .logo{
     height: 15.75vh;
     position: absolute;
@@ -1621,10 +1622,13 @@ margin: 0 !important;
   margin-bottom: 3px;
     padding-left: 35px
 }
+.navigation--mobile .menu-item-has-children .bamvao{
+  right: 2rem;
   position: absolute;
-  bottom: 40%;
+  padding: 4px 14px 0 13px;
+  border: 1px solid white;
+  border-radius: 9px;
 }
-
 /*het menu*/
 
 /* SHARED BUTTON STYLES
@@ -1868,7 +1872,14 @@ li.menu-item.trangchu {
     border-top: 3vw solid;
     background: #ff000000;
 }
-@media (max-width: 768px){
+@media only screen and (min-device-width: 1366px) and (max-device-height: 1024px) and (-webkit-min-device-pixel-ratio: 2)  and (orientation: landscape)
+{ .headers .divlogo .logo{
+
+     height: 100px;
+    top: 30px;
+} 
+}
+@media (max-width: 1007px){
   .headers .divlogo .logo{
     display: none !important;
   }
@@ -1966,7 +1977,8 @@ h4.info-text{
     margin: 0 auto;
     width: 62%;
 }
-@media only screen and (max-width: 1024px) {
+
+@media (max-width: 1024px) {
  .headers header.page-header{
   height: 20px;
 }

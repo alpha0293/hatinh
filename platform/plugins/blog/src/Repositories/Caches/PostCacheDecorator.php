@@ -105,7 +105,7 @@ class PostCacheDecorator extends CacheAbstractDecorator implements PostInterface
       /**
      * {@inheritdoc}
      */
-    public function get_posts_NOT_category(array $categoryid = [], $paginate = 6, $limit = 0)
+    public function get_posts_NOT_category(array $categoryid = [], array $notpost=[], $paginate = 6, $limit = 0)
     {
         return $this->getDataIfExistCache(__FUNCTION__, func_get_args());
     }

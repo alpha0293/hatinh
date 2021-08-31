@@ -8,7 +8,7 @@ if (!empty($featured)) {
 $index=0;
 @endphp
 
-@if (!empty($featured))
+@if ($featured->count()!=0)
 <section id="dich-vu" class="jarallax module icon-service-module clearfix" > 
     <div class="container-fluid"> 
         <div class="module-caption col-md-12 text-center"> 

@@ -1,4 +1,6 @@
+
 <article class="post post--single">
+	@if($data->count()>0)
     <header class="post__header text-center">
         <h3 class="post__title">DANH SÁCH LINH MỤC ĐOÀN GIÁO PHẬN</h3>
         <div class="post__meta">
@@ -47,5 +49,8 @@
     <div class="row">
 
     </div>
-</footer>   
+</footer> 
+@else
+ <h3 style="color: blue; text-align: center; margin-top: 20px;">Chưa có dữ liệu để hiển thị - chúng tôi sẽ trở lại</h3>
+@endif  
 </article>

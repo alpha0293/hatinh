@@ -1,3 +1,4 @@
+@if ($posts->count() > 0)
 @php
         $featured = get_featured_posts(6);
         $featuredList = [];
@@ -6,8 +7,14 @@
         }
         $index=0;
     @endphp
-@if (!empty($featured))
-<div class="col-12">
+<article class="post post--single">
+    <header class="post__header text-center">
+        <h3 class="post__title">TIN TỨC</h3>
+        <div class="post__social"></div>
+    </header>
+    <div class="post__content">
+@if ($featured->count()>1)
+<div class="col-12 mb-50">
     <div id="example5" class="slider-pro">
         <div class="sp-slides">
             @foreach ($featured as $post)
@@ -42,29 +49,31 @@
     </div>
 </div>
 @endif
-@if ($posts->count() > 0)
 <?php 
  $category1 = get_posts_by_category(theme_option('category1'));
  $category2 = get_posts_by_category(theme_option('category2'));
  $category3 = get_posts_by_category(theme_option('category3'));
+ $notpost = array();
  if (!empty($category1->first())) {
-     $not1 = $category1->first()->categories->first()->id;
+     $not1 = theme_option('category1');
  }else $not1='';
  if (!empty($category2->first())) {
-     $not2 = $category2->first()->categories->first()->id;
+     $not2 = theme_option('category2');
  }else $not2='';
  if (!empty($category3->first())) {
-     $not3 = $category3->first()->categories->first()->id;
+     $not3 = theme_option('category3');
  }else $not3='';
- $category4 = get_posts_not_category([$not1,$not2,$not3]);
  ?>
     <!-- ============= Post Content Area Start ============= -->
     <!-- Catagory Area -->
     @if(!empty($category1->first()))
-    <div class="col-12 mt-50">
+    <div class="col-12">
         <div class="row">
-           <h4 class="clearfix vi-header wow fadeInUpBig ml-15 mr-15" data-wow-delay="0.2s"><a class="vi-left-title pull-left" href="#"> {{ $category1->first()->categories->first()->name }}</a></h4>
+           <h4 class="clearfix vi-header wow fadeInUpBig ml-15 mr-15" data-wow-delay="0.2s"><a class="vi-left-title pull-left" href="#"> {{ get_category_by_id($not1)->name }}</a></h4>
            @foreach($category1 as $post)
+           <?php
+                array_push($notpost, $post->id)
+            ?>
            @if ($loop->first)
             <div class="col-12 col-md-6">
                 <div class="wow fadeInUpBig" data-wow-delay="0.1s">
@@ -72,13 +81,15 @@
                     <div class="single-blog-post">
                         <!-- Post Thumbnail -->
                         <div class="post-thumbnail">
+                           <a href="{{ $post->url }}">
                             <img src="{{get_object_image($post->image, 'medium')}}" alt="">
+                        </a>
                             <!-- Catagory -->
                         </div>
                         <!-- Post Content -->
                         <div class="post-content">
                             <a href="{{ $post->url }}" class="headline">
-                                <h5>{{$post->name}}</h5>
+                                <h5>{{$post->id}}{{$post->name}}</h5>
                             </a>
                             <p>{{$post->description}}</p>
                             <!-- Post Meta -->
@@ -124,9 +135,12 @@
             <div class="row">
                 @if(!empty($category2->first()))
                 @foreach($category2 as $post)
+                <?php
+                array_push($notpost, $post->id)
+                ?>
                  @if ($loop->first)
                 <div class="col-12 col-md-6">
-                    <h4 class="clearfix vi-header wow fadeInUpBig" data-wow-delay="0.2s"><a class="vi-left-title pull-left" href="#"> {{ $post->categories->first()->name }}</a></h4>
+                    <h4 class="clearfix vi-header wow fadeInUpBig" data-wow-delay="0.2s"><a class="vi-left-title pull-left" href="#"> {{get_category_by_id($not2)->name }}</a></h4>
                     <!-- Single Blog Post -->
                     <div class="single-blog-post wow fadeInUpBig" data-wow-delay="0.2s">
                         <!-- Post Thumbnail -->
@@ -140,7 +154,7 @@
                         <!-- Post Content -->
                         <div class="post-content">
                             <a href="{{ $post->url }}" class="headline">
-                                <h5>{{$post->name}}</h5>
+                                <h5>{{$post->id}}{{$post->name}}</h5>
                             </a>
                             <p>{{$post->description}}</p>
                             <!-- Post Meta -->
@@ -166,7 +180,7 @@
                             <!-- Post Content -->
                             <div class="post-content">
                                 <a href="{{ $post->url }}" class="headline">
-                                    <h5>{{$post->name}}</h5>
+                                    <h5>{{$post->id}}{{$post->name}}</h5>
                                 </a>
                             </div>
                         </div> 
@@ -174,17 +188,18 @@
                      @endif
                      @if ($loop->last)
                     </div>
-
-
 </div>
 @endif
 @endforeach
 @endif
  @if(!empty($category3->first()))
                 @foreach($category3 as $post)
+                <?php
+                array_push($notpost, $post->id)
+                ?>
                  @if ($loop->first)
                 <div class="col-12 col-md-6">
-                    <h4 class="clearfix vi-header wow fadeInUpBig" data-wow-delay="0.2s"><a class="vi-left-title pull-left" href="#"> {{ $post->categories->first()->name }}</a></h4>
+                    <h4 class="clearfix vi-header wow fadeInUpBig" data-wow-delay="0.2s"><a class="vi-left-title pull-left" href="#"> {{ get_category_by_id($not3)->name }}</a></h4>
                     <!-- Single Blog Post -->
                     <div class="single-blog-post wow fadeInUpBig" data-wow-delay="0.2s">
                         <!-- Post Thumbnail -->
@@ -198,7 +213,7 @@
                         <!-- Post Content -->
                         <div class="post-content">
                             <a href="{{ $post->url }}" class="headline">
-                                <h5>{{$post->name}}</h5>
+                                <h5>{{$post->id}}{{$post->name}}</h5>
                             </a>
                             <p>{{$post->description}}</p>
                             <!-- Post Meta -->
@@ -224,7 +239,7 @@
                             <!-- Post Content -->
                             <div class="post-content">
                                 <a href="{{ $post->url }}" class="headline">
-                                    <h5>{{$post->name}}</h5>
+                                    <h5>{{$post->id}}{{$post->name}}</h5>
                                 </a>
                             </div>
                         </div> 
@@ -246,6 +261,9 @@
 </div>
 </div>
 @endif
+<?php 
+    $category4 = get_posts_not_category([$not1,$not2,$not3],$notpost);
+?>
 @if(!empty($category4->first()))
 <div class="col-12 mt-50">
     <div class="row justify-content-center">
@@ -263,7 +281,7 @@
                                 <div class="post-tag"><a href="#">{{ $post->categories->first()->name }}</a></div>
                                 <!-- Headline -->
                                 <a href="{{ $post->url }}" class="headline">
-                                    <h5>{{ $post->name }}</h5>
+                                    <h5>{{$post->id}}{{ $post->name }}</h5>
                                 </a>
                                 <!-- Post Meta -->
                                 <div class="post-meta">
@@ -282,6 +300,8 @@
 @endif
 @else
     <div class="alert alert-warning">
-        <p>{{ __('There is no data to display!') }}</p>
+        <h3 style="color: blue; text-align: center; margin-top: 20px;">Chưa có dữ liệu để hiển thị - chúng tôi sẽ trở lại</h3>
     </div>
 @endif
+</div>
+</article>

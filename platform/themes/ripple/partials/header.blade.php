@@ -17,11 +17,7 @@
                 <style>
                 body {font-family: '{{ theme_option('primary_font', 'Roboto') }}', sans-serif !important;}
             </style>
-
-            
             <div id="fb-root"></div>
-            
-            
             </head>
             <!--[if IE 7]><body class="ie7 lt-ie8 lt-ie9 lt-ie10"><![endif]-->
                 <!--[if IE 8]><body class="ie8 lt-ie9 lt-ie10"><![endif]-->
@@ -74,10 +70,8 @@
                                     !!}
                                 </nav>
                                 <!-- het menu -->
-                               
                                 <div class="clearfix"></div>  
                             </div>
-
                             @if (is_plugin_active('blog'))
                             <div class="super-search hide">
                                 <span class="close-search" style="font-size: 40px;">&times;</span>

@@ -115,11 +115,12 @@ if (!function_exists('gallery_home_slide')) {
     {
         $object = app(GalleryInterface::class)->all()->where('id',theme_option('home_slide_image'))->pluck('id');
         $meta = app(GalleryMetaInterface::class)->all()->where('reference_id',$object->first());
-        $link = ($meta->first()->images);
-        return $link;
         if (!empty($meta)) {
             return $meta->first()->images ?? [];
         }
+        $link = ($meta->first()->images);
+        return $link;
+        
         return [];
     }
 }

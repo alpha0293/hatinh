@@ -87,9 +87,9 @@ if (!function_exists('get_posts_not_category')) {
      * @param int $limit
      * @return array
      */
-    function get_posts_not_category(array $categoryid = [], $paginate = 6, $limit = 0)
+    function get_posts_not_category(array $categoryid = [], array $notpost=[], $paginate = 6, $limit = 0)
     {
-        return app(PostInterface::class)->get_posts_NOT_category($categoryid, $paginate, $limit);
+        return app(PostInterface::class)->get_posts_NOT_category($categoryid, $notpost, $paginate, $limit);
     }
 }
 

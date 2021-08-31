@@ -68,10 +68,11 @@ class PostRepository extends RepositoriesAbstract implements PostInterface
     /**
      * {@inheritdoc}
      */
-    public function get_posts_NOT_category(array $categoryid = [], $paginate = 6, $limit)
+    public function get_posts_NOT_category(array $categoryid = [], array $notpost=[], $paginate = 6, $limit)
     {
         $data = $this->model
             ->where('posts.status', BaseStatusEnum::PUBLISHED)
+            ->whereNotIn('posts.id',$notpost)
             ->join('post_categories', 'post_categories.post_id', '=', 'posts.id')
             ->join('categories', 'post_categories.category_id', '=', 'categories.id')
             ->whereNotIn('post_categories.category_id', $categoryid)

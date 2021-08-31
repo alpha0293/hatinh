@@ -37,7 +37,7 @@ interface PostInterface extends RepositoryInterface
      * @param int $limit
      * @return mixed
      */
-    public function get_posts_NOT_category(array $categoryid = [], $paginate = 6, $limit);
+    public function get_posts_NOT_category(array $categoryid = [], array $notpost=[], $paginate = 6, $limit);
 
     /**
      * @param int|array $categoryId
