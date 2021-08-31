@@ -163,6 +163,7 @@ class PostTable extends TableAbstract
                 'name'  => 'posts.image',
                 'title' => trans('core/base::tables.image'),
                 'width' => '70px',
+                'orderable' => false,
             ],
             'name'       => [
                 'name'  => 'posts.name',
@@ -176,18 +177,8 @@ class PostTable extends TableAbstract
                 'class'     => 'no-sort',
                 'orderable' => false,
             ],
-            'author_id'  => [
-                'name'      => 'posts.author_id',
-                'title'     => trans('plugins/blog::posts.author'),
-                'width'     => '150px',
-                'class'     => 'no-sort',
-                'orderable' => false,
-            ],
-            'created_at' => [
-                'name'  => 'posts.created_at',
-                'title' => trans('core/base::tables.created_at'),
-                'width' => '100px',
-            ],
+           
+            
             'status'     => [
                 'name'  => 'posts.status',
                 'title' => trans('core/base::tables.status'),
